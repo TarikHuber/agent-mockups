@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HUAWEI.blog | Die Nummer 1 HUAWEI Quelle</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#C8102E',
+          bg: '#F4F1EC',
+          accent: '#1A1A2E',
+          textmain: '#1C1C1C',
+        },
+        fontFamily: {
+          display: ['"DM Serif Display"', 'serif'],
+          body: ['"DM Sans"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  :root {
+    --primary: #C8102E;
+    --bg: #F4F1EC;
+    --accent: #1A1A2E;
+    --text: #1C1C1C;
+    --unit: 8px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* ── ANIMATIONS ── */
+
+  /* 1. Scroll-reveal: opacity + translateY */
+  @keyframes revealUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 2. Hero-Collage drift */
+  @keyframes collageScroll {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-33.333%); }
+  }
+
+  /* 3. Ticker scroll */
+  @keyframes tickerMove {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* 4. Ping pulse */
+  @keyframes ping {
+    0%   { transform: scale(1); opacity: 1; }
+    75%, 100% { transform: scale(2.2); opacity: 0; }
+  }
+
+  /* 5. Red bar grow on hover */
+  .headline-link {
+    display: inline;
+    background-image: linear-gradient(var(--primary), var(--primary));
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    transition: background-size 180ms ease-out;
+    text-decoration: none;
+    color: inherit;
+  }
+  .headline-link:hover { background-size: 100% 2px; }
+
+  /* Reveal class */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 280ms ease-out, transform 280ms ease-out;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Collage */
+  .collage-track {
+    animation: collageScroll 18s linear infinite;
+  }
+  .collage-track:hover { animation-play-state: paused; }
+
+  /* Ticker */
+  .ticker-inner {
+    display: flex;
+    white-space: nowrap;
+    animation: tickerMove 28s linear infinite;
+  }
+  .ticker-inner:hover { animation-play-state: paused; }
+
+  /* Ping indicator */
+  .ping-dot {
+    position: relative;
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+  .ping-dot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--primary);
+    animation: ping 1.4s cubic-bezier(0,0,0.2,1) infinite;
+  }
+
+  /* Firmware card */
+  .firmware-card {
+    background: var(--accent);
+    color: #fff;
+    min-width: 160px;
+    max-width: 160px;
+    border-radius: 2px;
+    padding: 20px 16px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 180ms ease-out, box-shadow 180ms ease-out;
+    border-top: 3px solid var(--primary);
+  }
+  .firmware-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(200,16,46,0.22);
+  }
+
+  /* Red divider vertical */
+  .red-divider {
+    width: 2px;
+    background: var(--primary);
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+
+  /* Nav underline active */
+  .nav-item {
+    position: relative;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding-bottom: 2px;
+  }
+  .nav-item::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 0; height: 2px;
+    background: var(--primary);
+    transition: width 180ms ease-out;
+  }
+  .nav-item:hover::after { width: 100%; }
+  .nav-item.active::after { width: 100%; }
+
+  /* Section label */
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  /* Feature image overlay */
+  .feature-img-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-img-wrap img {
+    transition: transform 400ms ease-out;
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .feature-img-wrap:hover img { transform: scale(1.03); }
+
+  /* Compact card hover */
+  .news-card-compact {
+    transition: background 200ms ease;
+    cursor: pointer;
+  }
+  .news-card-compact:hover { background: rgba(200,16,46,0.05); }
+
+  /* Deep-dive feature */
+  .deep-bg {
+    background: var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+  .deep-bg::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,16,46,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Newsletter CTA */
+  .cta-input {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: #fff;
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 180ms ease;
+    width: 100%;
+  }
+  .cta-input:focus { border-color: var(--primary); }
+  .cta-input::placeholder { color: rgba(255,255,255,0.45); }
+
+  /* Form inputs */
+  .form-input {
+    background: #fff;
+    border: 1.5px solid #ddd9d0;
+    color: var(--text);
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    transition: border-color 180ms ease;
+    border-radius: 1px;
+  }
+  .form-input:focus { border-color: var(--primary); }
+
+  /* Category pill */
+  .cat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: #fff;
+    border: 1.5px solid #e0dbd2;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .cat-pill:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+
+  /* Hamburger menu */
+  .mobile-menu { display: none; }
+  .mobile-menu.open { display: block; }
+
+  /* Scrollbar firmware */
+  .firmware-scroll::-webkit-scrollbar { height: 4px; }
+  .firmware-scroll::-webkit-scrollbar-track { background: var(--accent); }
+  .firmware-scroll::-webkit-scrollbar-thumb { background: var(--primary); }
+
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .collage-track { animation: none; }
+    .ticker-inner { animation: none; }
+    .ping-dot::before { animation: none; }
+    .headline-link { transition: none; }
+    .firmware-card { transition: none; }
+    .feature-img-wrap img { transition: none; }
+    .cat-pill { transition: none; }
+    .cta-input { transition: none; }
+    .form-input { transition: none; }
+    .nav-item::after { transition: none; }
+  }
+
+  /* Responsive grid */
+  @media (max-width: 767px) {
+    .news-triptych { flex-direction: column; }
+    .red-divider { width: 100%; height: 2px; align-self: auto; }
+    .hero-title { font-size: clamp(3rem, 18vw, 6rem); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- NAV -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<header class="sticky top-0 z-50" style="background:var(--bg); border-bottom:2px solid var(--text);">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+    <div class="flex items-center justify-between h-14">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 flex-shrink-0">
+        <span style="display:inline-block;width:18px;height:18px;background:var(--primary);border-radius:50%;"></span>
+        <span class="font-display font-normal tracking-tight" style="font-size:1.1rem;color:var(--text);">HUAWEI<span style="color:var(--primary);">.blog</span></span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#news" class="nav-item active">News</a>
+        <a href="#smartphones" class="nav-item">Smartphones</a>
+        <a href="#wearables" class="nav-item">Wearables</a>
+        <a href="#tablets" class="nav-item">Tablets</a>
+        <a href="#firmware" class="nav-item">Firmware</a>
+        <a href="#ratgeber" class="nav-item">Ratgeber</a>
+        <a href="#kontakt" class="nav-item">Kontakt</a>
+      </nav>
+
+      <!-- CTA + Burger -->
+      <div class="flex items-center gap-3">
+        <a href="#newsletter" class="hidden md:inline-flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-widest" style="background:var(--primary);color:#fff;">Newsletter</a>
+        <button id="burger" class="md:hidden flex flex-col gap-1.5 p-1" aria-label="Menü öffnen">
+          <span class="block w-6 h-0.5" style="background:var(--text);"></span>
+          <span class="block w-6 h-0.5" style="background:var(--text);"></span>
+          <span class="block w-4 h-0.5" style="background:var(--text);"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="mobile-menu md:hidden pb-4">
+      <nav class="flex flex-col gap-3 pt-3" style="border-top:1px solid #ddd9d0;">
+        <a href="#news" class="nav-item" style="font-size:0.95rem;">News</a>
+        <a href="#smartphones" class="nav-item" style="font-size:0.95rem;">Smartphones</a>
+        <a href="#wearables" class="nav-item" style="font-size:0.95rem;">Wearables</a>
+        <a href="#tablets" class="nav-item" style="font-size:0.95rem;">Tablets</a>
+        <a href="#firmware" class="nav-item" style="font-size:0.95rem;">Firmware</a>
+        <a href="#ratgeber" class="nav-item" style="font-size:0.95rem;">Ratgeber</a>
+        <a href="#kontakt" class="nav-item" style="font-size:0.95rem;">Kontakt</a>
+        <a href="#newsletter" class="inline-flex w-fit items-center px-4 py-2 text-xs font-bold uppercase tracking-widest mt-2" style="background:var(--primary);color:#fff;">Newsletter</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- HERO — Masthead mit typografischer Überblendung -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="hero" style="position:relative;overflow:hidden;min-height:90vh;display:flex;flex-direction:column;justify-content:center;">
+
+  <!-- Collage Background -->
+  <div style="position:absolute;inset:0;z-index:0;pointer-events:none;">
+    <div class="collage-track" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px;height:300%;opacity:0.13;">
+      <!-- Row 1 -->
+      <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/plp/phones/pura70/pura70-kv.jpg" alt="" style="width:100%;height:280px;object-fit:cover;border-radius:2px;" loading="lazy">
+      <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/mate60pro/imgs/design/huawei-mate60pro-design-section1-bg-mobile.jpg" alt="" style="width:100%;height:280px;object-fit:cover;border-radius:2px;" loading="lazy">
+      <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/wearables/watch-gt4/imgs/overview/huawei-watch-gt4-overview-kv.jpg" alt="" style="width:100%;height:280px;object-fit:cover;border-radius:2px;" loading="lazy">
+      <!-- Row 2 -->
+      <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/tablets/matepad-pro-13-9-inch-2024/imgs/overview/huawei-matepad-pro-13-9-inch-2024-overview-kv.jpg" alt="" style="width:100%;height:280px;object-fit:cover;border-radius:2px;" loading="lazy">
+      <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/mate60pro/imgs/design/huawei-mate60pro-design-section2-image1-mobile.jpg" alt="" style="width:100%;height:280px;object-fit:cover;border-radius:2px;" loading="lazy">
+      <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/laptops/matebook-x-pro-2024/imgs/overview/huawei-matebook-x-pro-2024-overview-kv.jpg" alt="" style="width:100%;height:280px;object-fit:cover;border-radius:2px;" loading="lazy">
+      <!-- Row 3 (repeat) -->
+      <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/plp/phones/pura70/pura70-kv.jpg" alt="" style="width:100%;height:280px;object-fit:cover;border-radius:2px;" loading="lazy">
+      <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/mate60pro/imgs/design/huawei-mate60pro-design-section1-bg-mobile.jpg" alt="" style="width:100%;height:280px;object-fit:cover;border-radius:2px;" loading="lazy">
+      <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/wearables/watch-gt4/imgs/overview/huawei-watch-gt4-overview-kv.jpg" alt="" style="width:100%;height:280px;object-fit:cover;border-radius:2px;" loading="lazy">
+    </div>
+  </div>
+
+  <!-- Red bar top -->
+  <div style="position:absolute;top:0;left:0;right:0;height:4px;background:var(--primary);z-index:2;"></div>
+
+  <!-- Hero content -->
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8 relative z-10 py-20 md:py-32">
+    <div class="mb-4">
+      <span class="section-label">Deutschlands führende HUAWEI-Quelle</span>
+    </div>
+
+    <h1 class="font-display hero-title" style="font-size:clamp(3.5rem,13vw,9rem);line-height:0.9;letter-spacing:-0.02em;color:var(--text);max-width:900px;margin-bottom:2rem;">
+      HUAWEI<span style="display:block;color:var(--primary);">.blog</span>
+    </h1>
+
+    <div style="max-width:480px;">
+      <p class="font-body" style="font-size:1.1rem;line-height:1.65;color:var(--text);opacity:0.8;margin-bottom:2rem;">
+        Aktuelle Nachrichten, Firmware-Updates, Testberichte und Insider-Wissen rund um das HUAWEI-Ökosystem — schnell, präzise, unabhängig.
+      </p>
+      <div class="flex gap-3 flex-wrap">
+        <a href="#news" class="inline-flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider text-sm" style="background:var(--primary);color:#fff;">
+          Aktuelle News
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#firmware" class="inline-flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-wider text-sm" style="border:2px solid var(--text);color:var(--text);">Firmware-Tracker</a>
+      </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="flex gap-8 flex-wrap mt-16 pt-8" style="border-top:1px solid rgba(28,28,28,0.15);">
+      <div>
+        <div class="font-display" style="font-size:2rem;color:var(--primary);">12.000+</div>
+        <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;opacity:0.6;">Monatliche Leser</div>
+      </div>
+      <div>
+        <div class="font-display" style="font-size:2rem;color:var(--primary);">800+</div>
+        <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;opacity:0.6;">Artikel</div>
+      </div>
+      <div>
+        <div class="font-display" style="font-size:2rem;color:var(--primary);">100%</div>
+        <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;opacity:0.6;">Unabhängig</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TICKER BAND -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div style="background:var(--accent);overflow:hidden;padding:10px 0;border-top:2px solid var(--primary);border-bottom:2px solid var(--primary);">
+  <div class="ticker-inner" aria-hidden="true">
+    <!-- Repeat for seamless loop -->
+    <div class="flex items-center gap-0">
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">⬤ HUAWEI Pura 70 Ultra — Kirin 9010 Benchmarks veröffentlicht</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">Mate 60 Pro: HarmonyOS 4.3 Update rollt in Deutschland aus</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">HUAWEI Watch GT 5 Pro — Testergebnis: 9,2/10</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">MatePad Pro 13.9 — OLED-Panel im Detail-Check</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">FreeBuds 6i: Aktuelle Noise-Cancelling-Champions unter 100 €</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">HUAWEI MateBook X Pro 2025 — Erste Leaks aufgetaucht</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+    </div>
+    <!-- Duplicate for seamless animation -->
+    <div class="flex items-center gap-0" aria-hidden="true">
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">⬤ HUAWEI Pura 70 Ultra — Kirin 9010 Benchmarks veröffentlicht</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">Mate 60 Pro: HarmonyOS 4.3 Update rollt in Deutschland aus</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">HUAWEI Watch GT 5 Pro — Testergebnis: 9,2/10</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">MatePad Pro 13.9 — OLED-Panel im Detail-Check</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">FreeBuds 6i: Aktuelle Noise-Cancelling-Champions unter 100 €</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;">HUAWEI MateBook X Pro 2025 — Erste Leaks aufgetaucht</span>
+      <span style="padding:0 32px;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">✦</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- FIRMWARE TRACKER -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="firmware" style="background:var(--bg);padding:48px 0 40px;border-bottom:1px solid #ddd9d0;">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+    <div class="flex items-baseline gap-4 mb-6 reveal">
+      <span class="section-label">Firmware-Tracker</span>
+      <h2 class="font-display" style="font-size:1.5rem;color:var(--text);">Aktuelle Updates</h2>
+    </div>
+
+    <div class="firmware-scroll reveal" style="overflow-x:auto;overflow-y:visible;">
+      <div style="display:flex;gap:12px;padding-bottom:8px;min-width:max-content;">
+
+        <div class="firmware-card">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px;">
+            <span class="ping-dot"></span>
+            <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">NEU</span>
+          </div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:500;margin-bottom:4px;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;text-transform:uppercase;">Mate 60 Pro</div>
+          <div class="font-mono" style="font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:8px;">4.3.0.172</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);font-family:'DM Sans',sans-serif;">HarmonyOS 4.3</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;">12. Jan 2026</div>
+        </div>
+
+        <div class="firmware-card">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px;">
+            <span class="ping-dot"></span>
+            <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">NEU</span>
+          </div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:500;margin-bottom:4px;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;text-transform:uppercase;">Pura 70 Ultra</div>
+          <div class="font-mono" style="font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:8px;">4.3.0.155</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);font-family:'DM Sans',sans-serif;">HarmonyOS 4.3</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;">10. Jan 2026</div>
+        </div>
+
+        <div class="firmware-card" style="border-top-color:rgba(255,255,255,0.2);">
+          <div style="height:20px;margin-bottom:12px;"></div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:500;margin-bottom:4px;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;text-transform:uppercase;">Watch GT 5 Pro</div>
+          <div class="font-mono" style="font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:8px;">3.0.0.88</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);font-family:'DM Sans',sans-serif;">HarmonyOS Watch</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;">8. Jan 2026</div>
+        </div>
+
+        <div class="firmware-card" style="border-top-color:rgba(255,255,255,0.2);">
+          <div style="height:20px;margin-bottom:12px;"></div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:500;margin-bottom:4px;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;text-transform:uppercase;">MatePad Pro 13.9</div>
+          <div class="font-mono" style="font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:8px;">4.2.0.201</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);font-family:'DM Sans',sans-serif;">HarmonyOS 4.2</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;">5. Jan 2026</div>
+        </div>
+
+        <div class="firmware-card" style="border-top-color:rgba(255,255,255,0.2);">
+          <div style="height:20px;margin-bottom:12px;"></div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:500;margin-bottom:4px;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;text-transform:uppercase;">FreeBuds 6i</div>
+          <div class="font-mono" style="font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:8px;">1.9.0.22</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);font-family:'DM Sans',sans-serif;">Firmware</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;">3. Jan 2026</div>
+        </div>
+
+        <div class="firmware-card" style="border-top-color:rgba(255,255,255,0.2);">
+          <div style="height:20px;margin-bottom:12px;"></div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:500;margin-bottom:4px;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;text-transform:uppercase;">MateBook X Pro</div>
+          <div class="font-mono" style="font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:8px;">PCManager 14.1</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);font-family:'DM Sans',sans-serif;">Windows 11</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;">28. Dez 2025</div>
+        </div>
+
+        <div class="firmware-card" style="border-top-color:rgba(255,255,255,0.2);">
+          <div style="height:20px;margin-bottom:12px;"></div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:500;margin-bottom:4px;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;text-transform:uppercase;">P60 Pro</div>
+          <div class="font-mono" style="font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:8px;">4.0.0.190</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);font-family:'DM Sans',sans-serif;">HarmonyOS 4.0</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;">20. Dez 2025</div>
+        </div>
+
+        <div class="firmware-card" style="border-top-color:rgba(255,255,255,0.2);">
+          <div style="height:20px;margin-bottom:12px;"></div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);font-weight:500;margin-bottom:4px;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;text-transform:uppercase;">Band 9</div>
+          <div class="font-mono" style="font-size:1rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:8px;">1.0.12.64</div>
+          <div style="font-size:0.65rem;color:rgba(255,255,255,0.45);font-family:'DM Sans',sans-serif;">Firmware</div>
+          <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.1);font-size:0.65rem;color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;">15. Dez 2025</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- NEWS — Asymmetrisches Triptychon -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="news" style="padding:64px 0;background:var(--bg);">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+
+    <div class="flex items-baseline justify-between mb-10 reveal">
+      <div>
+        <span class="section-label">Aktuell</span>
+        <h2 class="font-display mt-1" style="font-size:2.2rem;color:var(--text);">Top-Nachrichten</h2>
+      </div>
+      <a href="#" class="nav-item hidden md:inline" style="font-size:0.8rem;">Alle News →</a>
+    </div>
+
+    <!-- Triptych grid -->
+    <div class="news-triptych flex gap-0 reveal" style="min-height:480px;">
+
+      <!-- Featured (7 cols equivalent) -->
+      <div style="flex:7;min-width:0;" class="feature-img-wrap">
+        <div style="position:relative;height:100%;min-height:400px;">
+          <img
+            src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/mate60pro/imgs/design/huawei-mate60pro-design-section1-bg-mobile.jpg"
+            alt="HUAWEI Mate 60 Pro"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <!-- Overlay -->
+          <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(26,26,46,0.92) 0%, rgba(26,26,46,0.3) 60%, transparent 100%);"></div>
+          <!-- Content -->
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:32px;">
+            <span style="display:inline-block;background:var(--primary);color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;margin-bottom:12px;">Smartphones</span>
+            <h3 class="font-display" style="font-size:clamp(1.4rem,3vw,2rem);color:#fff;line-height:1.15;margin-bottom:12px;">
+              <a href="#" class="headline-link" style="color:#fff;">HUAWEI Mate 60 Pro: HarmonyOS 4.3 bringt KI-Funktionen auf Weltklasse-Niveau</a>
+            </h3>
+            <p style="font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:16px;max-width:480px;">Das neueste Update transformiert das Flagship-Erlebnis mit dem überarbeiteten Yoyo-Assistenten, verbesserter Kamera-KI und einer optimierten Multitasking-Oberfläche.</p>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="font-size:0.72rem;color:rgba(255,255,255,0.5);font-weight:500;">12. Januar 2026</span>
+              <span style="width:4px;height:4px;border-radius:50%;background:var(--primary);display:inline-block;"></span>
+              <span style="font-size:0.72rem;color:rgba(255,255,255,0.5);font-weight:500;">6 Min. Lesezeit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Red divider -->
+      <div class="red-divider" style="margin:0 0;"></div>
+
+      <!-- Two stacked compact cards (5 cols) -->
+      <div style="flex:5;min-width:0;display:flex;flex-direction:column;">
+
+        <div class="news-card-compact" style="flex:1;padding:24px;border-bottom:1px solid #ddd9d0;display:flex;flex-direction:column;justify-content:space-between;background:#fff;">
+          <div>
+            <span style="display:inline-block;background:transparent;color:var(--primary);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--primary);padding:2px 8px;margin-bottom:10px;">Wearables</span>
+            <h3 class="font-display" style="font-size:1.15rem;line-height:1.25;color:var(--text);margin-bottom:10px;">
+              <a href="#" class="headline-link">Watch GT 5 Pro im Praxistest: 21 Tage Akku — stimmt das wirklich?</a>
+            </h3>
+            <p style="font-size:0.82rem;color:#555;line-height:1.55;">Wir haben die neue Smartwatch vier Wochen lang unter realen Bedingungen getestet und die Akkulaufzeit minutiös protokolliert.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:16px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;font-family:'DM Sans',sans-serif;">MK</div>
+            <span style="font-size:0.72rem;color:#888;font-weight:500;">Markus Klein · 10. Jan 2026</span>
+          </div>
+        </div>
+
+        <div class="news-card-compact" style="flex:1;padding:24px;display:flex;flex-direction:column;justify-content:space-between;background:var(--bg);">
+          <div>
+            <span style="display:inline-block;background:transparent;color:var(--accent);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--accent);padding:2px 8px;margin-bottom:10px;">HarmonyOS</span>
+            <h3 class="font-display" style="font-size:1.15rem;line-height:1.25;color:var(--text);margin-bottom:10px;">
+              <a href="#" class="headline-link">HarmonyOS NEXT ohne Android: Was ändert sich für Deutschland-Nutzer?</a>
+            </h3>
+            <p style="font-size:0.82rem;color:#555;line-height:1.55;">Der vollständige Umstieg auf HarmonyOS Next ohne AOSP-Basis — alles was du wissen musst, bevor du upgradeest.</p>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:16px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;font-family:'DM Sans',sans-serif;">SB</div>
+            <span style="font-size:0.72rem;color:#888;font-weight:500;">Stefan Bauer · 8. Jan 2026</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Secondary news grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 reveal">
+
+      <article style="border-top:3px solid var(--text);padding-top:16px;">
+        <span style="display:inline-block;color:var(--primary);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">Tablets</span>
+        <h3 class="font-display" style="font-size:1.1rem;line-height:1.25;color:var(--text);margin-bottom:8px;">
+          <a href="#" class="headline-link">MatePad Pro 13.9: Das beste OLED-Tablet für Kreative 2026?</a>
+        </h3>
+        <p style="font-size:0.82rem;color:#666;line-height:1.55;margin-bottom:12px;">Papier-ähnliche Display-Textur trifft auf M-Pencil 3 — unser ausführlicher Kreativ-Workflow-Test.</p>
+        <span style="font-size:0.72rem;color:#999;">7. Jan 2026 · 8 Min.</span>
+      </article>
+
+      <article style="border-top:3px solid var(--text);padding-top:16px;">
+        <span style="display:inline-block;color:var(--primary);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">Audio</span>
+        <h3 class="font-display" style="font-size:1.1rem;line-height:1.25;color:var(--text);margin-bottom:8px;">
+          <a href="#" class="headline-link">FreeBuds 6i vs. AirPods Pro 2: Der große ANC-Vergleichstest</a>
+        </h3>
+        <p style="font-size:0.82rem;color:#666;line-height:1.55;margin-bottom:12px;">Aktive Geräuschunterdrückung Seite an Seite — wir klären, wer im Alltag die Nase vorn hat.</p>
+        <span style="font-size:0.72rem;color:#999;">5. Jan 2026 · 10 Min.</span>
+      </article>
+
+      <article style="border-top:3px solid var(--text);padding-top:16px;">
+        <span style="display:inline-block;color:var(--primary);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;">Ratgeber</span>
+        <h3 class="font-display" style="font-size:1.1rem;line-height:1.25;color:var(--text);margin-bottom:8px;">
+          <a href="#" class="headline-link">HUAWEI AppGallery 2026: Diese 12 Apps ersetzen Google komplett</a>
+        </h3>
+        <p style="font-size:0.82rem;color:#666;line-height:1.55;margin-bottom:12px;">Von Maps bis Payments — die besten Alternativen im AppGallery-Ökosystem, die du kennen musst.</p>
+        <span style="font-size:0.72rem;color:#999;">3. Jan 2026 · 7 Min.</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SMARTPHONES SECTION -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="smartphones" style="padding:64px 0;background:#fff;border-top:1px solid #ddd9d0;">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+    <div class="flex items-baseline justify-between mb-10 reveal">
+      <div>
+        <span class="section-label">Geräte</span>
+        <h2 class="font-display mt-1" style="font-size:2.2rem;color:var(--text);">Smartphones</h2>
+      </div>
+      <a href="#" class="nav-item hidden md:inline" style="font-size:0.8rem;">Alle Modelle →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+
+      <div style="cursor:pointer;" class="group">
+        <div style="aspect-ratio:3/4;overflow:hidden;background:#f0ede8;margin-bottom:16px;" class="feature-img-wrap">
+          <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/mate60pro/imgs/design/huawei-mate60pro-design-section2-image1-mobile.jpg" alt="Mate 60 Pro" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">Flagship</span>
+        <h3 class="font-display" style="font-size:1.15rem;margin:4px 0 6px;"><a href="#" class="headline-link">HUAWEI Mate 60 Pro</a></h3>
+        <p style="font-size:0.8rem;color:#666;line-height:1.5;">Kirin 9010 · 6,82" OLED · 50 MP Kamera-System</p>
+      </div>
+
+      <div style="cursor:pointer;" class="group">
+        <div style="aspect-ratio:3/4;overflow:hidden;background:#f0ede8;margin-bottom:16px;" class="feature-img-wrap">
+          <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/plp/phones/pura70/pura70-kv.jpg" alt="Pura 70 Ultra" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">Kamera-King</span>
+        <h3 class="font-display" style="font-size:1.15rem;margin:4px 0 6px;"><a href="#" class="headline-link">HUAWEI Pura 70 Ultra</a></h3>
+        <p style="font-size:0.8rem;color:#666;line-height:1.5;">Variable Apertur · Titan-Chassis · Leica-Optik</p>
+      </div>
+
+      <div style="cursor:pointer;" class="group">
+        <div style="aspect-ratio:3/4;overflow:hidden;background:#f0ede8;margin-bottom:16px;" class="feature-img-wrap">
+          <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/mate60pro/imgs/design/huawei-mate60pro-design-section1-bg-mobile.jpg" alt="Pura 70 Pro" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Beliebt</span>
+        <h3 class="font-display" style="font-size:1.15rem;margin:4px 0 6px;"><a href="#" class="headline-link">HUAWEI Pura 70 Pro</a></h3>
+        <p style="font-size:0.8rem;color:#666;line-height:1.5;">6,8" LTPO · 100 W SuperCharge · HarmonyOS 4</p>
+      </div>
+
+      <div style="cursor:pointer;" class="group">
+        <div style="aspect-ratio:3/4;background:var(--accent);margin-bottom:16px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+          <span class="font-display" style="font-size:4rem;color:rgba(255,255,255,0.08);text-align:center;line-height:1;">NOVA<br>13</span>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:0.8rem;color:rgba(255,255,255,0.5);font-weight:500;text-align:center;padding:16px;">Alle Modelle<br>ansehen →</span>
+          </div>
+        </div>
+        <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Mittelklasse</span>
+        <h3 class="font-display" style="font-size:1.15rem;margin:4px 0 6px;"><a href="#" class="headline-link">HUAWEI nova 13</a></h3>
+        <p style="font-size:0.8rem;color:#666;line-height:1.5;">Selfie-Champion · 60 MP Front · Ultra-Slim Design</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DEEP-DIVE FEATURE BLOCK -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="deep-dive" class="deep-bg" style="padding:80px 0;">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+    <div class="flex flex-col lg:flex-row gap-12 items-center reveal">
+
+      <!-- Text side -->
+      <div style="flex:1;color:#fff;">
+        <span class="section-label" style="color:var(--primary);">Deep Dive</span>
+        <h2 class="font-display" style="font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;margin:12px 0 24px;color:#fff;">
+          HarmonyOS NEXT:<br>Die Zukunft ohne Android
+        </h2>
+        <p style="font-size:1rem;line-height:1.7;color:rgba(255,255,255,0.72);margin-bottom:24px;">
+          Huawei trennt sich endgültig vom Android Open Source Project. Was bedeutet das für bestehende Nutzer, welche Apps funktionieren noch und wie gut ist das neue Ökosystem wirklich? Wir haben sechs Monate mit HarmonyOS NEXT gelebt — und geben eine ehrliche Bilanz.
+        </p>
+        <ul style="list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:12px;">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:rgba(255,255,255,0.65);">
+            <span style="color:var(--primary);font-weight:700;margin-top:1px;">✓</span>
+            Vollständig eigenständiges Betriebssystem seit Version 5.0
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:rgba(255,255,255,0.65);">
+            <span style="color:var(--primary);font-weight:700;margin-top:1px;">✓</span>
+            AppGallery mit über 5,8 Millionen verfügbaren Apps weltweit
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:rgba(255,255,255,0.65);">
+            <span style="color:var(--primary);font-weight:700;margin-top:1px;">✓</span>
+            Nahtlose Gerätevernetzung — Phone, Tablet, PC, Auto, Smart Home
+          </li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:rgba(255,255,255,0.65);">
+            <span style="color:var(--primary);font-weight:700;margin-top:1px;">✓</span>
+            KI-Assistent Yoyo jetzt on-device ohne Cloud-Zwang
+          </li>
+        </ul>
+        <a href="#" class="inline-flex items-center gap-3 px-6 py-3 font-bold uppercase tracking-wider text-sm" style="background:var(--primary);color:#fff;">
+          Vollständigen Report lesen
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Visual side -->
+      <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:480px;width:100%;">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:24px;border-radius:2px;">
+          <div class="font-mono" style="font-size:2rem;font-weight:600;color:var(--primary);line-height:1;">5.8M</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:6px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;">Apps in AppGallery</div>
+        </div>
+        <div style="background:rgba(200,16,46,0.12);border:1px solid rgba(200,16,46,0.3);padding:24px;border-radius:2px;">
+          <div class="font-mono" style="font-size:2rem;font-weight:600;color:#fff;line-height:1;">900M+</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:6px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;">HarmonyOS Geräte</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:24px;border-radius:2px;">
+          <div class="font-mono" style="font-size:2rem;font-weight:600;color:#fff;line-height:1;">4.3</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:6px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;">Aktuelle Version (DE)</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:24px;border-radius:2px;">
+          <div class="font-mono" style="font-size:2rem;font-weight:600;color:var(--primary);line-height:1;">∞</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:6px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;">Jahre Softwaresupport</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- WEARABLES SECTION -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="wearables" style="padding:64px 0;background:var(--bg);border-top:1px solid #ddd9d0;">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+    <div class="flex items-baseline justify-between mb-10 reveal">
+      <div>
+        <span class="section-label">Am Handgelenk</span>
+        <h2 class="font-display mt-1" style="font-size:2.2rem;color:var(--text);">Wearables</h2>
+      </div>
+      <a href="#" class="nav-item hidden md:inline" style="font-size:0.8rem;">Alle Wearables →</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+
+      <div style="background:#fff;padding:0;cursor:pointer;" class="news-card-compact">
+        <div style="overflow:hidden;aspect-ratio:16/9;" class="feature-img-wrap">
+          <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/wearables/watch-gt4/imgs/overview/huawei-watch-gt4-overview-kv.jpg" alt="Watch GT 5 Pro" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="padding:20px;">
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">Testsieger</span>
+          <h3 class="font-display" style="font-size:1.15rem;margin:6px 0 8px;"><a href="#" class="headline-link">Watch GT 5 Pro</a></h3>
+          <p style="font-size:0.82rem;color:#666;line-height:1.55;">Titangehäuse, 21 Tage Akku, Herzfrequenz + SpO2 + EKG. Die Premium-Alternative.</p>
+          <div style="margin-top:14px;display:flex;align-items:center;gap:6px;">
+            <div style="display:flex;gap:2px;">
+              <span style="color:var(--primary);font-size:0.9rem;">★★★★★</span>
+            </div>
+            <span style="font-size:0.72rem;color:#888;">9,2/10</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#fff;padding:0;cursor:pointer;" class="news-card-compact">
+        <div style="overflow:hidden;aspect-ratio:16/9;background:var(--accent);display:flex;align-items:center;justify-content:center;" class="feature-img-wrap">
+          <span class="font-display" style="font-size:3rem;color:rgba(255,255,255,0.15);">Band 9</span>
+        </div>
+        <div style="padding:20px;">
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Einsteiger</span>
+          <h3 class="font-display" style="font-size:1.15rem;margin:6px 0 8px;"><a href="#" class="headline-link">HUAWEI Band 9</a></h3>
+          <p style="font-size:0.82rem;color:#666;line-height:1.55;">Ultra-slim Fitness-Tracker mit AMOLED, 14 Tage Akku und 100+ Sportmodi.</p>
+          <div style="margin-top:14px;display:flex;align-items:center;gap:6px;">
+            <div style="display:flex;gap:2px;">
+              <span style="color:var(--primary);font-size:0.9rem;">★★★★☆</span>
+            </div>
+            <span style="font-size:0.72rem;color:#888;">8,4/10</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#fff;padding:0;cursor:pointer;" class="news-card-compact">
+        <div style="overflow:hidden;aspect-ratio:16/9;background:#e8e4dc;display:flex;align-items:center;justify-content:center;" class="feature-img-wrap">
+          <span class="font-display" style="font-size:2.5rem;color:rgba(26,26,46,0.2);">FreeBuds</span>
+        </div>
+        <div style="padding:20px;">
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">Audio</span>
+          <h3 class="font-display" style="font-size:1.15rem;margin:6px 0 8px;"><a href="#" class="headline-link">FreeBuds 6i</a></h3>
+          <p style="font-size:0.82rem;color:#666;line-height:1.55;">In-Ear mit Multi-Mode ANC, Hi-Res Audio und bis zu 35 Stunden Gesamtakku.</p>
+          <div style="margin-top:14px;display:flex;align-items:center;gap:6px;">
+            <div style="display:flex;gap:2px;">
+              <span style="color:var(--primary);font-size:0.9rem;">★★★★☆</span>
+            </div>
+            <span style="font-size:0.72rem;color:#888;">8,7/10</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TABLETS SECTION -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tablets" style="padding:64px 0;background:#fff;border-top:1px solid #ddd9d0;">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+    <div class="flex items-baseline justify-between mb-10 reveal">
+      <div>
+        <span class="section-label">Großes Format</span>
+        <h2 class="font-display mt-1" style="font-size:2.2rem;color:var(--text);">Tablets & Laptops</h2>
+      </div>
+      <a href="#" class="nav-item hidden md:inline" style="font-size:0.8rem;">Alle Modelle →</a>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-8 reveal">
+
+      <div style="flex:3;position:relative;overflow:hidden;min-height:400px;" class="feature-img-wrap">
+        <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/tablets/matepad-pro-13-9-inch-2024/imgs/overview/huawei-matepad-pro-13-9-inch-2024-overview-kv.jpg" alt="MatePad Pro 13.9" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,26,46,0.8) 0%,transparent 60%);"></div>
+        <div style="position:absolute;top:24px;left:24px;">
+          <span style="display:inline-block;background:var(--primary);color:#fff;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;margin-bottom:16px;">Testsieger 2026</span>
+          <h3 class="font-display" style="font-size:1.6rem;color:#fff;line-height:1.15;max-width:320px;">MatePad Pro 13,9"<br>OLED — Redaktionstest</h3>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.7);margin-top:10px;max-width:280px;line-height:1.55;">Das Beste für Kreative — von der Papier-Textur bis zum blitzschnellen M-Pencil 3.</p>
+          <a href="#" class="inline-flex items-center gap-2 mt-16 px-4 py-2 text-xs font-bold uppercase tracking-wider" style="background:var(--primary);color:#fff;">Test lesen</a>
+        </div>
+      </div>
+
+      <div style="flex:2;display:flex;flex-direction:column;gap:6px;">
+
+        <div style="flex:1;padding:20px;background:var(--bg);border-left:3px solid var(--primary);" class="news-card-compact">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">Laptop</span>
+              <h4 class="font-display" style="font-size:1rem;margin:4px 0 6px;"><a href="#" class="headline-link">MateBook X Pro 2025</a></h4>
+              <p style="font-size:0.8rem;color:#666;line-height:1.5;">Intel Core Ultra 9 · OLED 3K Touch · 21 Std. Akku</p>
+            </div>
+            <span class="font-mono" style="font-size:0.8rem;color:var(--primary);font-weight:600;white-space:nowrap;">ab 1.999 €</span>
+          </div>
+        </div>
+
+        <div style="flex:1;padding:20px;background:var(--bg);border-left:3px solid var(--accent);" class="news-card-compact">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Tablet</span>
+              <h4 class="font-display" style="font-size:1rem;margin:4px 0 6px;"><a href="#" class="headline-link">MatePad 11.5" PaperMatte</a></h4>
+              <p style="font-size:0.8rem;color:#666;line-height:1.5;">Anti-Reflexions-Display · Kirin 8100 · 120 Hz</p>
+            </div>
+            <span class="font-mono" style="font-size:0.8rem;color:var(--accent);font-weight:600;white-space:nowrap;">ab 449 €</span>
+          </div>
+        </div>
+
+        <div style="flex:1;padding:20px;background:var(--bg);border-left:3px solid #888;" class="news-card-compact">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;">Einsteiger</span>
+              <h4 class="font-display" style="font-size:1rem;margin:4px 0 6px;"><a href="#" class="headline-link">MatePad SE 11"</a></h4>
+              <p style="font-size:0.8rem;color:#666;line-height:1.5;">Familien-Tablet · Kids-Modus · Alle-Tage-Akku</p>
+            </div>
+            <span class="font-mono" style="font-size:0.8rem;color:#888;font-weight:600;white-space:nowrap;">ab 249 €</span>
+          </div>
+        </div>
+
+        <div style="flex:1;padding:20px;background:var(--accent);" class="news-card-compact">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">Ratgeber</span>
+              <h4 class="font-display" style="font-size:1rem;margin:4px 0 6px;color:#fff;"><a href="#" class="headline-link" style="color:#fff;">Welches HUAWEI-Gerät passt zu mir?</a></h4>
+              <p style="font-size:0.8rem;color:rgba(255,255,255,0.6);line-height:1.5;">Unser Kaufberater für 2026 →</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- RATGEBER / KATEGORIEN-LEISTE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="ratgeber" style="padding:64px 0;background:var(--bg);border-top:1px solid #ddd9d0;">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+
+    <div class="reveal mb-10">
+      <span class="section-label">Themen</span>
+      <h2 class="font-display mt-1" style="font-size:2.2rem;color:var(--text);">Ratgeber & Kategorien</h2>
+    </div>
+
+    <div class="flex flex-wrap gap-3 reveal mb-12">
+      <a href="#" class="cat-pill">
+        <span style="color:inherit;">📱</span> Smartphones
+      </a>
+      <a href="#" class="cat-pill">
+        <span style="color:inherit;">⌚</span> Wearables
+      </a>
+      <a href="#" class="cat-pill">
+        <span style="color:inherit;">📟</span> Tablets
+      </a>
+      <a href="#firmware" class="cat-pill">
+        <span style="color:inherit;">⚙️</span> Firmware
+      </a>
+      <a href="#" class="cat-pill">
+        <span style="color:inherit;">🎵</span> Audio
+      </a>
+      <a href="#" class="cat-pill">
+        <span style="color:inherit;">💻</span> Laptops
+      </a>
+      <a href="#" class="cat-pill">
+        <span style="color:inherit;">🔮</span> HarmonyOS
+      </a>
+      <a href="#" class="cat-pill">
+        <span style="color:inherit;">📷</span> Kamera-Tipps
+      </a>
+      <a href="#" class="cat-pill">
+        <span style="color:inherit;">🛒</span> Kaufberatung
+      </a>
+      <a href="#" class="cat-pill">
+        <span style="color:inherit;">🆕</span> Leaks & Gerüchte
+      </a>
+      <a href="#" class="cat-pill">
+        <span style="color:inherit;">🔧</span> Zubehör
+      </a>
+      <a href="#" class="cat-pill">
+        <span style="color:inherit;">📊</span> Vergleiche
+      </a>
+    </div>
+
+    <!-- Ratgeber articles -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
+
+      <div style="display:flex;gap:16px;padding:20px;background:#fff;border-left:3px solid var(--primary);" class="news-card-compact">
+        <div style="flex-shrink:0;width:80px;height:80px;overflow:hidden;" class="feature-img-wrap">
+          <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/phones/mate60pro/imgs/design/huawei-mate60pro-design-section2-image1-mobile.jpg" alt="" style="width:80px;height:80px;object-fit:cover;">
+        </div>
+        <div>
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);">Ratgeber</span>
+          <h4 class="font-display" style="font-size:1rem;margin:4px 0 6px;"><a href="#" class="headline-link">HUAWEI ohne Google: So richtest du alles ein</a></h4>
+          <p style="font-size:0.8rem;color:#666;line-height:1.5;">Schritt-für-Schritt-Anleitung für Neulinge im HUAWEI-Ökosystem.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:16px;padding:20px;background:#fff;border-left:3px solid var(--accent);" class="news-card-compact">
+        <div style="flex-shrink:0;width:80px;height:80px;overflow:hidden;" class="feature-img-wrap">
+          <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/wearables/watch-gt4/imgs/overview/huawei-watch-gt4-overview-kv.jpg" alt="" style="width:80px;height:80px;object-fit:cover;">
+        </div>
+        <div>
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);">Ratgeber</span>
+          <h4 class="font-display" style="font-size:1rem;margin:4px 0 6px;"><a href="#" class="headline-link">Watch GT 5 vs. Watch 4: Welche passt besser?</a></h4>
+          <p style="font-size:0.8rem;color:#666;line-height:1.5;">Tabellarischer Vergleich aller Spezifikationen und Praxiswerte.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:16px;padding:20px;background:#fff;border-left:3px solid #ccc;" class="news-card-compact">
+        <div style="flex-shrink:0;width:80px;height:80px;overflow:hidden;background:#e8e4dc;display:flex;align-items:center;justify-content:center;">
+          <span class="font-mono" style="font-size:1.2rem;font-weight:600;color:var(--accent);">APK</span>
+        </div>
+        <div>
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;">Tipps</span>
+          <h4 class="font-display" style="font-size:1rem;margin:4px 0 6px;"><a href="#" class="headline-link">APK-Installation auf HarmonyOS NEXT — geht das?</a></h4>
+          <p style="font-size:0.8rem;color:#666;line-height:1.5;">Was funktioniert noch, was ist blockiert — ein ehrlicher Überblick.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:16px;padding:20px;background:#fff;border-left:3px solid #ccc;" class="news-card-compact">
+        <div style="flex-shrink:0;width:80px;height:80px;overflow:hidden;" class="feature-img-wrap">
+          <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/pdp/tablets/matepad-pro-13-9-inch-2024/imgs/overview/huawei-matepad-pro-13-9-inch-2024-overview-kv.jpg" alt="" style="width:80px;height:80px;object-fit:cover;">
+        </div>
+        <div>
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;">Kaufberatung</span>
+          <h4 class="font-display" style="font-size:1rem;margin:4px 0 6px;"><a href="#" class="headline-link">MatePad Pro oder iPad Pro? Ehrlicher Vergleich 2026</a></h4>
+          <p style="font-size:0.8rem;color:#666;line-height:1.5;">Hardware, Software, Ökosystem — wir zählen Punkte ohne Schönreden.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- NEWSLETTER CTA -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="newsletter" class="deep-bg" style="padding:80px 0;border-top:3px solid var(--primary);">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+    <div class="flex flex-col lg:flex-row gap-12 items-start reveal">
+
+      <div style="flex:1;">
+        <span class="section-label" style="color:var(--primary);">Newsletter</span>
+        <h2 class="font-display" style="font-size:clamp(2rem,4vw,3rem);color:#fff;margin:12px 0 16px;line-height:1.05;">Kein Update<br>verpassen.</h2>
+        <p style="color:rgba(255,255,255,0.65);font-size:0.95rem;line-height:1.65;max-width:400px;">
+          Firmware-Alerts, exklusive Testberichte und Insider-News — direkt in dein Postfach. Wöchentlich, präzise, ohne Spam.
+        </p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="color:var(--primary);font-weight:700;">✓</span>
+            <span style="font-size:0.8rem;color:rgba(255,255,255,0.6);">Firmware-Alerts</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="color:var(--primary);font-weight:700;">✓</span>
+            <span style="font-size:0.8rem;color:rgba(255,255,255,0.6);">Exklusive Tests</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="color:var(--primary);font-weight:700;">✓</span>
+            <span style="font-size:0.8rem;color:rgba(255,255,255,0.6);">Kein Spam</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1;max-width:480px;width:100%;">
+        <form action="#" method="POST" style="display:flex;flex-direction:column;gap:12px;">
+          <input type="email" name="email" placeholder="Deine E-Mail-Adresse" required class="cta-input" aria-label="E-Mail-Adresse">
+          <div style="display:flex;align-items:flex-start;gap:10px;margin-top:4px;">
+            <input type="checkbox" id="nlgdpr" name="gdpr" required style="margin-top:3px;accent-color:var(--primary);flex-shrink:0;">
+            <label for="nlgdpr" style="font-size:0.78rem;color:rgba(255,255,255,0.55);line-height:1.5;">
+              Ich stimme der Verarbeitung meiner E-Mail-Adresse gemäß der <a href="#datenschutz" style="color:var(--primary);text-decoration:underline;">Datenschutzerklärung</a> zu. Die Einwilligung kann jederzeit widerrufen werden.
+            </label>
+          </div>
+          <button type="submit" class="font-bold uppercase tracking-widest text-sm py-3 px-6 mt-2" style="background:var(--primary);color:#fff;border:none;cursor:pointer;text-align:center;">
+            Jetzt anmelden →
+          </button>
+        </form>
+        <p style="font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:12px;">Bereits über 12.000 Abonnenten. Abmeldung jederzeit möglich.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- KONTAKT -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="kontakt" style="padding:80px 0;background:var(--bg);border-top:1px solid #ddd9d0;">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+
+    <div class="flex flex-col lg:flex-row gap-16 reveal">
+
+      <div style="flex:1;">
+        <span class="section-label">Kontakt</span>
+        <h2 class="font-display mt-2 mb-6" style="font-size:2.5rem;color:var(--text);line-height:1.05;">Schreib uns.</h2>
+        <p style="font-size:0.95rem;line-height:1.7;color:#555;max-width:380px;margin-bottom:32px;">
+          Presseanfragen, Kooperationen, Leserpost — wir antworten werktags innerhalb von 24 Stunden.
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:36px;height:36px;background:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#999;margin-bottom:2px;">Adresse</div>
+              <div style="font-size:0.9rem;color:var(--text);">Hofhamer Str. 71A<br>83395 Freilassing</div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:36px;height:36px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#999;margin-bottom:2px;">Telefon</div>
+              <a href="tel:+491791162398" style="font-size:0.9rem;color:var(--text);text-decoration:none;">+49 179 1162398</a>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <div style="width:36px;height:36px;background:var(--text);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#999;margin-bottom:2px;">E-Mail</div>
+              <a href="mailto:redaktion@huawei.blog" style="font-size:0.9rem;color:var(--text);text-decoration:none;">redaktion@huawei.blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <div style="flex:1.4;max-width:600px;width:100%;">
+        <form action="#" method="POST" style="display:flex;flex-direction:column;gap:14px;">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="fname" style="display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;color:var(--text);">Vorname *</label>
+              <input type="text" id="fname" name="firstname" required class="form-input" placeholder="Max">
+            </div>
+            <div>
+              <label for="lname" style="display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;color:var(--text);">Nachname *</label>
+              <input type="text" id="lname" name="lastname" required class="form-input" placeholder="Mustermann">
+            </div>
+          </div>
+          <div>
+            <label for="femail" style="display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;color:var(--text);">E-Mail *</label>
+            <input type="email" id="femail" name="email" required class="form-input" placeholder="max@beispiel.de">
+          </div>
+          <div>
+            <label for="fphone" style="display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;color:var(--text);">Telefon (optional)</label>
+            <input type="tel" id="fphone" name="phone" class="form-input" placeholder="+49 ...">
+          </div>
+          <div>
+            <label for="fsubject" style="display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;color:var(--text);">Betreff *</label>
+            <input type="text" id="fsubject" name="subject" required class="form-input" placeholder="Anfrage, Kooperation, Pressekontakt …">
+          </div>
+          <div>
+            <label for="fmsg" style="display:block;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;color:var(--text);">Nachricht *</label>
+            <textarea id="fmsg" name="message" required class="form-input" rows="5" placeholder="Deine Nachricht …" style="resize:vertical;"></textarea>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:14px;background:#fff;border:1.5px solid #ddd9d0;">
+            <input type="checkbox" id="fgdpr" name="gdpr" required style="margin-top:3px;accent-color:var(--primary);flex-shrink:0;">
+            <label for="fgdpr" style="font-size:0.8rem;color:#666;line-height:1.55;">
+              Ich habe die <a href="#datenschutz" style="color:var(--primary);text-decoration:underline;">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner personenbezogenen Daten zur Bearbeitung meiner Anfrage gemäß Art. 6 Abs. 1 lit. a DSGVO zu. *
+            </label>
+          </div>
+          <button type="submit" class="font-bold uppercase tracking-widest text-sm py-4 px-8 mt-2" style="background:var(--primary);color:#fff;border:none;cursor:pointer;text-align:center;align-self:flex-start;">
+            Nachricht senden →
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- FOOTER + IMPRESSUM -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<footer style="background:var(--text);color:#fff;padding:64px 0 0;">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+
+    <!-- Footer grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12" style="border-bottom:1px solid rgba(255,255,255,0.1);">
+
+      <div style="grid-column:span 1;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+          <span style="display:inline-block;width:16px;height:16px;background:var(--primary);border-radius:50%;"></span>
+          <span class="font-display" style="font-size:1.2rem;color:#fff;">HUAWEI<span style="color:var(--primary);">.blog</span></span>
+        </div>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.65;margin-bottom:16px;">
+          Deutschlands unabhängige Nummer-1-Quelle für HUAWEI-News, Testberichte und Firmware-Updates seit 2018.
+        </p>
+        <div style="font-size:0.75rem;color:rgba(255,255,255,0.35);">
+          Hofhamer Str. 71A · 83395 Freilassing<br>
+          <a href="tel:+491791162398" style="color:rgba(255,255,255,0.35);text-decoration:none;">+49 179 1162398</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;">Themen</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li><a href="#news" style="font-size:0.85rem;color:rgba(255,255,255,0.65);text-decoration:none;" class="headline-link">Aktuelle News</a></li>
+          <li><a href="#smartphones" style="font-size:0.85rem;color:rgba(255,255,255,0.65);text-decoration:none;" class="headline-link">Smartphones</a></li>
+          <li><a href="#wearables" style="font-size:0.85rem;color:rgba(255,255,255,0.65);text-decoration:none;" class="headline-link">Wearables</a></li>
+          <li><a href="#tablets" style="font-size:0.85rem;color:rgba(255,255,255,0.65);text-decoration:none;" class="headline-link">Tablets & Laptops</a></li>
+          <li><a href="#firmware" style="font-size:0.85rem;color:rgba(255,255,255,0.65);text-decoration:none;" class="headline-link">Firmware-Tracker</a></li>
+          <li><a href="#ratgeber" style="font-size:0.85rem;color:rgba(255,255,255,0.65);text-decoration:none;" class="headline-link">Ratgeber</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;">Rechtliches</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+          <li><a href="#impressum" style="font-size:0.85rem;color:rgba(255,255,255,0.65);text-decoration:none;" class="headline-link">Impressum</a></li>
+          <li><a href="#datenschutz" style="font-size:0.85rem;color:rgba(255,255,255,0.65);text-decoration:none;" class="headline-link">Datenschutzerklärung</a></li>
+          <li><a href="#" style="font-size:0.85rem;color:rgba(255,255,255,0.65);text-decoration:none;" class="headline-link">Cookie-Einstellungen</a></li>
+          <li><a href="#" style="font-size:0.85rem;color:rgba(255,255,255,0.65);text-decoration:none;" class="headline-link">Werberichtlinien</a></li>
+          <li><a href="#kontakt" style="font-size:0.85rem;color:rgba(255,255,255,0.65);text-decoration:none;" class="headline-link">Pressekontakt</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;">Newsletter</h4>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:14px;">Firmware-Alerts & News direkt ins Postfach:</p>
+        <form action="#" method="POST" style="display:flex;flex-direction:column;gap:8px;">
+          <input type="email" name="email" placeholder="E-Mail-Adresse" required class="cta-input" style="font-size:0.82rem;">
+          <button type="submit" style="background:var(--primary);color:#fff;border:none;padding:10px;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;">Anmelden →</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Impressum §5 TMG -->
+    <div id="impressum" style="padding:40px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+      <h3 style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:20px;">Impressum gemäß § 5 TMG</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div style="font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Inhaber</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.7;">
+            Huawei.blog<br>
+            Hofhamer Str. 71A<br>
+            83395 Freilassing<br>
+            Deutschland
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Kontakt</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.7;">
+            Telefon: <a href="tel:+491791162398" style="color:rgba(255,255,255,0.6);text-decoration:none;">+49 179 1162398</a><br>
+            E-Mail: <a href="mailto:redaktion@huawei.blog" style="color:rgba(255,255,255,0.6);text-decoration:none;">redaktion@huawei.blog</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Steuer</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.7;">
+            USt-IdNr.: [wird nachgereicht]<br>
+            <span style="font-size:0.78rem;color:rgba(255,255,255,0.35);">gemäß § 27a UStG</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
+        <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.65;max-width:800px;">
+          <strong style="color:rgba(255,255,255,0.5);">Haftung für Inhalte:</strong> Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.
+        </p>
+      </div>
+    </div>
+
+    <!-- Datenschutz-Hinweis -->
+    <div id="datenschutz" style="padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+      <h3 style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;">Datenschutz</h3>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.65;max-width:800px;">
+        Der Betreiber dieser Seiten nimmt den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Die vollständige Datenschutzerklärung ist auf Anfrage erhältlich. Kontakt: <a href="mailto:datenschutz@huawei.blog" style="color:var(--primary);text-decoration:none;">datenschutz@huawei.blog</a>
+      </p>
+    </div>
+
+    <!-- Copyright bar -->
+    <div style="padding:20px 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;">
+      <span style="font-size:0.78rem;color:rgba(255,255,255,0.3);">© 2026 Huawei.blog. Alle Rechte vorbehalten.</span>
+      <span style="font-size:0.72rem;color:rgba(255,255,255,0.2);">HUAWEI ist eine eingetragene Marke der Huawei Technologies Co., Ltd. Diese Website ist unabhängig und steht in keiner Verbindung mit Huawei Technologies.</span>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- JAVASCRIPT — Scroll Reveal + Mobile Menu -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<script>
+  // Mobile menu toggle
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', function() {
+    mobileMenu.classList.toggle('open');
+  });
+  // Close menu on link click
+  mobileMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          // Stagger children
+          const delay = Array.from(revealEls).indexOf(entry.target) % 3 * 60;
+          entry.target.style.transitionDelay = delay + 'ms';
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(function(el) { observer.observe(el); });
+  } else {
+    // Fallback
+    revealEls.forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  // Nav active section highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-item');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(function(s) {
+      if (window.scrollY >= s.offsetTop - 80) current = s.getAttribute('id');
+    });
+    navLinks.forEach(function(link) {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  }, { passive: true });
+</script>
+
+</body>
+</html>
