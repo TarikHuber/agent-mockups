@@ -25,7 +25,7 @@
     a{color:inherit;text-decoration:none} .wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}.mono{font-family:JetBrains Mono,ui-monospace,monospace}.muted{color:var(--muted)}
     .orb{position:fixed;border-radius:50%;filter:blur(12px);opacity:.75;pointer-events:none;animation:orbFloat 12s ease-in-out infinite}.o1{width:340px;height:340px;background:rgba(48,213,255,.18);left:-100px;top:120px}.o2{width:260px;height:260px;background:rgba(139,92,246,.16);right:-80px;top:430px;animation-delay:-4s}.o3{width:220px;height:220px;background:rgba(57,255,182,.13);left:52%;top:720px;animation-delay:-7s}@keyframes orbFloat{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(18px,-22px,0) scale(1.06)}}
     .nav{position:fixed;top:16px;left:0;right:0;z-index:30}.navin{width:min(1180px,calc(100% - 28px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 14px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(4,8,18,.72);backdrop-filter:blur(22px);box-shadow:0 18px 60px rgba(0,0,0,.35)}
-    .brand{display:flex;align-items:center;gap:10px}.brand img{height:38px;width:auto}.brand span{font-weight:800;letter-spacing:-.04em;font-size:18px}.links{display:flex;align-items:center;gap:8px}.links a{font-size:13px;color:#c7d4e6;padding:9px 12px;border-radius:999px;transition:.25s}.links a:hover{background:rgba(255,255,255,.08);color:#fff}.cta{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#00111d;font-weight:800;box-shadow:0 0 0 1px rgba(255,255,255,.16) inset,0 16px 36px rgba(48,213,255,.24)}
+    .brand{display:flex;align-items:center;gap:10px}.brand img{height:38px;width:auto}.brand span{display:none}.links{display:flex;align-items:center;gap:8px}.links a{font-size:13px;color:#c7d4e6;padding:9px 12px;border-radius:999px;transition:.25s}.links a:hover{background:rgba(255,255,255,.08);color:#fff}.cta{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#00111d;font-weight:800;box-shadow:0 0 0 1px rgba(255,255,255,.16) inset,0 16px 36px rgba(48,213,255,.24)}.cta-icon{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:999px;background:rgba(3,17,32,.13)}.cta-mobile{display:none}
     .hero{position:relative;padding:165px 0 92px}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.045);color:#bdeeff;font:500 12px/1 JetBrains Mono,monospace;text-transform:uppercase;letter-spacing:.09em}.pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 24px var(--green)}
     h1{margin:22px 0 18px;font-size:clamp(48px,8vw,105px);line-height:.86;letter-spacing:-.085em;font-weight:800}.grad{background:linear-gradient(90deg,#fff 0%,#bdf2ff 36%,#77a7ff 70%,#d7c3ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{font-size:clamp(18px,2vw,22px);line-height:1.65;color:#b7c5da;max-width:690px}.hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:14px 20px;border:1px solid var(--line);background:rgba(255,255,255,.055);color:#eef7ff;font-weight:750;transition:.25s}.btn:hover{transform:translateY(-2px);border-color:rgba(48,213,255,.45);background:rgba(48,213,255,.11)}.btn.primary{background:linear-gradient(135deg,#fff,#aeeeff 45%,#79a7ff);color:#031120;border:0;box-shadow:0 24px 50px rgba(48,213,255,.24)}
     .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}.metric{padding:18px;border-radius:22px;border:1px solid var(--line);background:rgba(255,255,255,.045)}.metric b{display:block;font-size:24px;letter-spacing:-.04em}.metric small{display:block;color:var(--muted);margin-top:5px}
@@ -39,9 +39,9 @@
     @media(max-width:1050px){.hero-grid,.showcase,.contact{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.process{grid-template-columns:repeat(2,1fr)}.customers{grid-template-columns:repeat(2,1fr)}.device{min-height:auto}.links{display:none}.foot{grid-template-columns:1fr}}
     @media(max-width:640px){
       :root{--radius:22px}.wrap{width:min(100% - 24px,var(--max));max-width:calc(100vw - 24px)}
-      .nav{top:10px}.navin{width:calc(100vw - 24px);max-width:calc(100vw - 24px);border-radius:24px;gap:8px;padding:10px}.brand{min-width:0;flex:1}.brand img{height:34px;max-width:min(190px,54vw);object-fit:contain}.brand span{display:none}.nav .cta{width:46px;height:46px;min-width:46px;padding:0;font-size:0;border-radius:18px;overflow:hidden}.nav .cta:before{content:"→";font-size:22px;line-height:1;color:#031120}.links{display:none}
+      .nav{top:10px}.navin{width:calc(100vw - 24px);max-width:calc(100vw - 24px);border-radius:24px;gap:10px;padding:10px 11px;background:rgba(4,8,18,.84)}.brand{min-width:0;flex:1}.brand img{height:32px;max-width:min(184px,50vw);object-fit:contain}.brand span{display:none}.nav .cta{min-height:42px;min-width:94px;padding:0 13px;border-radius:16px;font-size:13px;letter-spacing:-.01em;box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 14px 30px rgba(48,213,255,.20)}.nav .cta-label{display:none}.nav .cta-mobile{display:inline}.nav .cta-icon{width:18px;height:18px}.links{display:none}
       .hero{padding-top:118px;padding-bottom:58px}.hero-grid{gap:26px}.eyebrow{max-width:100%;white-space:normal;flex-wrap:wrap;line-height:1.35;font-size:10.5px;letter-spacing:.07em;padding:8px 10px}.pulse{width:7px;height:7px;flex:none}
-      h1{font-size:clamp(38px,12vw,52px);line-height:.94;letter-spacing:-.065em;margin:18px 0 14px;max-width:100%;overflow-wrap:break-word;word-break:normal;text-wrap:balance}.hero p{font-size:16px;line-height:1.62;max-width:100%;overflow-wrap:break-word}.hero-actions{display:grid;grid-template-columns:1fr;gap:12px;margin-top:24px}.hero-actions .btn{width:100%;min-height:52px;padding:14px 16px}.services,.process,.customers,.metrics,.legal-grid{grid-template-columns:1fr}.metric{padding:20px 22px}.cards{grid-template-columns:1fr}.device{overflow:hidden}.screen{padding:12px;border-radius:26px;box-shadow:0 20px 55px rgba(0,0,0,.42)}.dash{padding:14px;border-radius:20px}.dash-head{align-items:flex-start;flex-direction:column}.chip{white-space:normal}.code{font-size:10.5px;overflow:auto;white-space:pre;max-width:100%;-webkit-overflow-scrolling:touch}.float{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin-top:12px;animation:cardFloat 5s ease-in-out infinite}.f2{animation-delay:-1.5s}.f3{animation-delay:-3s}.section-head{display:block}.section-head h2{font-size:clamp(31px,10vw,43px);line-height:1.02;overflow-wrap:break-word}.section-head p{font-size:15px}.card,.panel{padding:20px;border-radius:22px}.arch-row{grid-template-columns:1fr;gap:7px}.customer img{max-width:150px}.lang{right:12px;bottom:12px;transform:scale(.92);transform-origin:right bottom}
+      h1{font-size:clamp(38px,12vw,52px);line-height:.94;letter-spacing:-.065em;margin:18px 0 14px;max-width:100%;overflow-wrap:break-word;word-break:normal;text-wrap:balance}.hero p{font-size:16px;line-height:1.62;max-width:100%;overflow-wrap:break-word}.hero-actions{display:grid;grid-template-columns:1fr;gap:12px;margin-top:24px}.hero-actions .btn{width:100%;min-height:52px;padding:14px 16px}.services,.process,.customers,.metrics,.legal-grid{grid-template-columns:1fr}.metric{padding:20px 22px}.cards{grid-template-columns:1fr}.device{overflow:hidden}.screen{padding:12px;border-radius:26px;box-shadow:0 20px 55px rgba(0,0,0,.42)}.dash{padding:14px;border-radius:20px}.dash-head{align-items:flex-start;flex-direction:column}.chip{white-space:normal}.code{font-size:10.5px;overflow:auto;white-space:pre;max-width:100%;-webkit-overflow-scrolling:touch}.float{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin-top:12px;animation:cardFloat 5s ease-in-out infinite}.f2{animation-delay:-1.5s}.f3{animation-delay:-3s}.section-head{display:block}.section-head h2{font-size:clamp(31px,10vw,43px);line-height:1.02;overflow-wrap:break-word}.section-head p{font-size:15px}.card,.panel{padding:20px;border-radius:22px}.arch-row{grid-template-columns:1fr;gap:7px}.customer img{max-width:150px}.lang{display:none}
     }
     @keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}}
@@ -53,7 +53,7 @@
     <div class="navin">
       <a class="brand" href="#top"><img src="https://ecronix.com/assets/ecronix-logo-XkBtAsuk.svg" alt="Ecronix Logo"><span>Ecronix</span></a>
       <div class="links"><a href="#services">Leistungen</a><a href="#process">Prozess</a><a href="#customers">Kunden</a><a href="#contact">Kontakt</a><a href="#impressum">Impressum</a></div>
-      <a class="cta" href="#contact">Projekt starten →</a>
+      <a class="cta" href="#contact"><span class="cta-label">Projekt starten</span><span class="cta-mobile">Starten</span><span class="cta-icon">→</span></a>
     </div>
   </nav>
 
@@ -97,7 +97,7 @@
     </header>
 
     <section id="services" class="wrap reveal">
-      <div class="section-head"><div><span class="eyebrow">Original: Unsere Leistungen</span><h2>End-to-End-Digitallösungen.</h2></div><p>Die fünf originalen Leistungsbereiche bleiben erhalten — nur visuell stärker, klarer und mit mehr Premium-Tech-Feeling inszeniert.</p></div>
+      <div class="section-head"><div><span class="eyebrow">Unsere Leistungen</span><h2>End-to-End-Digitallösungen.</h2></div><p>Fünf Leistungsbereiche, klar inszeniert: Apps, Web-Plattformen, Websites, UI/UX und KI-Integration aus einer Hand.</p></div>
       <div class="grid services">
         <article class="card"><div class="icon">📱</div><h3>Mobile Anwendungen</h3><p>Cross-Platform mobile Apps mit Expo und React Native für nahtlose Benutzererfahrung.</p><ul><li>React Native mit Expo</li><li>Cross-Platform Entwicklung</li><li>Native Performance</li><li>App Store Optimierung</li></ul></article>
         <article class="card"><div class="icon">⚡</div><h3>Webanwendungen</h3><p>Moderne Web-Lösungen mit React und Vite, leistungsoptimiert.</p><ul><li>React mit Vite</li><li>Full-Stack Entwicklung</li><li>API Integration</li><li>Cloud Deployment</li></ul></article>
@@ -108,7 +108,7 @@
     </section>
 
     <section id="process" class="wrap reveal">
-      <div class="section-head"><div><span class="eyebrow">Original: Unser Prozess</span><h2>Vom Konzept bis zur Skalierung.</h2></div><p>Eine bewährte Methodik, die Erfolg vom Konzept bis zur Markteinführung gewährleistet.</p></div>
+      <div class="section-head"><div><span class="eyebrow">Unser Prozess</span><h2>Vom Konzept bis zur Skalierung.</h2></div><p>Eine bewährte Methodik, die Erfolg vom Konzept bis zur Markteinführung gewährleistet.</p></div>
       <div class="grid process">
         <div class="step"><h3>Idee & Beratung</h3><p>Wir verstehen Ihre Vision und Geschäftsziele.</p></div>
         <div class="step"><h3>Planung & Strategie</h3><p>Detaillierter Fahrplan und technische Architektur.</p></div>
@@ -134,7 +134,7 @@
     </section>
 
     <section id="customers" class="wrap reveal">
-      <div class="section-head"><div><span class="eyebrow">Original: Unsere Kunden</span><h2>Vertraut von führenden Unternehmen.</h2></div><p>Die Referenzen der bestehenden Website bleiben erhalten und werden stärker als Trust-Signal präsentiert.</p></div>
+      <div class="section-head"><div><span class="eyebrow">Unsere Kunden</span><h2>Vertraut von führenden Unternehmen.</h2></div><p>Referenzen aus Industrie, Bildung, Automotive, Handel und digitalen Plattformen — sichtbar als starkes Trust-Signal.</p></div>
       <div class="grid customers">
         <a class="card customer" href="https://www.max-aicher.de/" target="_blank"><img src="https://ecronix.com/assets/max-aicher-logo-DKLCO6bz.png" alt="Max Aicher Logo"><div class="name">Max Aicher GmbH & Co.KG</div><p>Webanwendung - PWA zum Verkauf von Immobilien und WordPress-Website-Support.</p></a>
         <a class="card customer" href="https://www.porscheinformatik.com/" target="_blank"><img src="https://ecronix.com/assets/porsche-informatik-logo-Iz5K6sts.png" alt="Porsche Informatik Logo"><div class="name">Porsche Informatik Gesellschaft m.b.H.</div><p>Beratung für mobile App-Entwicklung.</p></a>
@@ -148,7 +148,7 @@
     </section>
 
     <section id="contact" class="wrap reveal">
-      <div class="section-head"><div><span class="eyebrow">Original: Kontakt</span><h2>Lassen Sie uns etwas Großartiges schaffen.</h2></div><p>Bereit, Ihre Ideen in die Realität umzusetzen? Lassen Sie uns über Ihr Projekt sprechen.</p></div>
+      <div class="section-head"><div><span class="eyebrow">Kontakt</span><h2>Lassen Sie uns etwas Großartiges schaffen.</h2></div><p>Bereit, Ihre Ideen in die Realität umzusetzen? Lassen Sie uns über Ihr Projekt sprechen.</p></div>
       <div class="contact">
         <div class="panel"><h3 style="margin-top:0;font-size:26px">Projektanfrage</h3><div class="form"><input class="input" placeholder="Ihr Name"><input class="input" placeholder="Ihre E-Mail"><textarea class="input" placeholder="Erzählen Sie uns von Ihrem Projekt..."></textarea><button class="btn primary" type="button">Nachricht senden</button></div></div>
         <div class="panel"><h3 style="margin-top:0;font-size:26px">Direkter Kontakt</h3><div class="legal-grid"><div class="legal-item"><b>Telefon</b><span>+49 152 31841302</span></div><div class="legal-item"><b>E-Mail</b><span>info@ecronix.com</span></div><div class="legal-item"><b>Standort</b><span>Jaques-Offenbach Str 3<br>83395 Freilassing, Deutschland</span></div><div class="legal-item"><b>Region</b><span>Salzburg · Freilassing · Berchtesgadener Land · BGL</span></div></div></div>
@@ -156,7 +156,7 @@
     </section>
 
     <section id="impressum" class="wrap reveal">
-      <div class="section-head"><div><span class="eyebrow">Original: /impressum</span><h2>Impressum bleibt sichtbar.</h2></div><p>Die bestehende Website hat zwei Seiten/Views: Startseite und Impressum. Das Mockup zeigt beide Inhalte innerhalb eines starken One-Page-Konzepts und erhält die Impressum-Daten.</p></div>
+      <div class="section-head"><div><span class="eyebrow">Impressum</span><h2>Rechtliche Angaben.</h2></div><p>Alle wichtigen Anbieterkennzeichnungen und Kontaktdaten bleiben transparent erreichbar.</p></div>
       <div class="panel legal-grid">
         <div class="legal-item"><b>Ecronix</b><span>Jaques-Offenbach Str 3<br>83395 Freilassing, Deutschland</span></div>
         <div class="legal-item"><b>Geschäftsführer</b><span>Tarik Huber</span></div>
@@ -172,7 +172,7 @@
     <div class="wrap foot">
       <div><img src="https://ecronix.com/assets/ecronix-logo-XkBtAsuk.svg" alt="Ecronix Logo"><p>Ideen seit Tag eins in digitale Realität verwandeln.</p><p>© 2024 Ecronix. Alle Rechte vorbehalten.</p></div>
       <div><h4>Navigation</h4><p><a href="#services">Leistungen</a><br><a href="#process">Prozess</a><br><a href="#customers">Kunden</a><br><a href="#contact">Kontakt</a><br><a href="#impressum">Impressum</a></p></div>
-      <div><h4>Original-Struktur erhalten</h4><p>Startseite: Leistungen, Prozess, Kunden, Kontakt, Footer.<br>Separate Seite: Impressum / rechtliche Hinweise.</p></div>
+      <div><h4>Rechtliches</h4><p><a href="#impressum">Impressum</a><br>Kontakt- und Anbieterangaben<br>Transparente Projektanfrage</p></div>
     </div>
   </footer>
 
