@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecronix — Premium AI Agent Website Mockup</title>
+  <meta name="description" content="TikTok-inspirierter Premium Website Mockup für Ecronix: AI Agents, Automationen, Apps und sichere KI-Implementierung." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Azeret+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#000;
+      --panel:#08090a;
+      --panel2:#0f1011;
+      --surface:rgba(255,255,255,.045);
+      --surface2:rgba(255,255,255,.075);
+      --line:rgba(255,255,255,.09);
+      --line2:rgba(0,153,255,.28);
+      --text:#f7f8f8;
+      --muted:#a6adb8;
+      --dim:#626976;
+      --blue:#0099ff;
+      --cyan:#65f7ff;
+      --violet:#7170ff;
+      --green:#6dffbd;
+      --danger:#ff5f8f;
+      --radius:24px;
+      --max:1200px;
+      --shadow:0 24px 100px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:#000;color:var(--text)}
+    body{margin:0;font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#000;color:var(--text);overflow-x:hidden;font-feature-settings:'cv01','cv05','cv09','cv11','ss03','ss07'}
+    body:before{content:"";position:fixed;inset:-25%;z-index:-4;background:radial-gradient(circle at 18% 14%,rgba(0,153,255,.34),transparent 24%),radial-gradient(circle at 84% 8%,rgba(113,112,255,.25),transparent 22%),radial-gradient(circle at 52% 78%,rgba(101,247,255,.14),transparent 31%),#000;animation:aurora 16s ease-in-out infinite alternate}
+    body:after{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(0,0,0,.15) 70%,transparent)}
+    @keyframes aurora{from{transform:scale(1) rotate(0deg);filter:saturate(1)}to{transform:scale(1.08) rotate(5deg);filter:saturate(1.45)}}
+    a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:0 auto}.mono{font-family:'Azeret Mono',ui-monospace,monospace}.noise{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E")}
+    .nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:60;width:min(1080px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;padding:9px 10px 9px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.58);backdrop-filter:blur(24px);box-shadow:0 20px 80px rgba(0,0,0,.42),0 0 0 1px rgba(0,153,255,.08)}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.04em}.mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;box-shadow:0 0 38px rgba(0,153,255,.55)}.mark svg{width:18px;height:18px}.links{display:flex;gap:24px;color:rgba(255,255,255,.7);font-size:14px}.links a{transition:.2s}.links a:hover{color:#fff}.nav-actions{display:flex;gap:8px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:12px 18px;font-weight:650;font-size:14px;letter-spacing:-.02em;transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease;white-space:nowrap}.btn:hover{transform:translateY(-2px)}.btn.primary{background:#fff;color:#000;box-shadow:0 0 40px rgba(255,255,255,.13)}.btn.blue{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#001018;box-shadow:0 0 45px rgba(0,153,255,.34)}.btn.ghost{background:rgba(255,255,255,.075);border:1px solid var(--line);color:#fff}.btn.small{padding:9px 13px;font-size:13px}
+    .hero{min-height:100svh;display:grid;align-items:center;padding:126px 0 70px;position:relative}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:46px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(0,153,255,.24);background:rgba(0,153,255,.08);color:#dff8ff;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:650;letter-spacing:.02em}.pulse{width:8px;height:8px;border-radius:99px;background:var(--green);box-shadow:0 0 18px var(--green);animation:pulse 1.7s ease-in-out infinite}@keyframes pulse{50%{transform:scale(1.45);opacity:.55}}
+    h1{font-size:clamp(54px,8vw,112px);line-height:.84;letter-spacing:clamp(-5.8px,-.52vw,-2.4px);margin:22px 0 22px;font-weight:800}.grad{background:linear-gradient(135deg,#fff 10%,#aeefff 45%,#6c86ff 78%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:clamp(18px,2.1vw,24px);line-height:1.45;color:var(--muted);max-width:650px;letter-spacing:-.04em}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.trust{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;color:var(--dim);font-size:13px}.trust span{border:1px solid var(--line);background:rgba(255,255,255,.035);padding:8px 11px;border-radius:999px}.stage{position:relative;min-height:600px;perspective:1000px}.orb{position:absolute;border-radius:999px;filter:blur(20px);opacity:.7}.orb.one{width:210px;height:210px;background:rgba(0,153,255,.35);top:22px;right:56px}.orb.two{width:170px;height:170px;background:rgba(113,112,255,.27);bottom:60px;left:20px}.product{position:absolute;inset:36px 0 auto auto;width:min(560px,100%);border:1px solid var(--line);border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));box-shadow:var(--shadow),0 0 0 1px rgba(0,153,255,.08);backdrop-filter:blur(22px);overflow:hidden;transform:rotateY(-8deg) rotateX(5deg);animation:float 6s ease-in-out infinite}.product.secondary{inset:auto auto 16px 12px;width:380px;transform:rotateY(12deg) rotateX(4deg);animation-delay:-2.2s}@keyframes float{50%{transform:translateY(-16px) rotateY(-5deg) rotateX(5deg)}}.topbar{height:48px;display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.25)}.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2)}.dot:nth-child(1){background:#ff5f57}.dot:nth-child(2){background:#febc2e}.dot:nth-child(3){background:#28c840}.screen{padding:18px}.command{border:1px solid rgba(0,153,255,.28);background:rgba(0,153,255,.08);border-radius:18px;padding:14px 15px;display:flex;align-items:center;justify-content:space-between;gap:14px}.cmd-text{color:#dff8ff;font-size:13px}.kbd{border:1px solid var(--line);background:rgba(255,255,255,.08);border-radius:8px;padding:5px 7px;color:#fff;font-size:11px}.rows{display:grid;gap:10px;margin-top:16px}.row{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:16px;padding:12px}.icon{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(0,153,255,.18),rgba(101,247,255,.1));color:var(--cyan)}.row strong{display:block;font-size:14px}.row small{color:var(--dim)}.status{font-size:11px;color:var(--green);background:rgba(109,255,189,.08);border:1px solid rgba(109,255,189,.22);border-radius:999px;padding:5px 8px}.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.metric{border:1px solid var(--line);border-radius:16px;padding:14px;background:rgba(255,255,255,.035)}.metric b{font-size:24px;letter-spacing:-.06em}.metric span{display:block;color:var(--dim);font-size:11px;margin-top:4px}.section{padding:96px 0}.section-head{max-width:760px;margin:0 auto 42px;text-align:center}.section-head h2{font-size:clamp(38px,5.5vw,78px);line-height:.93;letter-spacing:-.075em;margin:14px 0;font-weight:760}.section-head p{color:var(--muted);font-size:18px;line-height:1.55}.pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:rgba(255,255,255,.04);padding:8px 12px;border-radius:999px;color:#dce2ea;font-size:12px;font-weight:650}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{position:relative;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));border-radius:26px;padding:26px;box-shadow:inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}.card:before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(0,153,255,.35),transparent 35%,rgba(101,247,255,.2));mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:.45}.card h3{font-size:24px;letter-spacing:-.05em;margin:18px 0 10px}.card p{color:var(--muted);line-height:1.55;margin:0}.big-icon{width:48px;height:48px;border-radius:17px;display:grid;place-items:center;background:rgba(0,153,255,.11);border:1px solid rgba(0,153,255,.22);box-shadow:0 0 34px rgba(0,153,255,.16)}.workflow{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px;align-items:stretch}.timeline{display:grid;gap:12px}.step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:22px;padding:16px;background:rgba(255,255,255,.035)}.num{width:44px;height:44px;border-radius:15px;background:#fff;color:#000;display:grid;place-items:center;font-weight:800}.step h4{margin:2px 0 6px;font-size:17px}.step p{margin:0;color:var(--muted);line-height:1.45}.demo-panel{border:1px solid var(--line);border-radius:30px;background:rgba(255,255,255,.04);padding:18px;box-shadow:var(--shadow);overflow:hidden}.terminal{background:#050607;border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:18px}.line{display:flex;gap:10px;color:#dce8ff;margin:10px 0;font-size:13px}.prompt{color:var(--green)}.blueprint{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.mini{min-height:150px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,rgba(0,153,255,.08),rgba(255,255,255,.025));padding:14px}.mini .bar{height:8px;border-radius:99px;background:rgba(255,255,255,.14);margin:8px 0}.mini .bar:nth-child(2){width:68%}.mini .bar:nth-child(3){width:46%}.quote{font-size:clamp(32px,4vw,58px);line-height:1.04;letter-spacing:-.07em;text-align:center;max-width:980px;margin:0 auto}.footer-cta{border:1px solid rgba(0,153,255,.24);border-radius:34px;padding:52px;background:radial-gradient(circle at 50% 0%,rgba(0,153,255,.22),transparent 46%),rgba(255,255,255,.04);text-align:center;box-shadow:var(--shadow)}.footer-cta h2{font-size:clamp(42px,6vw,86px);line-height:.9;letter-spacing:-.075em;margin:0 0 18px}.footer-cta p{color:var(--muted);font-size:18px;margin:0 auto 26px;max-width:680px;line-height:1.55}.footer{padding:34px 0 50px;color:var(--dim);font-size:13px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}
+    @media(max-width:920px){.links{display:none}.hero-grid,.workflow{grid-template-columns:1fr}.stage{min-height:520px}.product{position:relative;inset:auto;width:100%;transform:none}.product.secondary{display:none}.grid3{grid-template-columns:1fr}.metric-grid{grid-template-columns:1fr 1fr}.nav-actions .ghost{display:none}.section{padding:72px 0}.footer-cta{padding:34px 22px}}
+    @media(max-width:540px){.wrap{width:min(100% - 28px,var(--max))}.hero{padding-top:112px}.hero-actions .btn{width:100%}.metric-grid,.blueprint{grid-template-columns:1fr}.nav{width:calc(100% - 18px)}.btn.small{padding:9px 11px}.brand span{display:none}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <nav class="nav">
+    <a class="brand" href="#top" aria-label="Ecronix home"><span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M5 17.5 12 3l7 14.5-7-3.7-7 3.7Z" stroke="#001018" stroke-width="2" stroke-linejoin="round"/></svg></span><span>Ecronix</span></a>
+    <div class="links"><a href="#agents">AI Agents</a><a href="#workflow">Workflow</a><a href="#systems">Systems</a><a href="#start">Start</a></div>
+    <div class="nav-actions"><a class="btn ghost small" href="#workflow">Demo ansehen</a><a class="btn primary small" href="#start">Projekt starten</a></div>
+  </nav>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow"><span class="pulse"></span> KI Babo Operating System für moderne Unternehmen</span>
+          <h1>Websites, Apps & <span class="grad">AI Agents</span>, die wie ein Team arbeiten.</h1>
+          <p class="lead">Ecronix baut nicht nur schöne Oberflächen. Wir verbinden Automationen, sichere KI-Prozesse und performante Web-Erlebnisse zu Systemen, die täglich Arbeit sparen.</p>
+          <div class="hero-actions"><a class="btn blue" href="#start">Premium Mockup anfragen</a><a class="btn ghost" href="#agents">Was möglich ist</a></div>
+          <div class="trust"><span>AI Strategy</span><span>Automation</span><span>Apps</span><span>Websites</span><span>Security-first</span></div>
+        </div>
+        <div class="stage" aria-label="AI agent dashboard preview">
+          <div class="orb one"></div><div class="orb two"></div>
+          <div class="product">
+            <div class="topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="mono" style="margin-left:8px;color:var(--dim);font-size:12px">ecro.command</span></div>
+            <div class="screen">
+              <div class="command"><span class="cmd-text mono">Generate premium customer website + offer workflow</span><span class="kbd mono">⌘ K</span></div>
+              <div class="rows">
+                <div class="row"><div class="icon">✦</div><div><strong>Website Mockup</strong><small>Framer-like motion, responsive, ready to share</small></div><span class="status">done</span></div>
+                <div class="row"><div class="icon">↗</div><div><strong>Lead Research</strong><small>Find companies with outdated/no website</small></div><span class="status">live</span></div>
+                <div class="row"><div class="icon">⚡</div><div><strong>Offer Agent</strong><small>Draft email + proposal + follow-up</small></div><span class="status">queued</span></div>
+              </div>
+              <div class="metric-grid"><div class="metric"><b>7d</b><span>from idea to launch</span></div><div class="metric"><b>3×</b><span>faster client demos</span></div><div class="metric"><b>24/7</b><span>agent support</span></div></div>
+            </div>
+          </div>
+          <div class="product secondary">
+            <div class="topbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="mono" style="margin-left:8px;color:var(--dim);font-size:12px">invoice.agent</span></div>
+            <div class="screen"><div class="row"><div class="icon">€</div><div><strong>Lexoffice Upload</strong><small>Invoice detected, checked, archived</small></div><span class="status">safe</span></div><div class="row" style="margin-top:10px"><div class="icon">✓</div><div><strong>Wise Payment Guard</strong><small>Limits & approvals before payment</small></div><span class="status">secure</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="agents" class="section wrap reveal">
+      <div class="section-head"><span class="pill mono">CLAUDE CODE × FRAMER MOTION FEEL × ECRO AGENTS</span><h2>Ein Premium-Auftritt mit echtem Business-Nutzen.</h2><p>Inspiriert von den TikTok-Beispielen: smooth, high-end, aber für Ecronix erweitert um echte AI-Agent-Prozesse.</p></div>
+      <div class="grid3">
+        <article class="card"><div class="big-icon">🎯</div><h3>Lead-to-Mockup Engine</h3><p>Aus einer Branche, Stadt oder Google-Places-Suche entsteht ein teilbarer Premium-Mockup-Link für potenzielle Kunden.</p></article>
+        <article class="card"><div class="big-icon">🤖</div><h3>AI Agent Workflows</h3><p>Ecro kann E-Mails lesen, Termine vorbereiten, Rechnungen erkennen, Angebote schreiben und repetitive Schritte übernehmen.</p></article>
+        <article class="card"><div class="big-icon">🛡</div><h3>Safe AI Implementation</h3><p>KI wird nicht wild eingebaut, sondern mit klaren Grenzen, Freigaben, Limits und nachvollziehbaren Workflows.</p></article>
+      </div>
+    </section>
+
+    <section id="workflow" class="section wrap reveal">
+      <div class="workflow">
+        <div class="timeline">
+          <div class="step"><div class="num">1</div><div><h4>Brief in einem Satz</h4><p>“Mach mir eine High-End Website für einen Steuerberater in Wien” reicht als Startpunkt.</p></div></div>
+          <div class="step"><div class="num">2</div><div><h4>Design System wählen</h4><p>Apple/BMW premium, Linear/Vercel minimal, Stripe/Framer gradient oder Cyber Agent OS.</p></div></div>
+          <div class="step"><div class="num">3</div><div><h4>Mockup live publizieren</h4><p>Der Kunde bekommt einen GitHub-Pages-Link — ohne Login, ohne Backend, sofort sichtbar.</p></div></div>
+          <div class="step"><div class="num">4</div><div><h4>Follow-up automatisieren</h4><p>Ecro bereitet Angebot, E-Mail und nächste Schritte vor. Du bleibst Entscheider.</p></div></div>
+        </div>
+        <div class="demo-panel">
+          <div class="terminal mono">
+            <div class="line"><span class="prompt">ecro@ecronix</span><span>create premium website mockup --style framer --client "local business"</span></div>
+            <div class="line"><span class="prompt">→</span><span>brand tokens generated</span></div>
+            <div class="line"><span class="prompt">→</span><span>sections composed: hero, proof, offer, CTA</span></div>
+            <div class="line"><span class="prompt">→</span><span>published: /mockups/client-premium.html</span></div>
+          </div>
+          <div class="blueprint"><div class="mini"><strong>Hero Composition</strong><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="mini"><strong>Agent Flow</strong><div class="bar"></div><div class="bar"></div><div class="bar"></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="systems" class="section wrap reveal">
+      <p class="quote">“Nicht einfach eine schöne Website. Ein System, das Kunden gewinnt, Prozesse beschleunigt und sichere KI in den Alltag bringt.”</p>
+    </section>
+
+    <section id="start" class="section wrap reveal">
+      <div class="footer-cta"><span class="pill mono">NEXT: CUSTOMER-SPECIFIC PREMIUM MOCKUPS</span><h2>Bereit für die $10k-Version?</h2><p>Wir nehmen diesen Stil und bauen daraus kunden- oder branchenbezogene Mockups: Restaurants, Ärzte, Steuerberater, Handwerker, Kanzleien, Coaches oder SaaS.</p><div class="hero-actions" style="justify-content:center"><a class="btn blue" href="mailto:info@ecronix.com?subject=Premium%20AI%20Website%20Mockup">Mockup starten</a><a class="btn ghost" href="#top">Nochmal ansehen</a></div></div>
+    </section>
+  </main>
+  <footer class="footer wrap"><span>© Ecronix — KI Babo systems</span><span class="mono">mockup/ecronix-tiktok-premium.html</span></footer>
+  <script>
+    const io = new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.16});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length>1){const el=document.querySelector(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}}}));
+  </script>
+</body>
+</html>
