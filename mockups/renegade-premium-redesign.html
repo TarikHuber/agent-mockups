@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Renegade Group — Premium Website Mockup</title>
+  <meta name="description" content="Modernes Website-Mockup für die Renegade Group: Technologie, Sicherheit, Telekommunikation, Optik und Spezialtechnik." />
+  <link rel="icon" type="image/x-icon" href="assets-renegade/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..900;1,9..40,300..900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#070707;
+      --ink:#ffffff;
+      --paper:#f6f4ef;
+      --paper-2:#ffffff;
+      --text:#1d1d1f;
+      --muted:#71717a;
+      --line:rgba(255,255,255,.16);
+      --line-dark:rgba(20,20,20,.14);
+      --accent:#ff6600;
+      --accent-2:#1c69d4;
+      --steel:#9da4af;
+      --shadow:0 28px 80px rgba(0,0,0,.34);
+      --container:min(1180px, calc(100vw - 40px));
+    }
+    *{box-sizing:border-box;min-width:0}
+    html,body{margin:0;max-width:100%;overflow-x:hidden;scroll-behavior:smooth;background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;}
+    body{line-height:1.35;text-rendering:geometricPrecision;}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;height:auto}
+    button{font:inherit}
+    .shell{width:var(--container);margin-inline:auto}
+    .topbar{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(180deg,rgba(0,0,0,.88),rgba(0,0,0,.58));backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.12)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:16px;letter-spacing:.02em}
+    .brand-mark{width:42px;height:42px;border:2px solid #fff;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;padding:3px;flex:0 0 auto}
+    .brand-mark i:nth-child(1),.brand-mark i:nth-child(4){background:#fff}.brand-mark i:nth-child(2),.brand-mark i:nth-child(3){background:#050505}
+    .brand-word{font-size:32px;font-weight:300;font-style:italic;letter-spacing:.045em;line-height:1}
+    .navlinks{display:flex;align-items:center;gap:24px;color:rgba(255,255,255,.78);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.09em}
+    .navlinks a{position:relative;padding:10px 0}.navlinks a:after{content:'';position:absolute;left:0;right:100%;bottom:4px;height:2px;background:var(--accent);transition:.28s}.navlinks a:hover:after{right:0}
+    .lang{display:flex;gap:6px;padding:4px;border:1px solid rgba(255,255,255,.18)}
+    .lang span{font-size:12px;font-weight:800;text-transform:uppercase;padding:7px 9px;color:rgba(255,255,255,.68)}
+    .lang span:first-child{background:#fff;color:#000}
+    .hero{position:relative;min-height:760px;display:grid;align-items:end;padding:150px 0 72px;isolation:isolate;background:radial-gradient(circle at 77% 28%,rgba(255,102,0,.22),transparent 31%),radial-gradient(circle at 24% 15%,rgba(28,105,212,.22),transparent 28%),#050505}
+    .hero:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.54) 46%,rgba(0,0,0,.08) 100%),url('assets-renegade/showroom.png') center/cover no-repeat;z-index:-2;filter:saturate(.86) contrast(1.12)}
+    .hero:after{content:'';position:absolute;inset:auto 0 0 0;height:280px;background:linear-gradient(0deg,#070707,transparent);z-index:-1}
+    .eyebrow{display:inline-flex;gap:10px;align-items:center;border:1px solid rgba(255,255,255,.24);padding:9px 12px;text-transform:uppercase;font-size:12px;letter-spacing:.14em;font-weight:900;color:rgba(255,255,255,.84);background:rgba(0,0,0,.22)}
+    .eyebrow:before{content:'';width:8px;height:8px;background:var(--accent);box-shadow:0 0 24px var(--accent)}
+    h1{font-size:clamp(48px,8vw,118px);line-height:.91;letter-spacing:-.07em;margin:26px 0 24px;max-width:980px;text-transform:uppercase;font-weight:300}
+    .hero p{max-width:690px;color:rgba(255,255,255,.78);font-size:clamp(18px,2.1vw,24px);margin:0 0 34px;font-weight:400}
+    .ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border:1px solid rgba(255,255,255,.28);font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;transition:.24s;background:rgba(255,255,255,.04)}
+    .btn.primary{background:#fff;color:#000;border-color:#fff}.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}.btn:hover{transform:translateY(-2px);border-color:#fff}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:end}.signal-card{justify-self:end;width:min(430px,100%);padding:24px;border:1px solid rgba(255,255,255,.18);background:rgba(6,6,6,.72);box-shadow:var(--shadow);backdrop-filter:blur(18px)}
+    .signal-card strong{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:#fff;margin-bottom:16px}.signal-row{display:grid;grid-template-columns:122px 1fr;gap:14px;padding:14px 0;border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:14px}.signal-row b{color:#fff;font-weight:900}.pulse{height:8px;background:linear-gradient(90deg,var(--accent),rgba(255,102,0,.05));margin-top:14px;animation:pulse 2.4s ease-in-out infinite;transform-origin:left}
+    .section{padding:96px 0}.light{background:var(--paper);color:var(--text)}.white{background:#fff;color:var(--text)}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:42px}.kicker{font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+    h2{font-size:clamp(36px,5vw,72px);line-height:.96;letter-spacing:-.055em;margin:10px 0 0;font-weight:300;text-transform:uppercase;max-width:820px}.section-head p{max-width:420px;color:var(--muted);font-size:17px;margin:0}
+    .division-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line-dark);background:#fff}.division{min-height:210px;padding:22px;border-right:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);display:flex;flex-direction:column;justify-content:space-between;transition:.24s}.division:nth-child(5n){border-right:0}.division:hover{background:#111;color:#fff;transform:translateY(-4px);box-shadow:0 22px 50px rgba(0,0,0,.18)}.division span{font-size:12px;font-weight:900;color:var(--accent);letter-spacing:.12em}.division h3{font-size:20px;line-height:1.05;margin:0;font-weight:900;letter-spacing:-.02em}.division p{margin:12px 0 0;font-size:14px;color:inherit;opacity:.68}
+    .tech-stage{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}.image-panel{position:relative;min-height:560px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:#111}.image-panel img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.05)}.image-panel:after{content:'RDX / TDX';position:absolute;left:22px;bottom:22px;padding:10px 12px;background:rgba(0,0,0,.68);border:1px solid rgba(255,255,255,.2);font-size:12px;font-weight:900;letter-spacing:.16em;color:#fff}
+    .dark-card{background:#0f0f10;border:1px solid rgba(255,255,255,.14);padding:34px;display:flex;flex-direction:column;justify-content:space-between;min-height:560px}.dark-card h2{color:#fff}.dark-card p{color:rgba(255,255,255,.68);font-size:18px;max-width:520px}.spec-list{display:grid;gap:12px;margin-top:34px}.spec{display:flex;justify-content:space-between;gap:18px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px;font-size:14px;color:rgba(255,255,255,.62)}.spec b{color:#fff;text-align:right}
+    .split{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px}.copy-card{background:#111;color:#fff;padding:34px;min-height:390px;display:flex;flex-direction:column;justify-content:space-between}.copy-card h3{font-size:34px;line-height:1;letter-spacing:-.045em;margin:0;text-transform:uppercase}.copy-card p{color:rgba(255,255,255,.68);font-size:17px}.visual-stack{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.visual{background:#f4f4f4;border:1px solid var(--line-dark);min-height:390px;overflow:hidden;position:relative}.visual img{width:100%;height:100%;object-fit:cover}.visual .label{position:absolute;left:14px;right:14px;bottom:14px;background:rgba(255,255,255,.9);padding:12px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:#111}
+    .access{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}.login-box{background:#050505;color:#fff;padding:38px;border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow)}.login-box form{display:grid;gap:12px;margin-top:28px}.login-box input{height:54px;background:#151515;border:1px solid rgba(255,255,255,.16);color:#fff;padding:0 16px;font:inherit}.login-box input::placeholder{color:rgba(255,255,255,.44)}.login-box .btn{width:100%;background:var(--accent);border-color:var(--accent);color:#fff}.service-links{display:grid;gap:12px}.service-link{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:21px 22px;border:1px solid var(--line-dark);background:#fff;font-size:18px;font-weight:900}.service-link small{display:block;color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}.service-link:hover{border-color:#111;transform:translateX(4px)}
+    footer{background:#050505;color:#fff;padding:68px 0 34px;border-top:1px solid rgba(255,255,255,.14)}.footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:34px}.footer-grid h4{font-size:12px;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.45);margin:0 0 14px}.footer-grid a,.footer-grid p{display:block;color:rgba(255,255,255,.72);font-size:14px;margin:0 0 10px}.legal{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:52px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.45);font-size:12px}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:none}
+    @keyframes pulse{0%,100%{transform:scaleX(.45);opacity:.45}50%{transform:scaleX(1);opacity:1}}
+    @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+    @media (max-width:1000px){.navlinks{display:none}.hero-grid,.tech-stage,.split,.access{grid-template-columns:1fr}.signal-card{justify-self:start}.division-grid{grid-template-columns:repeat(2,1fr)}.division:nth-child(5n){border-right:1px solid var(--line-dark)}.division:nth-child(2n){border-right:0}.visual-stack{grid-template-columns:1fr 1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){:root{--container:min(100vw - 28px,1180px)}.nav{height:66px}.brand-word{font-size:25px}.brand-mark{width:34px;height:34px}.lang span{padding:6px 7px}.hero{min-height:720px;padding:120px 0 48px}.hero:before{background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.55)),url('assets-renegade/showroom.png') center/cover no-repeat}h1{font-size:46px;letter-spacing:-.055em}.hero p{font-size:17px}.btn{width:100%;padding-inline:16px}.signal-row{grid-template-columns:1fr}.section{padding:70px 0}.section-head{display:block}.section-head p{margin-top:16px}.division-grid,.visual-stack,.footer-grid{grid-template-columns:1fr}.division{border-right:0!important;min-height:178px}.image-panel,.dark-card{min-height:430px}.copy-card{min-height:300px}.access{gap:16px}.service-link{font-size:16px;align-items:flex-start}.legal{display:block}.legal span{display:block;margin-top:8px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav shell" aria-label="Hauptnavigation">
+      <a class="brand" href="#top" aria-label="Renegade Group Startseite">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="brand-word">renegade</span>
+      </a>
+      <div class="navlinks" aria-label="Bereiche">
+        <a href="#sparten">Geschäftssparten</a>
+        <a href="#technik">RDX / TDX</a>
+        <a href="#zugang">Login</a>
+        <a href="mailto:info@renegade.de">Kontakt</a>
+      </div>
+      <div class="lang" aria-label="Sprache"><span>DE</span><span>UK</span></div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow">Renegade Group · wenn es passen muss.</div>
+          <h1>Präzision für kritische Technik.</h1>
+          <p>Ein moderner Auftritt für ein Unternehmen, das Informationstechnologie, Netzwerksicherheit, Telekommunikation, Optoelektronik, Präzisions-Optik und Spezialtechnik unter einem Dach bündelt.</p>
+          <div class="ctas">
+            <a class="btn primary" href="#sparten">Geschäftssparten ansehen</a>
+            <a class="btn" href="mailto:info@renegade.de">Kontakt aufnehmen</a>
+          </div>
+        </div>
+        <aside class="signal-card reveal" aria-label="Statuskarte">
+          <strong>Engineering Signal</strong>
+          <div class="signal-row"><b>Standort</b><span>Freilassing, Deutschland</span></div>
+          <div class="signal-row"><b>Fokus</b><span>Technologie, Sicherheit, Optik, Planung</span></div>
+          <div class="signal-row"><b>Zugang</b><span>Kunden- und Projektbereiche via Login</span></div>
+          <div class="pulse" aria-hidden="true"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section light" id="sparten">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div><div class="kicker">Geschäftssparten</div><h2>Vom Netzwerk bis zur Spezialmaschine.</h2></div>
+          <p>Die bestehende Navigation wird als klare, scanbare Bereichsübersicht neu interpretiert — deutlich besser verständlich auf Desktop und mobil.</p>
+        </div>
+        <div class="division-grid reveal">
+          <article class="division"><span>01</span><div><h3>Informationstechnologie</h3><p>IT-Strukturen, Systeme und technische Integrationen.</p></div></article>
+          <article class="division"><span>02</span><div><h3>Netzwerksicherheit & Überwachung</h3><p>Monitoring, Absicherung und technische Kontrolle.</p></div></article>
+          <article class="division"><span>03</span><div><h3>Telekommunikation</h3><p>Infrastruktur und Kommunikationslösungen.</p></div></article>
+          <article class="division"><span>04</span><div><h3>Radar- & Satellitentechnik</h3><p>Spezialisierte Systeme für anspruchsvolle Einsätze.</p></div></article>
+          <article class="division"><span>05</span><div><h3>CNC-Optoelektronik RDX & TDX</h3><p>Präzise Technik für Fertigung und Optoelektronik.</p></div></article>
+          <article class="division"><span>06</span><div><h3>Präzisions-Optik</h3><p>Optische Komponenten und technische Qualität.</p></div></article>
+          <article class="division"><span>07</span><div><h3>Netzwerktechnik & Anlagenbau</h3><p>Planung, Aufbau und Betrieb technischer Anlagen.</p></div></article>
+          <article class="division"><span>08</span><div><h3>Elektrotechnik</h3><p>Elektrotechnische Umsetzung und Service.</p></div></article>
+          <article class="division"><span>09</span><div><h3>Beratung & Planung</h3><p>Konzeption für passgenaue technische Lösungen.</p></div></article>
+          <article class="division"><span>10</span><div><h3>Spezialfahrzeug & Maschinenvermietung</h3><p>Technik, Fahrzeuge und Maschinen für besondere Anforderungen.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="technik">
+      <div class="shell tech-stage reveal">
+        <div class="image-panel"><img src="assets-renegade/rdx_1.png" alt="RDX technische Anlage" loading="lazy"></div>
+        <div class="dark-card">
+          <div><div class="kicker">CNC-Optoelektronik</div><h2>RDX / TDX als starke Produktbühne.</h2><p>Statt eines alten Flash-Sliders zeigt das Mockup eine moderne, schnelle Produktinszenierung mit realen Technikbildern, klarer Typografie und robustem Mobile-Verhalten.</p></div>
+          <div class="spec-list">
+            <div class="spec"><span>Darstellung</span><b>Full-bleed, kontrastreich</b></div>
+            <div class="spec"><span>Interaktion</span><b>Hover, Reveal, klare CTAs</b></div>
+            <div class="spec"><span>Barrierefreiheit</span><b>Responsive, ohne Flash</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="shell split reveal">
+        <aside class="copy-card">
+          <div><div class="kicker">Technisches Profil</div><h3>Industrie, Netzwerk, Optik und Planung in einer visuellen Linie.</h3></div>
+          <p>Der Look: präzise, dunkel/hell im Wechsel, kantig, deutsch-engineered — mit dem bestehenden Orange als Akzent und dem Renegade-Schwarz als Bühne.</p>
+        </aside>
+        <div class="visual-stack">
+          <figure class="visual"><img src="assets-renegade/platine.png" alt="Elektronik Platine" loading="lazy"><figcaption class="label">Informationstechnologie</figcaption></figure>
+          <figure class="visual"><img src="assets-renegade/lsaplus.png" alt="Telekommunikation Technik" loading="lazy"><figcaption class="label">Telekommunikation</figcaption></figure>
+          <figure class="visual"><img src="assets-renegade/showroom.png" alt="Showroom RDX" loading="lazy"><figcaption class="label">Showroom RDX</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light" id="zugang">
+      <div class="shell access reveal">
+        <div>
+          <div class="kicker">Service & Zugang</div>
+          <h2>Kontakt, Login und Fernwartung klar erreichbar.</h2>
+        </div>
+        <div class="service-links">
+          <a class="service-link" href="#"><span><small>Unternehmen</small>Presse</span><b>→</b></a>
+          <a class="service-link" href="#"><span><small>Karriere</small>Arbeitsplatz</span><b>→</b></a>
+          <a class="service-link" href="#"><span><small>Procurement</small>Einkauf</span><b>→</b></a>
+          <a class="service-link" href="http://get.teamviewer.com/bc7d7cu"><span><small>Support</small>Fernwartung</span><b>→</b></a>
+          <a class="service-link" href="mailto:info@renegade.de"><span><small>E-Mail</small>info@renegade.de</span><b>→</b></a>
+        </div>
+      </div>
+      <div class="shell access reveal" style="margin-top:22px">
+        <div class="login-box">
+          <div class="kicker">Login</div>
+          <h2>Kundenbereich</h2>
+          <form aria-label="Login Mockup">
+            <input type="text" placeholder="Benutzername" aria-label="Benutzername">
+            <input type="password" placeholder="Passwort" aria-label="Passwort">
+            <button class="btn" type="button">Einloggen</button>
+          </form>
+        </div>
+        <div class="login-box">
+          <div class="kicker">Kontakt</div>
+          <h2>Renegade Group</h2>
+          <p>Dipl.-Inf. Univ. Hubert Kreuzpointner<br>Renegade Group<br>Ludwig-Zeller-Strasse 2<br>83395 Freilassing</p>
+          <p>Telefon: +49 8654 469 0<br>Telefax: +49 8654 469 290<br>E-Mail: info@renegade.de</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <div><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-word">renegade</span></a><p style="margin-top:18px;max-width:390px">Technische Lösungen mit Fokus auf Präzision, Sicherheit, Kommunikation und Spezialtechnik.</p></div>
+      <div><h4>Navigation</h4><a href="#sparten">Geschäftssparten</a><a href="#technik">RDX / TDX</a><a href="#zugang">Login</a><a href="mailto:info@renegade.de">Kontakt</a></div>
+      <div><h4>Rechtliches</h4><a href="#">Datenschutz</a><a href="#">Impressum</a><a href="#">Site notice</a><a href="#">Privacy policy</a></div>
+    </div>
+    <div class="shell legal"><span>© Renegade Group</span><span>DE / UK · Freilassing · info@renegade.de</span></div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
