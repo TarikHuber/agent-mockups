@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecronix — Premium AI & Digital Solutions Redesign</title>
+  <meta name="description" content="Mockup redesign for Ecronix preserving the original ecronix.de content, services, process, customer proof, contact and Impressum information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#02040a; --bg2:#060a14; --panel:rgba(255,255,255,.045); --panel2:rgba(255,255,255,.075);
+      --line:rgba(255,255,255,.10); --line2:rgba(100,220,255,.22); --text:#f8fbff; --muted:#97a3b6; --soft:#cbd6e7;
+      --cyan:#30d5ff; --blue:#2b7cff; --violet:#8b5cf6; --green:#39ffb6; --yellow:#ffd36e; --pink:#ff4fd8;
+      --radius:28px; --shadow:0 30px 90px rgba(0,0,0,.55); --max:1180px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-3;background:
+      radial-gradient(circle at 20% 10%, rgba(48,213,255,.26), transparent 28%),
+      radial-gradient(circle at 80% 8%, rgba(139,92,246,.22), transparent 24%),
+      radial-gradient(circle at 55% 55%, rgba(43,124,255,.16), transparent 34%),
+      linear-gradient(180deg,#01030a 0%,#050815 55%,#01030a 100%)}
+    body:after{content:"";position:fixed;inset:0;z-index:-2;opacity:.32;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(circle at 50% 15%,#000,transparent 72%)}
+    a{color:inherit;text-decoration:none} .wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}.mono{font-family:JetBrains Mono,ui-monospace,monospace}.muted{color:var(--muted)}
+    .orb{position:absolute;border-radius:50%;filter:blur(12px);opacity:.75;pointer-events:none}.o1{width:340px;height:340px;background:rgba(48,213,255,.18);left:-100px;top:120px}.o2{width:260px;height:260px;background:rgba(139,92,246,.16);right:-80px;top:430px}.o3{width:220px;height:220px;background:rgba(57,255,182,.13);left:52%;top:720px}
+    .nav{position:fixed;top:16px;left:0;right:0;z-index:30}.navin{width:min(1180px,calc(100% - 28px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 14px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(4,8,18,.72);backdrop-filter:blur(22px);box-shadow:0 18px 60px rgba(0,0,0,.35)}
+    .brand{display:flex;align-items:center;gap:10px}.brand img{height:38px;width:auto}.brand span{font-weight:800;letter-spacing:-.04em;font-size:18px}.links{display:flex;align-items:center;gap:8px}.links a{font-size:13px;color:#c7d4e6;padding:9px 12px;border-radius:999px;transition:.25s}.links a:hover{background:rgba(255,255,255,.08);color:#fff}.cta{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#00111d;font-weight:800;box-shadow:0 0 0 1px rgba(255,255,255,.16) inset,0 16px 36px rgba(48,213,255,.24)}
+    .hero{position:relative;padding:165px 0 92px}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.045);color:#bdeeff;font:500 12px/1 JetBrains Mono,monospace;text-transform:uppercase;letter-spacing:.09em}.pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 24px var(--green)}
+    h1{margin:22px 0 18px;font-size:clamp(48px,8vw,105px);line-height:.86;letter-spacing:-.085em;font-weight:800}.grad{background:linear-gradient(90deg,#fff 0%,#bdf2ff 36%,#77a7ff 70%,#d7c3ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{font-size:clamp(18px,2vw,22px);line-height:1.65;color:#b7c5da;max-width:690px}.hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:14px 20px;border:1px solid var(--line);background:rgba(255,255,255,.055);color:#eef7ff;font-weight:750;transition:.25s}.btn:hover{transform:translateY(-2px);border-color:rgba(48,213,255,.45);background:rgba(48,213,255,.11)}.btn.primary{background:linear-gradient(135deg,#fff,#aeeeff 45%,#79a7ff);color:#031120;border:0;box-shadow:0 24px 50px rgba(48,213,255,.24)}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}.metric{padding:18px;border-radius:22px;border:1px solid var(--line);background:rgba(255,255,255,.045)}.metric b{display:block;font-size:24px;letter-spacing:-.04em}.metric small{display:block;color:var(--muted);margin-top:5px}
+    .device{position:relative;min-height:590px}.screen{position:relative;padding:18px;border:1px solid rgba(255,255,255,.14);border-radius:34px;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.035));box-shadow:var(--shadow);overflow:hidden}.screen:before{content:"";position:absolute;inset:-2px;background:radial-gradient(circle at 50% 0,rgba(48,213,255,.22),transparent 45%);z-index:0}.bar{position:relative;z-index:1;display:flex;gap:7px;margin-bottom:16px}.dot{width:11px;height:11px;border-radius:50%;background:#ff5f57}.dot:nth-child(2){background:#ffbd2e}.dot:nth-child(3){background:#28c840}.dash{position:relative;z-index:1;border-radius:24px;background:#060a13;border:1px solid rgba(255,255,255,.10);padding:20px}.dash-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:rgba(48,213,255,.10);border:1px solid rgba(48,213,255,.22);color:#bdf2ff;font-size:12px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mini{border-radius:20px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));padding:15px;min-height:118px}.mini strong{display:block;margin-bottom:9px}.mini p{font-size:13px;line-height:1.45;margin:0;color:#93a3b8}.code{margin-top:12px;border-radius:18px;padding:16px;background:#02050b;border:1px solid rgba(48,213,255,.16);color:#9feaff;font-size:12px;line-height:1.75}.float{position:absolute;z-index:4;border-radius:22px;padding:16px;border:1px solid rgba(255,255,255,.14);background:rgba(6,10,20,.76);backdrop-filter:blur(16px);box-shadow:0 24px 70px rgba(0,0,0,.4)}.f1{right:-16px;top:74px}.f2{left:-14px;bottom:78px}.f3{right:32px;bottom:20px}.float b{display:block;font-size:14px}.float span{display:block;color:var(--muted);font-size:12px;margin-top:5px}
+    section{padding:86px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:26px;margin-bottom:30px}.section-head h2{font-size:clamp(34px,5vw,62px);line-height:.96;letter-spacing:-.06em;margin:0}.section-head p{max-width:520px;color:#aebbd0;line-height:1.7}.grid{display:grid;gap:18px}.services{grid-template-columns:repeat(5,1fr)}.card{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.035));padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.18);position:relative;overflow:hidden}.card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 0,rgba(48,213,255,.11),transparent 42%);opacity:0;transition:.3s}.card:hover:before{opacity:1}.icon{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;margin-bottom:18px;background:linear-gradient(135deg,rgba(48,213,255,.20),rgba(139,92,246,.18));border:1px solid rgba(255,255,255,.14);font-size:22px}.card h3{margin:0 0 10px;font-size:20px;letter-spacing:-.035em}.card p{margin:0 0 16px;color:#a8b6ca;line-height:1.55;font-size:14px}.card ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}.card li{display:flex;gap:9px;align-items:flex-start;color:#d6e0ef;font-size:13px}.card li:before{content:"";margin-top:6px;width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 16px var(--cyan);flex:none}
+    .process{grid-template-columns:repeat(7,1fr);counter-reset:step}.step{padding:20px;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid var(--line);position:relative}.step:before{counter-increment:step;content:"0" counter(step);display:inline-flex;margin-bottom:16px;color:#06101a;background:linear-gradient(135deg,var(--green),var(--cyan));border-radius:999px;padding:7px 10px;font:700 12px JetBrains Mono}.step h3{font-size:16px;margin:0 0 8px}.step p{font-size:13px;line-height:1.5;color:#9fabbe;margin:0}
+    .customers{grid-template-columns:repeat(4,1fr)}.customer{min-height:192px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px}.customer img{max-height:42px;max-width:178px;filter:brightness(0) invert(1);opacity:.78}.customer .name{font-weight:700;font-size:14px}.customer p{font-size:12px;line-height:1.45;color:#9daabd;margin:0}
+    .showcase{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px;align-items:stretch}.panel{border-radius:34px;border:1px solid var(--line);background:rgba(255,255,255,.045);padding:28px;overflow:hidden}.architecture{display:grid;gap:13px}.arch-row{display:grid;grid-template-columns:140px 1fr;gap:12px;align-items:center}.arch-label{color:#9feaff;font:600 12px JetBrains Mono}.arch-box{border-radius:18px;padding:14px;border:1px solid rgba(48,213,255,.18);background:rgba(48,213,255,.055)}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:22px}.form{display:grid;gap:12px}.input{width:100%;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.055);color:#fff;outline:none}.input::placeholder{color:#7f8ca0}textarea.input{min-height:140px;resize:vertical}.legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.legal-item{padding:16px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.legal-item b{display:block;margin-bottom:6px}.legal-item span{font-size:14px;color:#adbad0;line-height:1.5}
+    footer{padding:52px 0;border-top:1px solid var(--line);background:rgba(0,0,0,.22)}.foot{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:28px}.foot img{height:38px}.foot p,.foot a{color:#aab7cb;line-height:1.7;font-size:14px}.foot h4{margin:0 0 12px}.lang{position:fixed;right:18px;bottom:18px;z-index:20;display:flex;gap:8px;padding:8px;border-radius:999px;border:1px solid var(--line);background:rgba(4,8,18,.75);backdrop-filter:blur(14px)}.lang button{border:0;border-radius:999px;padding:8px 10px;background:transparent;color:#aab7cb;cursor:pointer}.lang button.active{background:rgba(48,213,255,.16);color:#e9fbff}.reveal{opacity:0;transform:translateY(22px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
+    @media(max-width:1050px){.hero-grid,.showcase,.contact{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.process{grid-template-columns:repeat(2,1fr)}.customers{grid-template-columns:repeat(2,1fr)}.device{min-height:auto}.links{display:none}.foot{grid-template-columns:1fr}}
+    @media(max-width:640px){.wrap{width:min(100% - 24px,var(--max))}.hero{padding-top:125px}.services,.process,.customers,.metrics,.legal-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.screen{padding:12px}.float{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin-top:12px}.section-head{display:block}.navin{border-radius:24px}.brand span{display:none}.cta{padding:10px 12px;font-size:13px}}
+  </style>
+</head>
+<body>
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <nav class="nav">
+    <div class="navin">
+      <a class="brand" href="#top"><img src="https://ecronix.com/assets/ecronix-logo-XkBtAsuk.svg" alt="Ecronix Logo"><span>Ecronix</span></a>
+      <div class="links"><a href="#services">Leistungen</a><a href="#process">Prozess</a><a href="#customers">Kunden</a><a href="#contact">Kontakt</a><a href="#impressum">Impressum</a></div>
+      <a class="cta" href="#contact">Projekt starten →</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow"><i class="pulse"></i> KI Integration · AI Agents · Apps · Web</span>
+          <h1><span class="grad">Digitale Lösungen</span><br>die Wachstum fördern.</h1>
+          <p>Von innovativen mobilen Apps bis hin zu leistungsstarken Web-Plattformen verwandeln wir Ihre Ideen in digitale Realität mit umfassender Unterstützung während Ihrer gesamten Reise.</p>
+          <div class="hero-actions"><a class="btn primary" href="#contact">Projekt starten</a><a class="btn" href="#services">Leistungen erkunden</a><a class="btn" href="#impressum">Impressum ansehen</a></div>
+          <div class="metrics">
+            <div class="metric"><b>5</b><small>Leistungsbereiche</small></div>
+            <div class="metric"><b>7</b><small>Prozess-Schritte</small></div>
+            <div class="metric"><b>8</b><small>Referenzkunden</small></div>
+          </div>
+        </div>
+        <div class="device" aria-label="AI system preview">
+          <div class="screen">
+            <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+            <div class="dash">
+              <div class="dash-head"><span class="chip">● Live AI Operations</span><span class="mono muted">ecronix.ai</span></div>
+              <div class="cards">
+                <div class="mini"><strong>Custom Chatbots</strong><p>KI-Assistenten für Support, Sales und interne Workflows.</p></div>
+                <div class="mini"><strong>AI System Integration</strong><p>Verknüpfung von Tools, APIs, Datenbanken und Prozessen.</p></div>
+                <div class="mini"><strong>Intelligent Agents</strong><p>Agenten, die Aufgaben planen, ausführen und dokumentieren.</p></div>
+                <div class="mini"><strong>Process Automation</strong><p>Automatisierung für schnellere Abläufe und weniger manuelle Arbeit.</p></div>
+              </div>
+              <pre class="code">workflow.run({
+  input: "new customer request",
+  actions: ["qualify", "estimate", "reply", "schedule"],
+  human_review: true
+})</pre>
+            </div>
+          </div>
+          <div class="float f1"><b>Salzburg · Freilassing · BGL</b><span>Regionale Nähe, digitale Umsetzung.</span></div>
+          <div class="float f2"><b>React · Vite · Expo</b><span>Modernes Web & mobile Apps.</span></div>
+          <div class="float f3"><b>WordPress · Elementor</b><span>CMS, SEO und E-Commerce.</span></div>
+        </div>
+      </div>
+    </header>
+
+    <section id="services" class="wrap reveal">
+      <div class="section-head"><div><span class="eyebrow">Original: Unsere Leistungen</span><h2>End-to-End-Digitallösungen.</h2></div><p>Die fünf originalen Leistungsbereiche bleiben erhalten — nur visuell stärker, klarer und mit mehr Premium-Tech-Feeling inszeniert.</p></div>
+      <div class="grid services">
+        <article class="card"><div class="icon">📱</div><h3>Mobile Anwendungen</h3><p>Cross-Platform mobile Apps mit Expo und React Native für nahtlose Benutzererfahrung.</p><ul><li>React Native mit Expo</li><li>Cross-Platform Entwicklung</li><li>Native Performance</li><li>App Store Optimierung</li></ul></article>
+        <article class="card"><div class="icon">⚡</div><h3>Webanwendungen</h3><p>Moderne Web-Lösungen mit React und Vite, leistungsoptimiert.</p><ul><li>React mit Vite</li><li>Full-Stack Entwicklung</li><li>API Integration</li><li>Cloud Deployment</li></ul></article>
+        <article class="card"><div class="icon">🌐</div><h3>Websites</h3><p>Maßgeschneiderte WordPress-Lösungen mit Elementor für professionelles Design und CMS.</p><ul><li>Elementor Entwicklung</li><li>Plugin Entwicklung</li><li>E-Commerce Integration</li><li>SEO Optimierung</li></ul></article>
+        <article class="card"><div class="icon">🎨</div><h3>UI/UX Design</h3><p>Schöne, intuitive Designs erstellt mit Figma, die Benutzer fesseln und Wachstum fördern.</p><ul><li>Figma Design</li><li>Wireframing</li><li>Prototyping</li><li>Markenidentität</li></ul></article>
+        <article class="card"><div class="icon">🤖</div><h3>KI Integration</h3><p>Intelligente KI-Lösungen von Chatbots bis hin zu KI-Agenten, die Geschäftsprozesse automatisieren und verbessern.</p><ul><li>Maßgeschneiderte Chatbots</li><li>KI-System Integration</li><li>Intelligente KI-Agenten</li><li>Prozessautomatisierung</li></ul></article>
+      </div>
+    </section>
+
+    <section id="process" class="wrap reveal">
+      <div class="section-head"><div><span class="eyebrow">Original: Unser Prozess</span><h2>Vom Konzept bis zur Skalierung.</h2></div><p>Eine bewährte Methodik, die Erfolg vom Konzept bis zur Markteinführung gewährleistet.</p></div>
+      <div class="grid process">
+        <div class="step"><h3>Idee & Beratung</h3><p>Wir verstehen Ihre Vision und Geschäftsziele.</p></div>
+        <div class="step"><h3>Planung & Strategie</h3><p>Detaillierter Fahrplan und technische Architektur.</p></div>
+        <div class="step"><h3>Design & Prototyping</h3><p>Visuelle Konzepte und interaktive Prototypen.</p></div>
+        <div class="step"><h3>Entwicklung</h3><p>Sauberer, skalierbarer Code nach bewährten Praktiken.</p></div>
+        <div class="step"><h3>Qualitätssicherung</h3><p>Rigorose Tests auf allen Plattformen.</p></div>
+        <div class="step"><h3>Launch & Skalierung</h3><p>Reibungslose Bereitstellung und Leistungsoptimierung.</p></div>
+        <div class="step"><h3>Laufende Wartung</h3><p>Kontinuierliche Unterstützung und Feature-Updates.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap reveal">
+      <div class="showcase">
+        <div class="panel"><span class="eyebrow">Design passend zum Inhalt</span><h2 style="font-size:42px;line-height:1;letter-spacing:-.055em;margin:18px 0">Premium Tech, aber menschlich.</h2><p class="muted" style="line-height:1.7">Für Ecronix passt kein verspieltes Kinderdesign und auch kein klassischer Corporate-Look. Der neue Stil nutzt ein dunkles, präzises AI/SaaS-Feeling — passend zu KI Integration, AI Agents, Apps und Web Development — aber mit klaren regionalen Signalen für Salzburg, Freilassing und BGL.</p></div>
+        <div class="panel architecture">
+          <div class="arch-row"><div class="arch-label">Input</div><div class="arch-box">Kundenidee, bestehende Systeme, Business-Ziele</div></div>
+          <div class="arch-row"><div class="arch-label">Strategy</div><div class="arch-box">Roadmap, Architektur, Prototyping, UX</div></div>
+          <div class="arch-row"><div class="arch-label">Build</div><div class="arch-box">React, Vite, Expo, WordPress, APIs, Cloud</div></div>
+          <div class="arch-row"><div class="arch-label">AI Layer</div><div class="arch-box">Chatbots, Agenten, Systemintegration, Automatisierung</div></div>
+          <div class="arch-row"><div class="arch-label">Growth</div><div class="arch-box">Launch, Performance, SEO, Wartung, Feature-Updates</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="customers" class="wrap reveal">
+      <div class="section-head"><div><span class="eyebrow">Original: Unsere Kunden</span><h2>Vertraut von führenden Unternehmen.</h2></div><p>Die Referenzen der bestehenden Website bleiben erhalten und werden stärker als Trust-Signal präsentiert.</p></div>
+      <div class="grid customers">
+        <a class="card customer" href="https://www.max-aicher.de/" target="_blank"><img src="https://ecronix.com/assets/max-aicher-logo-DKLCO6bz.png" alt="Max Aicher Logo"><div class="name">Max Aicher GmbH & Co.KG</div><p>Webanwendung - PWA zum Verkauf von Immobilien und WordPress-Website-Support.</p></a>
+        <a class="card customer" href="https://www.porscheinformatik.com/" target="_blank"><img src="https://ecronix.com/assets/porsche-informatik-logo-Iz5K6sts.png" alt="Porsche Informatik Logo"><div class="name">Porsche Informatik Gesellschaft m.b.H.</div><p>Beratung für mobile App-Entwicklung.</p></a>
+        <a class="card customer" href="http://fh-salzburg.ac.at/" target="_blank"><img src="https://ecronix.com/assets/fh-salzburg-logo-CKCC0SEJ.png" alt="FH Salzburg Logo"><div class="name">Fachhochschule Salzburg GmbH</div><p>Beratung für mobile Entwicklung und Bildungstechnologie.</p></a>
+        <a class="card customer" href="https://www.fruechte-maier.de/" target="_blank"><img src="https://ecronix.com/assets/maier-logo-CAz_xOJO.png" alt="Maier Früchte Logo"><div class="name">Maier Früchtegroßhandel GmbH & Co.KG</div><p>Warenwirtschaftssystem, ERP-System und Webshop.</p></a>
+        <a class="card customer" href="https://www.behrens-schuleit.de/" target="_blank"><img src="https://ecronix.com/assets/behrens-logo-CVapVAju.png" alt="Behrens & Schuleit Logo"><div class="name">Behrens & Schuleit GmbH</div><p>Innovative neue App, die mehrere Systeme in einem integriert.</p></a>
+        <a class="card customer" href="https://acid21.com/" target="_blank"><div class="icon">A21</div><div class="name">Acid21 GmbH</div><p>Leitung der mobilen App-Entwicklungsteams.</p></a>
+        <a class="card customer" href="https://www.hausbank.de/" target="_blank"><img src="https://ecronix.com/assets/hausbank-logo-BHwomaRV.png" alt="Hausbank München Logo"><div class="name">Hausbank München eG</div><p>Entwicklung einer React-basierten Web-App.</p></a>
+        <a class="card customer" href="https://www.saubermacher.at/" target="_blank"><img src="https://ecronix.com/assets/saubermacher-logo-D_7aupYy.svg" alt="Saubermacher Logo"><div class="name">Saubermacher Dienstleistungs AG</div><p>Beratung und Schulung für React.</p></a>
+      </div>
+    </section>
+
+    <section id="contact" class="wrap reveal">
+      <div class="section-head"><div><span class="eyebrow">Original: Kontakt</span><h2>Lassen Sie uns etwas Großartiges schaffen.</h2></div><p>Bereit, Ihre Ideen in die Realität umzusetzen? Lassen Sie uns über Ihr Projekt sprechen.</p></div>
+      <div class="contact">
+        <div class="panel"><h3 style="margin-top:0;font-size:26px">Projektanfrage</h3><div class="form"><input class="input" placeholder="Ihr Name"><input class="input" placeholder="Ihre E-Mail"><textarea class="input" placeholder="Erzählen Sie uns von Ihrem Projekt..."></textarea><button class="btn primary" type="button">Nachricht senden</button></div></div>
+        <div class="panel"><h3 style="margin-top:0;font-size:26px">Direkter Kontakt</h3><div class="legal-grid"><div class="legal-item"><b>Telefon</b><span>+49 152 31841302</span></div><div class="legal-item"><b>E-Mail</b><span>info@ecronix.com</span></div><div class="legal-item"><b>Standort</b><span>Jaques-Offenbach Str 3<br>83395 Freilassing, Deutschland</span></div><div class="legal-item"><b>Region</b><span>Salzburg · Freilassing · Berchtesgadener Land · BGL</span></div></div></div>
+      </div>
+    </section>
+
+    <section id="impressum" class="wrap reveal">
+      <div class="section-head"><div><span class="eyebrow">Original: /impressum</span><h2>Impressum bleibt sichtbar.</h2></div><p>Die bestehende Website hat zwei Seiten/Views: Startseite und Impressum. Das Mockup zeigt beide Inhalte innerhalb eines starken One-Page-Konzepts und erhält die Impressum-Daten.</p></div>
+      <div class="panel legal-grid">
+        <div class="legal-item"><b>Ecronix</b><span>Jaques-Offenbach Str 3<br>83395 Freilassing, Deutschland</span></div>
+        <div class="legal-item"><b>Geschäftsführer</b><span>Tarik Huber</span></div>
+        <div class="legal-item"><b>Kontakt</b><span>Telefon: +49 152 31841302<br>E-Mail: info@ecronix.com</span></div>
+        <div class="legal-item"><b>Register & Steuern</b><span>Handelsregister: Nicht eingetragen<br>USt-IdNr.: DE325889409<br>Steuernummer: 105/231/50435</span></div>
+        <div class="legal-item"><b>Verantwortlich für den Inhalt</b><span>nach § 55 Abs. 2 RStV:<br>Tarik Huber</span></div>
+        <div class="legal-item"><b>Haftungsausschluss</b><span>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div><img src="https://ecronix.com/assets/ecronix-logo-XkBtAsuk.svg" alt="Ecronix Logo"><p>Ideen seit Tag eins in digitale Realität verwandeln.</p><p>© 2024 Ecronix. Alle Rechte vorbehalten.</p></div>
+      <div><h4>Navigation</h4><p><a href="#services">Leistungen</a><br><a href="#process">Prozess</a><br><a href="#customers">Kunden</a><br><a href="#contact">Kontakt</a><br><a href="#impressum">Impressum</a></p></div>
+      <div><h4>Original-Struktur erhalten</h4><p>Startseite: Leistungen, Prozess, Kunden, Kontakt, Footer.<br>Separate Seite: Impressum / rechtliche Hinweise.</p></div>
+    </div>
+  </footer>
+
+  <div class="lang" aria-label="Language preview"><button class="active">DE</button><button>EN</button></div>
+  <script>
+    const io = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show') }), {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.querySelectorAll('.lang button').forEach(btn => btn.addEventListener('click', () => {
+      document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active')); btn.classList.add('active');
+      if(btn.textContent === 'EN') alert('English version preserved in source content. This mockup focuses on the German .de variant.');
+    }));
+  </script>
+</body>
+</html>
