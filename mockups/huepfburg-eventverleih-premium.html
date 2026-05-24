@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hüpfburg Eventverleih — Premium Mockup</title>
+  <meta name="description" content="Modernes Website-Mockup für einen Hüpfburg- und Eventverleih: Buchung, Pakete, Sicherheit und Liefergebiet." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Fraunces:opsz,wght@9..144,650;9..144,750;9..144,850&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #241a16;
+      --muted: #74665d;
+      --soft: #fff6ea;
+      --paper: #fffdf9;
+      --card: #ffffff;
+      --sun: #ffcf4a;
+      --coral: #ff5a6d;
+      --berry: #8c3fff;
+      --mint: #40d6a1;
+      --sky: #5bc5ff;
+      --line: rgba(36, 26, 22, .11);
+      --shadow: 0 18px 60px rgba(83, 45, 18, .13), 0 2px 8px rgba(83, 45, 18, .08);
+      --radius-xl: 36px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 3%, rgba(255, 207, 74, .38), transparent 27rem),
+        radial-gradient(circle at 86% 12%, rgba(140, 63, 255, .18), transparent 28rem),
+        linear-gradient(180deg, #fff6ea 0%, #fffdf9 46%, #fff7f1 100%);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, svg { max-width: 100%; display: block; }
+    button, input, select { font: inherit; }
+    .page { position: relative; isolation: isolate; }
+    .container { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; }
+
+    .confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: .55;
+      background-image:
+        radial-gradient(circle, rgba(255, 90, 109, .65) 0 4px, transparent 5px),
+        radial-gradient(circle, rgba(91, 197, 255, .55) 0 3px, transparent 4px),
+        radial-gradient(circle, rgba(64, 214, 161, .5) 0 3px, transparent 4px);
+      background-size: 220px 180px, 260px 210px, 190px 230px;
+      background-position: 12px 30px, 90px 120px, 160px 40px;
+      mask-image: linear-gradient(180deg, #000 0%, transparent 58%);
+    }
+
+    .announcement {
+      background: #241a16;
+      color: #fff8ef;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+    .announcement .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 9px 20px;
+      text-align: center;
+    }
+    .spark { color: var(--sun); }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 253, 249, .78);
+      border-bottom: 1px solid rgba(36, 26, 22, .08);
+    }
+    nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      background: conic-gradient(from 150deg, var(--coral), var(--sun), var(--mint), var(--sky), var(--berry), var(--coral));
+      box-shadow: 0 10px 22px rgba(255, 90, 109, .28);
+      position: relative;
+      flex: 0 0 auto;
+    }
+    .brand-mark:after {
+      content: '';
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      height: 14px;
+      border-radius: 12px 12px 6px 6px;
+      background: #fff;
+      box-shadow: 0 -11px 0 1px rgba(255,255,255,.9);
+    }
+    .brand strong { display: block; font-weight: 850; letter-spacing: -.04em; line-height: 1; }
+    .brand span { display: block; color: var(--muted); font-size: 12px; font-weight: 700; margin-top: 2px; white-space: nowrap; }
+    .nav-links { display: flex; gap: 8px; padding: 6px; border: 1px solid var(--line); background: rgba(255,255,255,.64); border-radius: 999px; box-shadow: 0 4px 14px rgba(36,26,22,.05); }
+    .nav-links a { padding: 10px 15px; border-radius: 999px; font-size: 14px; font-weight: 800; color: #4b3a31; }
+    .nav-links a:hover { background: #fff1df; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
+    .phone { font-weight: 850; font-size: 14px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 0;
+      font-weight: 850;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--coral); color: white; box-shadow: 0 12px 26px rgba(255,90,109,.33); }
+    .btn-primary:hover { background: #ef435b; }
+    .btn-dark { background: #241a16; color: #fff8ef; box-shadow: 0 12px 26px rgba(36,26,22,.18); }
+    .btn-light { background: #fff; color: var(--ink); box-shadow: var(--shadow); }
+
+    .hero { padding: 68px 0 56px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.03fr) minmax(360px, .97fr);
+      gap: 48px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid rgba(255, 90, 109, .22);
+      background: rgba(255,255,255,.72);
+      border-radius: 999px;
+      color: #6b4330;
+      font-weight: 850;
+      font-size: 13px;
+      box-shadow: 0 8px 22px rgba(255,207,74,.14);
+    }
+    h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 850;
+      letter-spacing: -.065em;
+      line-height: .92;
+      font-size: clamp(48px, 7vw, 92px);
+      margin: 22px 0 20px;
+      text-wrap: balance;
+    }
+    .gradient-text { background: linear-gradient(92deg, #ff4f69 0%, #8c3fff 48%, #009de0 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { font-size: clamp(18px, 2vw, 22px); color: #5f4e45; max-width: 650px; margin: 0 0 28px; text-wrap: pretty; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 28px; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 12px; color: #5f4e45; font-weight: 800; font-size: 14px; }
+    .trust-row span { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.67); }
+
+    .hero-card {
+      position: relative;
+      border-radius: 42px;
+      min-width: 0;
+      background: linear-gradient(160deg, #fff 0%, #fff8ef 100%);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(36,26,22,.08);
+    }
+    .castle-stage {
+      position: relative;
+      min-height: 480px;
+      border-radius: 32px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(91,197,255,.58), rgba(255,255,255,.25) 42%, rgba(255,207,74,.2)),
+        radial-gradient(circle at 22% 24%, rgba(255,90,109,.35), transparent 15rem),
+        #e7f7ff;
+    }
+    .cloud { position: absolute; width: 132px; height: 42px; background: rgba(255,255,255,.9); border-radius: 999px; filter: drop-shadow(0 10px 18px rgba(91,197,255,.12)); animation: drift 11s ease-in-out infinite; }
+    .cloud:before, .cloud:after { content: ''; position: absolute; background: inherit; border-radius: 50%; }
+    .cloud:before { width: 58px; height: 58px; left: 22px; top: -25px; }
+    .cloud:after { width: 70px; height: 70px; right: 16px; top: -36px; }
+    .cloud.one { left: 32px; top: 54px; }
+    .cloud.two { right: -24px; top: 96px; transform: scale(.82); animation-delay: -4s; }
+
+    .castle {
+      position: absolute;
+      left: 50%;
+      bottom: 32px;
+      width: min(420px, 86%);
+      aspect-ratio: 1 / .82;
+      transform: translateX(-50%);
+      animation: bounceCastle 4.8s ease-in-out infinite;
+      filter: drop-shadow(0 22px 28px rgba(91, 50, 23, .22));
+    }
+    .castle-base { position: absolute; left: 3%; right: 3%; bottom: 0; height: 46%; border-radius: 38px 38px 30px 30px; background: linear-gradient(135deg, #ff5a6d, #ff8a57); border: 9px solid rgba(255,255,255,.82); }
+    .castle-base:after { content: ''; position: absolute; inset: 24% 14% 0; border-radius: 30px 30px 10px 10px; background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.72)); }
+    .tower { position: absolute; bottom: 31%; width: 24%; height: 54%; border-radius: 28px 28px 12px 12px; background: linear-gradient(180deg, #8c3fff, #5bc5ff); border: 8px solid rgba(255,255,255,.82); }
+    .tower.left { left: 2%; } .tower.right { right: 2%; }
+    .tower.center { left: 38%; bottom: 38%; height: 48%; background: linear-gradient(180deg, #40d6a1, #ffcf4a); }
+    .flag { position: absolute; width: 0; height: 0; border-top: 19px solid transparent; border-bottom: 12px solid transparent; border-left: 46px solid #ff5a6d; top: -30px; left: 50%; }
+    .tower.left .flag { border-left-color: #ffcf4a; } .tower.right .flag { border-left-color: #40d6a1; }
+    .bubble { position: absolute; border-radius: 50%; background: rgba(255,255,255,.74); box-shadow: inset 0 -10px 18px rgba(91,197,255,.11); animation: pop 5s ease-in-out infinite; }
+    .b1 { width: 62px; height: 62px; left: 40px; bottom: 130px; } .b2 { width: 42px; height: 42px; right: 78px; bottom: 188px; animation-delay: -2s; } .b3 { width: 28px; height: 28px; left: 46%; top: 80px; animation-delay: -3.2s; }
+
+    .booking-card {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, .88);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 14px 42px rgba(36, 26, 22, .16);
+    }
+    .booking-card label { display: block; font-size: 11px; font-weight: 900; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .booking-card strong { display: block; font-size: 15px; margin-top: 1px; }
+    .booking-chip { padding: 10px 12px; border: 1px solid rgba(36,26,22,.08); border-radius: 18px; background: #fff; min-width: 0; }
+
+    section { padding: 72px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 28px; }
+    .section-head h2, .cta h2 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(34px, 4.6vw, 60px); line-height: .98; letter-spacing: -.045em; margin: 0; text-wrap: balance; }
+    .section-head p { max-width: 490px; color: var(--muted); font-size: 17px; margin: 0; }
+
+    .category-strip { display: flex; gap: 12px; overflow-x: auto; padding: 4px 0 16px; scrollbar-width: none; }
+    .category-strip::-webkit-scrollbar { display: none; }
+    .pill { flex: 0 0 auto; padding: 12px 16px; border: 1px solid var(--line); background: #fff; border-radius: 999px; font-weight: 850; box-shadow: 0 8px 18px rgba(36,26,22,.05); }
+    .pill.active { background: #241a16; color: #fff8ef; border-color: #241a16; }
+
+    .products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .product-card { min-width: 0; overflow: hidden; background: #fff; border: 1px solid rgba(36,26,22,.08); border-radius: 30px; box-shadow: var(--shadow); transition: transform .22s ease, box-shadow .22s ease; }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 22px 70px rgba(83, 45, 18, .17), 0 2px 8px rgba(83, 45, 18, .08); }
+    .product-visual { position: relative; min-height: 230px; background: #fff2da; overflow: hidden; }
+    .product-visual:before { content: ''; position: absolute; inset: 28px; border-radius: 38px; background: var(--art, linear-gradient(135deg, #ff5a6d, #ffcf4a)); box-shadow: inset 0 -24px 40px rgba(36,26,22,.08); }
+    .product-visual:after { content: ''; position: absolute; left: 50%; bottom: 34px; width: 42%; height: 36%; transform: translateX(-50%); border-radius: 28px 28px 10px 10px; background: rgba(255,255,255,.88); }
+    .tag { position: absolute; top: 16px; left: 16px; background: rgba(255,255,255,.88); backdrop-filter: blur(10px); padding: 8px 11px; border-radius: 999px; font-size: 12px; font-weight: 900; }
+    .price { position: absolute; right: 16px; bottom: 16px; padding: 10px 12px; background: #241a16; color: #fff8ef; border-radius: 16px; font-weight: 900; }
+    .product-body { padding: 22px; }
+    .product-body h3 { font-size: 22px; line-height: 1.1; letter-spacing: -.03em; margin: 0 0 8px; }
+    .product-body p { color: var(--muted); margin: 0 0 18px; }
+    .product-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .product-meta span { padding: 7px 10px; border-radius: 999px; background: #fff4e5; color: #6b4330; font-size: 12px; font-weight: 850; }
+
+    .process { display: grid; grid-template-columns: .8fr 1.2fr; gap: 22px; align-items: stretch; }
+    .promise-card { padding: 32px; border-radius: 34px; background: #241a16; color: #fff8ef; box-shadow: var(--shadow); position: relative; overflow: hidden; min-width: 0; }
+    .promise-card:before { content: ''; position: absolute; width: 260px; height: 260px; border-radius: 50%; background: rgba(255,207,74,.24); right: -90px; top: -90px; }
+    .promise-card h3 { font-family: 'Fraunces', Georgia, serif; font-size: 42px; line-height: 1; letter-spacing: -.04em; margin: 0 0 16px; position: relative; }
+    .promise-card p { color: rgba(255,248,239,.78); margin: 0 0 26px; position: relative; }
+    .check-list { display: grid; gap: 13px; position: relative; }
+    .check-list span { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+    .check { width: 24px; height: 24px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; color: #073d2a; font-size: 14px; flex: 0 0 auto; }
+
+    .steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .step { min-width: 0; padding: 24px; border-radius: 28px; background: rgba(255,255,255,.78); border: 1px solid rgba(36,26,22,.08); box-shadow: 0 10px 30px rgba(83,45,18,.07); }
+    .step b { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 14px; background: var(--sun); margin-bottom: 18px; }
+    .step h3 { margin: 0 0 8px; font-size: 20px; letter-spacing: -.02em; }
+    .step p { margin: 0; color: var(--muted); }
+
+    .gallery-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
+    .gallery-main, .gallery-side { min-width: 0; border-radius: 34px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid rgba(36,26,22,.08); }
+    .gallery-main { min-height: 430px; background: linear-gradient(135deg, rgba(255,90,109,.86), rgba(140,63,255,.7)), url('https://images.unsplash.com/photo-1533294455009-a77b7557d2d1?auto=format&fit=crop&w=1200&q=80') center/cover; display: flex; align-items: end; padding: 30px; color: #fff; }
+    .gallery-main h3 { font-size: clamp(28px, 4vw, 54px); max-width: 610px; font-family: 'Fraunces', Georgia, serif; letter-spacing: -.045em; line-height: 1; margin: 0; }
+    .gallery-side { display: grid; grid-template-rows: 1fr 1fr; gap: 0; }
+    .mini { padding: 26px; display: flex; flex-direction: column; justify-content: space-between; min-height: 206px; }
+    .mini h3 { margin: 0; font-size: 25px; line-height: 1.05; letter-spacing: -.03em; }
+    .mini p { margin: 0; color: rgba(36,26,22,.7); font-weight: 700; }
+    .mini.one { background: linear-gradient(135deg, #ffcf4a, #fff2c3); }
+    .mini.two { background: linear-gradient(135deg, #40d6a1, #dffbed); }
+
+    .reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .review { min-width: 0; padding: 25px; background: #fff; border-radius: 28px; border: 1px solid rgba(36,26,22,.08); box-shadow: 0 10px 30px rgba(83,45,18,.07); }
+    .stars { color: #ffb800; letter-spacing: 2px; font-size: 16px; margin-bottom: 16px; }
+    .review p { color: #514239; margin: 0 0 18px; font-size: 16px; }
+    .review b { display: block; }
+    .review small { color: var(--muted); font-weight: 700; }
+
+    .cta { padding: 0 0 76px; }
+    .cta-panel { position: relative; overflow: hidden; border-radius: 40px; padding: clamp(28px, 6vw, 66px); background: linear-gradient(135deg, #241a16 0%, #5b2340 42%, #8c3fff 100%); color: #fff8ef; box-shadow: 0 30px 90px rgba(36,26,22,.22); }
+    .cta-panel:before { content: ''; position: absolute; inset: auto -50px -110px auto; width: 340px; height: 340px; border-radius: 50%; background: rgba(255,207,74,.22); }
+    .cta-panel p { color: rgba(255,248,239,.78); max-width: 560px; font-size: 18px; margin: 16px 0 26px; }
+    .cta-form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; max-width: 870px; position: relative; }
+    .cta-form input, .cta-form select { min-width: 0; height: 54px; border: 0; border-radius: 16px; padding: 0 16px; background: rgba(255,255,255,.94); color: var(--ink); font-weight: 750; outline: none; }
+    .cta-form input:focus, .cta-form select:focus, a:focus-visible, button:focus-visible { outline: 3px solid rgba(255,207,74,.82); outline-offset: 3px; }
+
+    footer { padding: 34px 0 46px; border-top: 1px solid rgba(36,26,22,.08); color: #5f4e45; }
+    .footer-grid { display: grid; grid-template-columns: 1.1fr repeat(3, .8fr); gap: 26px; }
+    .footer-grid h4 { margin: 0 0 10px; color: var(--ink); }
+    .footer-grid p, .footer-grid a { display: block; margin: 0 0 8px; font-size: 14px; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes bounceCastle { 0%, 100% { transform: translateX(-50%) translateY(0) scale(1); } 50% { transform: translateX(-50%) translateY(-10px) scale(1.012); } }
+    @keyframes drift { 0%, 100% { translate: 0 0; } 50% { translate: 18px -8px; } }
+    @keyframes pop { 0%, 100% { transform: translateY(0) scale(.95); opacity: .75; } 50% { transform: translateY(-22px) scale(1.05); opacity: 1; } }
+
+    @media (max-width: 1040px) {
+      .phone { display: none; }
+      .hero-grid, .process, .gallery-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 48px; }
+      .hero-card { max-width: 620px; margin: 0 auto; width: 100%; }
+      .products, .reviews { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+
+    @media (max-width: 780px) {
+      .container { width: min(100% - 28px, var(--container)); }
+      .announcement .container { padding-inline: 14px; font-size: 12px; }
+      nav { height: auto; min-height: 70px; padding: 12px 0; gap: 10px; }
+      .brand-mark { width: 42px; height: 42px; border-radius: 14px; }
+      .brand strong { font-size: 15px; }
+      .brand span { display: none; }
+      .nav-links { display: none; }
+      .nav-actions .btn { min-height: 42px; padding: 0 14px; font-size: 13px; }
+      .hero { padding: 40px 0 38px; }
+      h1 { margin-top: 18px; }
+      .lead { font-size: 17px; }
+      .trust-row { gap: 8px; }
+      .trust-row span { font-size: 12px; padding: 8px 10px; }
+      .castle-stage { min-height: 410px; }
+      .booking-card { grid-template-columns: 1fr; }
+      .booking-card .btn { width: 100%; }
+      section { padding: 54px 0; }
+      .products, .reviews, .steps, .footer-grid { grid-template-columns: 1fr; }
+      .product-visual { min-height: 210px; }
+      .cta-form { grid-template-columns: 1fr; }
+      .cta-form .btn { width: 100%; }
+      .gallery-main { min-height: 360px; padding: 22px; }
+    }
+
+    @media (max-width: 420px) {
+      .container { width: min(100% - 22px, var(--container)); }
+      .brand { gap: 8px; }
+      .brand strong { max-width: 126px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .nav-actions .btn { padding: 0 12px; }
+      .btn { min-height: 44px; }
+      .hero-actions .btn { width: 100%; }
+      .hero-card { padding: 10px; border-radius: 30px; }
+      .castle-stage { border-radius: 22px; min-height: 390px; }
+      .castle { width: 92%; }
+      .cloud.two { right: -58px; }
+      .section-head h2, .cta h2 { font-size: 36px; }
+      .promise-card { padding: 24px; }
+      .promise-card h3 { font-size: 34px; }
+      .cta-panel { border-radius: 30px; }
+      .mini { min-height: 180px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="confetti" aria-hidden="true"></div>
+    <div class="announcement">
+      <div class="container"><span class="spark">●</span> Sommer-Wochenenden früh sichern — Lieferung, Aufbau und Abholung inklusive</div>
+    </div>
+    <div class="nav-wrap">
+      <div class="container">
+        <nav aria-label="Hauptnavigation">
+          <a class="brand" href="#top" aria-label="Hüpfburg Eventverleih Startseite">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span><strong>Hüpfburg&nbsp;Helden</strong><span>Eventverleih für Familien & Firmen</span></span>
+          </a>
+          <div class="nav-links" aria-label="Seitennavigation">
+            <a href="#burgen">Burgen</a>
+            <a href="#ablauf">Ablauf</a>
+            <a href="#events">Events</a>
+            <a href="#kontakt">Anfragen</a>
+          </div>
+          <div class="nav-actions">
+            <span class="phone">☎ 0157 12345678</span>
+            <a class="btn btn-primary" href="#kontakt">Jetzt anfragen</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <main id="top">
+      <header class="hero container">
+        <div class="hero-grid">
+          <div class="hero-copy reveal visible">
+            <div class="eyebrow">🎉 Premium Mockup · Hüpfburg & Eventmodule</div>
+            <h1>Kinderparty mit <span class="gradient-text">Wow-Effekt</span> statt Stress.</h1>
+            <p class="lead">Moderne Website für einen Hüpfburg-Verleih mit emotionalem Auftritt, schneller Anfrage, klaren Paketen und vertrauensbildender Sicherheitskommunikation.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#burgen">Hüpfburgen ansehen</a>
+              <a class="btn btn-light" href="#ablauf">So läuft’s ab</a>
+            </div>
+            <div class="trust-row" aria-label="Vorteile">
+              <span>✓ Aufbau vor Ort</span>
+              <span>✓ TÜV-orientierte Sicherheit</span>
+              <span>✓ Geburtstage, Kitas, Firmenfeste</span>
+            </div>
+          </div>
+          <div class="hero-card reveal visible" aria-label="Illustration einer Hüpfburg mit Anfragekarte">
+            <div class="castle-stage">
+              <span class="cloud one" aria-hidden="true"></span>
+              <span class="cloud two" aria-hidden="true"></span>
+              <span class="bubble b1" aria-hidden="true"></span>
+              <span class="bubble b2" aria-hidden="true"></span>
+              <span class="bubble b3" aria-hidden="true"></span>
+              <div class="castle" aria-hidden="true">
+                <div class="tower left"><span class="flag"></span></div>
+                <div class="tower center"><span class="flag"></span></div>
+                <div class="tower right"><span class="flag"></span></div>
+                <div class="castle-base"></div>
+              </div>
+              <div class="booking-card">
+                <div class="booking-chip"><label>Wunschtermin</label><strong>Samstag, 14. Juni</strong></div>
+                <div class="booking-chip"><label>Event</label><strong>Geburtstag · 18 Kinder</strong></div>
+                <a class="btn btn-dark" href="#kontakt">Verfügbarkeit prüfen</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section id="burgen" class="container reveal">
+        <div class="section-head">
+          <h2>Die passende Burg für jedes Alter.</h2>
+          <p>Statt generischer Produktlisten: große, freundliche Karten mit schneller Orientierung nach Alter, Platzbedarf und Anlass.</p>
+        </div>
+        <div class="category-strip" aria-label="Kategorien">
+          <span class="pill active">Alle Favoriten</span><span class="pill">Kleinkinder</span><span class="pill">Action</span><span class="pill">Wasserspaß</span><span class="pill">Firmenfest</span><span class="pill">Kita & Schule</span>
+        </div>
+        <div class="products">
+          <article class="product-card">
+            <div class="product-visual" style="--art: linear-gradient(135deg, #ff5a6d, #ffcf4a);"><span class="tag">Bestseller</span><span class="price">ab 129 €</span></div>
+            <div class="product-body"><h3>Regenbogen Schloss</h3><p>Der Allrounder für Geburtstage: bunt, kompakt und perfekt für jüngere Kinder.</p><div class="product-meta"><span>3–8 Jahre</span><span>5 × 4 m</span><span>inkl. Gebläse</span></div></div>
+          </article>
+          <article class="product-card">
+            <div class="product-visual" style="--art: linear-gradient(135deg, #8c3fff, #5bc5ff);"><span class="tag">Action</span><span class="price">ab 179 €</span></div>
+            <div class="product-body"><h3>Superhelden Arena</h3><p>Mehr Höhe, mehr Sprungfläche, mehr Energie — ideal für Schulfeste und Vereine.</p><div class="product-meta"><span>6–12 Jahre</span><span>7 × 5 m</span><span>Betreuung optional</span></div></div>
+          </article>
+          <article class="product-card">
+            <div class="product-visual" style="--art: linear-gradient(135deg, #40d6a1, #5bc5ff);"><span class="tag">Sommer</span><span class="price">ab 199 €</span></div>
+            <div class="product-body"><h3>Wasser-Rutsche Splash</h3><p>Der Hingucker an warmen Tagen mit Rutschbahn, Poolzone und Urlaubsgefühl.</p><div class="product-meta"><span>Outdoor</span><span>8 × 4 m</span><span>Wasseranschluss</span></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="ablauf" class="container reveal">
+        <div class="process">
+          <div class="promise-card">
+            <h3>Alles organisiert. Eltern entspannt.</h3>
+            <p>Die Website macht klar: Ihr bekommt nicht nur eine Hüpfburg, sondern ein verlässliches Eventpaket.</p>
+            <div class="check-list">
+              <span><i class="check">✓</i> Termin & Liefergebiet sofort anfragen</span>
+              <span><i class="check">✓</i> Aufbau, Einweisung und Abbau erklärt</span>
+              <span><i class="check">✓</i> Sicherheitsinfos sichtbar vor der Buchung</span>
+              <span><i class="check">✓</i> Pakete für Privat- und Firmenevents</span>
+            </div>
+          </div>
+          <div class="steps">
+            <div class="step"><b>1</b><h3>Datum wählen</h3><p>Besucher prüfen direkt Wunschtermin, Anlass und ungefähre Kinderanzahl.</p></div>
+            <div class="step"><b>2</b><h3>Modul empfehlen</h3><p>Die Seite führt zu passenden Burgen nach Alter, Platz und Budget.</p></div>
+            <div class="step"><b>3</b><h3>Lieferung planen</h3><p>Liefergebiet, Aufbaufläche, Strom und Wetterhinweise werden verständlich.</p></div>
+            <div class="step"><b>4</b><h3>Feiern lassen</h3><p>Klare Kommunikation reduziert Rückfragen und erhöht Buchungsanfragen.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="events" class="container reveal">
+        <div class="section-head">
+          <h2>Mehr Eventgefühl, weniger Mietformular.</h2>
+          <p>Visuell sollte die Website nach Spaß aussehen — aber trotzdem sauber, vertrauenswürdig und conversion-stark funktionieren.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-main"><h3>Geburtstage, Sommerfeste, Kitas und Firmenfeiern als echte Erlebniswelt.</h3></div>
+          <div class="gallery-side">
+            <div class="mini one"><h3>Sicherheitsbereich</h3><p>Platzbedarf · Strom · Wetter · Betreuung</p></div>
+            <div class="mini two"><h3>Paketlogik</h3><p>Basic · Plus · Rundum-sorglos</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container reveal" aria-label="Kundenstimmen">
+        <div class="reviews">
+          <article class="review"><div class="stars">★★★★★</div><p>„Super unkompliziert: gebracht, aufgebaut, erklärt — die Kinder waren den ganzen Tag beschäftigt.“</p><b>Familienfeier</b><small>Beispielstimme für Mockup</small></article>
+          <article class="review"><div class="stars">★★★★★</div><p>„Für unser Kita-Sommerfest war die klare Vorbereitung auf der Website extrem hilfreich.“</p><b>Kita-Event</b><small>Beispielstimme für Mockup</small></article>
+          <article class="review"><div class="stars">★★★★★</div><p>„Die Pakete machen sofort verständlich, was wir brauchen und welche Fläche passt.“</p><b>Firmenfest</b><small>Beispielstimme für Mockup</small></article>
+        </div>
+      </section>
+
+      <section id="kontakt" class="cta container reveal">
+        <div class="cta-panel">
+          <h2>Bereit für eine Website, die direkt Buchungen bringt?</h2>
+          <p>Das Mockup kombiniert verspielte Hüpfburg-Optik mit professioneller Anfrageführung — ideal für lokale Eventverleiher.</p>
+          <form class="cta-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Anfrage vorbereitet ✓';">
+            <input aria-label="Name" placeholder="Dein Name" required>
+            <select aria-label="Anlass"><option>Geburtstag</option><option>Kita / Schule</option><option>Firmenfest</option><option>Verein</option></select>
+            <button class="btn btn-primary" type="submit">Anfrage starten</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div><h4>Hüpfburg Helden</h4><p>Premium Website-Mockup für Hüpfburg- und Eventverleih mit Buchungsfokus.</p></div>
+        <div><h4>Kontakt</h4><a href="tel:+4915712345678">0157 12345678</a><a href="mailto:hallo@example.de">hallo@example.de</a></div>
+        <div><h4>Service</h4><a href="#burgen">Hüpfburgen</a><a href="#ablauf">Ablauf</a><a href="#events">Events</a></div>
+        <div><h4>Rechtliches</h4><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">AGB</a></div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
