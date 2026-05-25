@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="bs-BA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Di Casa Donji Vakuf — Premium Restaurant Redesign</title>
+  <meta name="description" content="Premium mockup za Restoran-Pizzeriju Di Casa Donji Vakuf sa jelovnikom, rezervacijama, filozofijom, radnim vremenom i kontakt informacijama." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#19120e;--muted:#756b63;--cream:#fbf5ea;--paper:#fffaf2;--line:rgba(80,54,34,.14);--gold:#c99242;--gold2:#f2c46d;--terracotta:#9f3c24;--olive:#596234;--wine:#4a1713;--charcoal:#161210;--white:#fff;--shadow:0 26px 70px rgba(54,34,20,.18);--radius:28px;--max:1180px;
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden}img{max-width:100%;display:block}a{text-decoration:none;color:inherit}.wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}.grain{position:fixed;inset:0;z-index:-3;opacity:.55;background:radial-gradient(circle at 20% 10%,rgba(242,196,109,.34),transparent 24%),radial-gradient(circle at 92% 4%,rgba(159,60,36,.18),transparent 24%),linear-gradient(135deg,#fff8ed,#f4ead9 48%,#fffaf3)}.grain:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(25,18,14,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(25,18,14,.028) 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(circle at center,#000,transparent 78%)}
+    .nav{position:relative;z-index:80;backdrop-filter:saturate(150%) blur(18px);background:rgba(22,18,16,.92);color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}.nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand img{width:54px;height:54px;object-fit:contain;border-radius:50%;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.22)}.brand span{font-family:'Playfair Display',serif;font-size:25px;font-weight:800;letter-spacing:-.03em;white-space:nowrap}.links{display:flex;align-items:center;gap:4px}.links a{font-size:13px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:rgba(255,255,255,.76);padding:11px 12px;border-radius:999px}.links a:hover{color:#fff;background:rgba(255,255,255,.1)}.nav-actions{display:flex;align-items:center;gap:10px}.lang{display:flex;gap:6px;color:rgba(255,255,255,.72);font-size:12px;font-weight:900}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:46px;border-radius:999px;border:1px solid transparent;padding:0 18px;font-weight:900;letter-spacing:-.01em;background:var(--gold);color:#1a120b;box-shadow:0 12px 30px rgba(201,146,66,.28);transition:.22s transform,.22s box-shadow,.22s background}.btn:hover{transform:translateY(-2px);background:var(--gold2);box-shadow:0 18px 42px rgba(201,146,66,.36)}.btn.secondary{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.2);box-shadow:none}.mobile-pill{display:none}
+    .hero{position:relative;min-height:calc(100vh - 74px);display:grid;align-items:stretch;background:var(--charcoal);color:#fff;overflow:hidden}.hero-bg{position:absolute;inset:0}.hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.96) contrast(1.03);opacity:.7;transform:scale(1.04);animation:kenburns 18s ease-in-out infinite alternate}.hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,9,7,.9),rgba(12,9,7,.58) 44%,rgba(12,9,7,.08)),linear-gradient(0deg,rgba(12,9,7,.78),transparent 40%,rgba(12,9,7,.35))}.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:34px;align-items:end;padding:92px 0 70px}.kicker{display:inline-flex;gap:10px;align-items:center;border:1px solid rgba(242,196,109,.38);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.08);backdrop-filter:blur(12px);color:#f8d99d;font-weight:900}.kicker:before{content:"";width:8px;height:8px;border-radius:50%;background:#70d36f;box-shadow:0 0 18px #70d36f}.hero h1{font-family:'Playfair Display',serif;font-size:clamp(56px,8vw,126px);line-height:.86;letter-spacing:-.07em;margin:22px 0 18px;max-width:860px}.hero .lead{font-size:clamp(18px,2vw,24px);line-height:1.45;color:rgba(255,255,255,.86);max-width:690px;font-weight:500}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.reservation-card{align-self:end;background:rgba(255,250,242,.93);color:var(--ink);border-radius:34px;padding:24px;box-shadow:0 28px 80px rgba(0,0,0,.34);border:1px solid rgba(255,255,255,.55);backdrop-filter:blur(18px);animation:float 6s ease-in-out infinite}.reservation-card small{display:block;color:var(--terracotta);font-weight:900;text-transform:uppercase;letter-spacing:.13em}.reservation-card h2{font-family:'Playfair Display',serif;font-size:38px;line-height:.96;margin:8px 0 10px}.reservation-card p{color:var(--muted);line-height:1.5;margin:0 0 16px}.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.quick{background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px}.quick b{display:block;font-size:20px;color:var(--wine)}@keyframes kenburns{to{transform:scale(1.12) translate3d(1.5%,-1%,0)}}@keyframes float{50%{transform:translateY(-10px)}}
+    .section{padding:92px 0}.section.alt{background:#fff}.section.dark{background:var(--charcoal);color:#fff}.section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,440px);gap:28px;align-items:end;margin-bottom:30px}.eyebrow{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:var(--terracotta)}.section h2{font-family:'Playfair Display',serif;font-size:clamp(38px,5vw,72px);line-height:.92;letter-spacing:-.055em;margin:8px 0 0}.section-head p{font-size:17px;line-height:1.58;color:var(--muted);margin:0}.dark .section-head p{color:rgba(255,255,255,.68)}.featured{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.feature-main{min-height:560px;border-radius:40px;overflow:hidden;position:relative;box-shadow:var(--shadow);background:#000}.feature-main img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.feature-main:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.84),rgba(0,0,0,.34) 36%,transparent 68%)}.feature-main .copy{position:absolute;left:26px;right:26px;bottom:26px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.65)}.feature-main h3{font-family:'Playfair Display',serif;font-size:52px;line-height:.92;margin:0 0 8px;color:#fff}.feature-main p{margin:0;color:rgba(255,255,255,.9);font-weight:700}.feature-side{display:grid;gap:18px}.dish{display:grid;grid-template-columns:145px minmax(0,1fr);gap:16px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:30px;padding:12px;box-shadow:0 12px 36px rgba(54,34,20,.08);transition:.22s transform,.22s box-shadow}.dish:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(54,34,20,.14)}.dish img{height:124px;width:145px;object-fit:cover;border-radius:22px}.dish h3{font-family:'Playfair Display',serif;font-size:28px;line-height:.98;margin:0 0 5px}.dish p{margin:0;color:var(--muted);font-weight:600;line-height:1.45}.menu-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:900;color:var(--muted)}.tab.active{background:var(--wine);color:#fff;border-color:var(--wine)}.menu-board{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.menu-col{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:22px;box-shadow:0 14px 38px rgba(54,34,20,.06)}.menu-col h3{font-family:'Playfair Display',serif;margin:0 0 14px;font-size:29px}.item{display:grid;grid-template-columns:1fr auto;gap:12px;padding:12px 0;border-bottom:1px dashed rgba(80,54,34,.18)}.item:last-child{border-bottom:0}.item b{font-size:14px;text-transform:uppercase;letter-spacing:.02em}.item span{font-weight:900;color:var(--terracotta);white-space:nowrap}.item small{display:block;color:var(--muted);font-weight:600;margin-top:4px}.story{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px;align-items:stretch}.story-card{background:var(--wine);color:#fff;border-radius:38px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;min-height:430px;position:relative;overflow:hidden}.story-card:before{content:"Di Casa";position:absolute;font-family:'Playfair Display',serif;font-size:130px;font-weight:800;color:rgba(255,255,255,.05);right:-42px;bottom:0;letter-spacing:-.08em}.story-card h2{position:relative;font-size:58px}.story-card p{position:relative;color:rgba(255,255,255,.78);font-size:18px;line-height:1.6}.story-images{display:grid;grid-template-columns:1fr 1fr;gap:18px}.photo-tile{border-radius:34px;overflow:hidden;min-height:250px;position:relative;box-shadow:var(--shadow)}.photo-tile.tall{grid-row:span 2}.photo-tile img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.visit-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}.visit{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:30px;padding:24px}.visit h3{font-family:'Playfair Display',serif;font-size:32px;margin:0 0 12px;color:#f8d99d}.visit p,.visit a{color:rgba(255,255,255,.8);line-height:1.65;font-weight:600}.hours{display:grid;gap:8px}.hours div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);font-weight:800}.contact-form{display:grid;gap:12px}.contact-form input,.contact-form textarea{width:100%;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(255,255,255,.08);color:#fff;padding:14px 15px;font:inherit}.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.46)}.footer{padding:28px 0;background:#0c0908;color:rgba(255,255,255,.62)}.footer-inner{display:flex;justify-content:space-between;gap:18px;align-items:center}.footer img{width:54px;height:54px;background:#fff;border-radius:50%;object-fit:contain}.page-links{display:flex;flex-wrap:wrap;gap:10px}.page-links a{color:rgba(255,255,255,.7);font-weight:800;font-size:13px}.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}.float-wa{position:fixed;right:18px;bottom:18px;z-index:90;background:#1fa855;color:#fff;border-radius:999px;padding:14px 17px;font-weight:900;box-shadow:0 16px 46px rgba(31,168,85,.35)}
+    @media(max-width:980px){.links{display:none}.mobile-pill{display:inline-flex}.hero-content{grid-template-columns:1fr;padding-top:78px}.reservation-card{max-width:540px}.section-head,.featured,.story,.visit-grid{grid-template-columns:1fr}.menu-board{grid-template-columns:1fr 1fr}.feature-main{min-height:440px}.story-images{order:-1}.nav-inner{height:68px}.brand img{width:48px;height:48px}.brand span{font-size:22px}}
+    @media(max-width:640px){.wrap{width:min(100% - 28px,var(--max))}.nav-actions .btn{display:none}.brand span{font-size:20px}.hero{min-height:auto}.hero-content{padding:64px 0 42px;gap:22px}.hero-bg:after{background:linear-gradient(0deg,rgba(12,9,7,.86),rgba(12,9,7,.42)),linear-gradient(90deg,rgba(12,9,7,.76),rgba(12,9,7,.2))}.hero h1{font-size:clamp(48px,15vw,70px);letter-spacing:-.06em}.hero .lead{font-size:17px}.hero-actions .btn{width:100%}.reservation-card{border-radius:26px;padding:18px}.reservation-card h2{font-size:31px}.quick-grid,.menu-board,.story-images{grid-template-columns:1fr}.section{padding:68px 0}.section-head{gap:14px;margin-bottom:22px}.dish{grid-template-columns:112px minmax(0,1fr);border-radius:24px}.dish img{width:112px;height:104px;border-radius:18px}.dish h3{font-size:23px}.feature-main{min-height:430px;border-radius:28px}.feature-main h3{font-size:38px}.menu-col{border-radius:24px;padding:18px}.story-card{border-radius:28px;padding:24px;min-height:350px}.story-card h2{font-size:42px}.visit{border-radius:24px}.footer{padding-bottom:96px}.footer-inner{align-items:flex-start;flex-direction:column}.float-wa{left:14px;right:14px;text-align:center}.lang{display:none}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top"><img src="https://dicasa.ba/wp-content/uploads/2018/09/di-casa-logo.png" alt="Di Casa logo"><span>Di Casa</span></a>
+      <div class="links"><a href="#top">Početna</a><a href="#meni">Meni</a><a href="#filozofija">Naša filozofija</a><a href="#onama">O nama</a><a href="#kontakt">Kontakt</a></div>
+      <div class="nav-actions"><div class="lang"><span>BS</span><span>/</span><span>EN</span></div><a class="btn" href="tel:+38730261402">Rezervacija</a><a class="btn secondary mobile-pill" href="#meni">Meni</a></div>
+    </div>
+  </nav>
+
+  <header id="top" class="hero">
+    <div class="hero-bg"><img src="https://dicasa.ba/wp-content/uploads/2018/09/dicasa-jelo-homepage.jpg" alt="Di Casa jelo"></div>
+    <div class="wrap hero-content">
+      <div>
+        <span class="kicker">Restoran · Pizzeria · Donji Vakuf</span>
+        <h1>Vrhunsko kulinarsko iskustvo u prirodnom ambijentu.</h1>
+        <p class="lead">Ukusna jela, sjajna usluga i predivan prirodni ambijent garantuju da će Vam vrijeme provedeno kod nas ostati zauvijek u sjećanju.</p>
+        <div class="hero-actions"><a class="btn" href="tel:+38730261402">030 261 402</a><a class="btn secondary" href="#meni">Pogledaj jelovnik</a></div>
+      </div>
+      <aside class="reservation-card">
+        <small>Rezervacije</small>
+        <h2>Porodični ručak, putna pauza ili večera.</h2>
+        <p>Di Casa se nalazi u Oborcima, 8 km od Donjeg Vakufa, pored magistralnog puta za Sarajevo.</p>
+        <a class="btn" href="tel:+38730261402">Nazovi restoran</a>
+        <div class="quick-grid"><div class="quick"><b>09:00</b>Otvaranje</div><div class="quick"><b>23:00</b>Zatvaranje</div><div class="quick"><b>Oborci bb.</b>Donji Vakuf</div><div class="quick"><b>2006.</b>Otvoren restoran</div></div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="izdvojeno" class="section reveal">
+      <div class="wrap">
+        <div class="section-head"><div><span class="eyebrow">Izdvojeno iz kuhinje</span><h2>Topla domaća atmosfera, servirana moderno.</h2></div><p>Najtraženija jela iz ponude su prikazana kao vizuelni vodič za goste koji žele brzo odlučiti šta naručiti.</p></div>
+        <div class="featured">
+          <article class="feature-main"><img src="https://dicasa.ba/wp-content/uploads/2018/09/1-1.jpg" alt="Plata Di Casa"><div class="copy"><span class="eyebrow">Preporuka kuće</span><h3>Plata Di Casa</h3><p>Jelo za društvo, porodicu i goste koji žele probati više okusa kuće.</p></div></article>
+          <div class="feature-side">
+            <article class="dish"><img src="https://dicasa.ba/wp-content/uploads/2018/09/3-1.jpg" alt="Omlet sa puretinom"><div><h3>Omlet sa puretinom</h3><p>Doručak i topli početak dana.</p></div></article>
+            <article class="dish"><img src="https://dicasa.ba/wp-content/uploads/2018/09/4-1.jpg" alt="Chicken salata"><div><h3>Chicken salata</h3><p>Lagana, svježa i zasitna opcija.</p></div></article>
+            <article class="dish"><img src="https://dicasa.ba/wp-content/uploads/2018/09/12.jpg" alt="Kebab pizza"><div><h3>Kebab-pizza</h3><p>Pizza energija sa bogatim punjenjem.</p></div></article>
+            <article class="dish"><img src="https://dicasa.ba/wp-content/uploads/2018/09/13.jpg" alt="Spaghetti Bolognese"><div><h3>Spaghetti Bolognese</h3><p>Klasičan ukus za sve generacije.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="meni" class="section alt reveal">
+      <div class="wrap">
+        <div class="section-head"><div><span class="eyebrow">Di Casa Jelovnik</span><h2>Jelovnik koji se čita brzo, a izgleda premium.</h2></div><p>Struktura jelovnika ostaje poznata gostima: hladna i topla predjela, čorbe, gotova jela, pogačice, sendviči, tjestenina i salate.</p></div>
+        <div class="menu-tabs"><span class="tab active">Popularno</span><span class="tab">Predjela</span><span class="tab">Pogačice</span><span class="tab">Tjestenina</span><span class="tab">Salate</span></div>
+        <div class="menu-board">
+          <div class="menu-col"><h3>Topla predjela</h3><div class="item"><div><b>Jaja na oko</b><small>4 komada</small></div><span>8,00 KM</span></div><div class="item"><div><b>Omlet sa sirom</b></div><span>8,50 KM</span></div><div class="item"><div><b>Omlet sa puretinom</b></div><span>8,50 KM</span></div><div class="item"><div><b>Uštipci</b><small>sir, kajmak, salata</small></div><span>9,00 KM</span></div></div>
+          <div class="menu-col"><h3>Kuća preporučuje</h3><div class="item"><div><b>Chicken pogačica</b><small>pileći file, sos od šampinjona</small></div><span>18,50 KM</span></div><div class="item"><div><b>Kebab-pogačica</b><small>ramstek, sir, kajmak, šampinjoni</small></div><span>18,50 KM</span></div><div class="item"><div><b>Maslenica</b><small>teletina, sos od šampinjona, salata</small></div><span>22,00 KM</span></div><div class="item"><div><b>Gulaš sa prilogom</b></div><span>14,50 KM</span></div></div>
+          <div class="menu-col"><h3>Svježe i lagano</h3><div class="item"><div><b>Chicken salata</b><small>pileći fileti, edamer, kukuruz, grah</small></div><span>15,00 KM</span></div><div class="item"><div><b>Di Casa salata</b><small>pureća šunka, ovčiji sir, jaje</small></div><span>14,00 KM</span></div><div class="item"><div><b>Spaghetti Bolognese</b></div><span>13,00 KM</span></div><div class="item"><div><b>Lasagne al forno</b></div><span>14,00 KM</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="filozofija" class="section reveal">
+      <div class="wrap story">
+        <article class="story-card"><div><span class="eyebrow">Naša filozofija</span><h2>Porodični restoran za porodične posjete.</h2></div><p>Ponosni smo na činjenicu da se gosti rado vraćaju. Di Casa je postala omiljeno odmorište na putu za Sarajevo — mjesto gdje se dobar obrok, usluga i ambijent pamte.</p></article>
+        <div class="story-images"><figure class="photo-tile tall"><img src="https://dicasa.ba/wp-content/uploads/2018/09/19.jpg" alt="Di Casa ambijent"></figure><figure class="photo-tile"><img src="https://dicasa.ba/wp-content/uploads/2018/09/14.jpg" alt="Di Casa jelo"></figure><figure class="photo-tile"><img src="https://dicasa.ba/wp-content/uploads/2018/09/20.jpg" alt="Di Casa restoran"></figure></div>
+      </div>
+    </section>
+
+    <section id="onama" class="section alt reveal">
+      <div class="wrap">
+        <div class="section-head"><div><span class="eyebrow">O nama</span><h2>Od 2006. godine uz magistralni put za Sarajevo.</h2></div><p>Restoran Di Casa nalazi se 8 km od Donjeg Vakufa, pored magistralnog puta. Koncept spaja domaću kuhinju, pizzeriju i miran prirodni ambijent za porodice, putnike i redovne goste.</p></div>
+        <div class="featured">
+          <article class="dish"><img src="https://dicasa.ba/wp-content/uploads/2018/09/15.jpg" alt="Biftek sa jajetom"><div><h3>Biftek sa jajetom</h3><p>Mesni specijaliteti za ozbiljan ručak.</p></div></article>
+          <article class="dish"><img src="https://dicasa.ba/wp-content/uploads/2018/09/16.jpg" alt="Planstek sa teletinom"><div><h3>Planstek sa teletinom</h3><p>Jelo bogatog okusa i domaćeg karaktera.</p></div></article>
+          <article class="dish"><img src="https://dicasa.ba/wp-content/uploads/2018/09/17.jpg" alt="Chicken pogačica"><div><h3>Chicken pogačica</h3><p>Jedno od prepoznatljivih jela kuće.</p></div></article>
+          <article class="dish"><img src="https://dicasa.ba/wp-content/uploads/2018/09/18.jpg" alt="Restoran Di Casa"><div><h3>Dobrodošli!</h3><p>Mjesto gdje se gosti osjećaju kao kod kuće.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section dark reveal">
+      <div class="wrap">
+        <div class="section-head"><div><span class="eyebrow">Posjetite nas</span><h2>Rezervišite sto ili svratite na pauzu.</h2></div><p>Kontakt informacije, radno vrijeme i poruka gostima su jasno dostupni na kraju stranice — bez traženja po menijima.</p></div>
+        <div class="visit-grid">
+          <div class="visit"><h3>Kontakt</h3><p>Restoran Di Casa<br>Oborci bb.<br>70220 Donji Vakuf, BiH</p><p><a href="tel:+38730261402">Tel: 030 261 402</a><br><a href="tel:+38761187407">Mob: 061 187 407</a><br><a href="mailto:info@dicasa.ba">info@dicasa.ba</a></p></div>
+          <div class="visit"><h3>Radno vrijeme</h3><div class="hours"><div><span>Ponedjeljak</span><b>09:00–23:00</b></div><div><span>Utorak</span><b>09:00–23:00</b></div><div><span>Srijeda</span><b>09:00–23:00</b></div><div><span>Četvrtak</span><b>09:00–23:00</b></div><div><span>Petak–Nedjelja</span><b>09:00–23:00</b></div></div></div>
+          <div class="visit"><h3>Poruka</h3><form class="contact-form"><input aria-label="Ime" placeholder="Ime i prezime"><input aria-label="Telefon" placeholder="Telefon"><textarea aria-label="Poruka" rows="5" placeholder="Poruka"></textarea><button type="button" class="btn">Pošalji upit</button></form></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner"><img src="https://dicasa.ba/wp-content/uploads/2018/09/di-casa-logo.png" alt="Di Casa logo"><div class="page-links"><a href="#top">Početna</a><a href="#meni">Meni</a><a href="#filozofija">Naša filozofija</a><a href="#onama">O nama</a><a href="#kontakt">Kontakt</a><a href="https://dicasa.ba/?lang=en">English</a></div><span>Restoran-Pizzeria Di Casa · Donji Vakuf</span></div>
+  </footer>
+  <a class="float-wa" href="tel:+38730261402">Rezervacija: 030 261 402</a>
+  <script>
+    const io = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('show'); }), {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const target=document.querySelector(a.getAttribute('href')); if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }}));
+  </script>
+</body>
+</html>
