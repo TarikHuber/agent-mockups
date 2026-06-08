@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cinematic Brand Website — Reel Recreation</title>
+  <meta name="description" content="A standalone recreation of the cinematic website shown in the referenced Facebook Reel: surreal space/desert scenes, oversized type, and scroll-driven transitions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#f8f5ef;
+      --muted:rgba(248,245,239,.62);
+      --charcoal:#090b0e;
+      --line:rgba(255,255,255,.14);
+      --red:#ef4d3b;
+      --pink:#ff7f9f;
+      --cream:#f0e4d0;
+      --radius:28px;
+      --ease:cubic-bezier(.2,.8,.2,1);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:#08090b;color:var(--ink)}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden;background:#08090b;color:var(--ink)}
+    a{color:inherit;text-decoration:none}
+    .grain{position:fixed;inset:0;pointer-events:none;opacity:.09;z-index:30;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+    .site-nav{position:fixed;top:26px;left:32px;right:32px;z-index:20;display:flex;align-items:center;justify-content:space-between;font-size:13px;letter-spacing:-.02em;color:rgba(255,255,255,.88);mix-blend-mode:difference}
+    .brand{font-weight:800}.brand span{opacity:.45}.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{opacity:.72}.nav-links a:hover{opacity:1}.pill{border:1px solid rgba(255,255,255,.36);border-radius:999px;padding:9px 14px;backdrop-filter:blur(12px)}
+    .progress{position:fixed;right:31px;bottom:29px;z-index:20;display:flex;gap:9px;align-items:center}.dot{width:8px;height:8px;border-radius:99px;background:rgba(255,255,255,.34);transition:.4s var(--ease)}.dot.active{width:34px;background:#fff}
+    .hint{position:fixed;left:32px;bottom:28px;z-index:20;font-size:12px;color:rgba(255,255,255,.52);letter-spacing:.08em;text-transform:uppercase;mix-blend-mode:difference}
+
+    .scroll-stage{height:400vh;position:relative}.pin{position:sticky;top:0;height:100vh;overflow:hidden}.track{height:100%;display:flex;width:400vw;transform:translate3d(calc(var(--p,0) * -300vw),0,0);transition:transform .18s linear}.scene{position:relative;flex:0 0 100vw;height:100vh;overflow:hidden;isolation:isolate}.scene::after{content:"";position:absolute;inset:0;background:radial-gradient(1000px 460px at 50% 0%, rgba(255,255,255,.10), transparent 55%),linear-gradient(to bottom, rgba(0,0,0,.18), rgba(0,0,0,.40));z-index:4;pointer-events:none}.scene-content{position:absolute;z-index:8;left:11vw;top:50%;transform:translateY(-50%);max-width:min(660px,72vw)}
+    .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:rgba(255,255,255,.58);margin-bottom:18px}.headline{margin:0;font-weight:900;letter-spacing:-.095em;line-height:.78;font-size:clamp(54px,9.6vw,142px);text-wrap:balance;text-shadow:0 14px 70px rgba(0,0,0,.35)}.headline.small{font-size:clamp(48px,8vw,112px);max-width:740px}.copy{max-width:420px;margin:24px 0 0;color:var(--muted);font-weight:600;font-size:14px;line-height:1.55}.micro{position:absolute;z-index:8;right:8vw;bottom:8vh;max-width:300px;color:rgba(255,255,255,.60);font-size:12px;line-height:1.55}.micro b{display:block;color:#fff;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+
+    /* Scene 1: pink smoke + astronaut helmet */
+    .s1{background:linear-gradient(120deg,#14151c 0%,#d96c8c 44%,#f2a2b5 100%)}
+    .s1 .scene-content{left:14vw}.smoke{position:absolute;inset:auto auto 8vh 38vw;width:58vw;height:74vh;z-index:2;filter:blur(.2px);opacity:.92;background:radial-gradient(circle at 21% 50%,#ff567b 0 9%,transparent 22%),radial-gradient(circle at 40% 35%,#ff9fb2 0 9%,transparent 24%),radial-gradient(circle at 50% 62%,#f22762 0 9%,transparent 26%),radial-gradient(circle at 63% 42%,#ff7992 0 11%,transparent 29%),radial-gradient(circle at 73% 60%,#e92858 0 7%,transparent 22%);animation:breathe 5s ease-in-out infinite alternate}.helmet{position:absolute;z-index:6;left:52vw;top:38vh;width:min(270px,24vw);aspect-ratio:1.25;border-radius:50% 50% 48% 48%;transform:rotate(-13deg);background:linear-gradient(135deg,#fff 0 26%,#d5d6d8 27% 46%,#0d1117 47% 60%,#fafafa 61%);box-shadow:0 22px 75px rgba(46,0,15,.42)}.helmet::before{content:"";position:absolute;inset:19% 18% 26% 42%;border-radius:52% 38% 50% 42%;background:linear-gradient(135deg,#15151b,#363843 48%,#f4aec1);box-shadow:inset 0 0 24px rgba(255,255,255,.14)}.helmet::after{content:"";position:absolute;left:9%;bottom:7%;width:38%;height:16%;border-radius:999px;background:#cfd0d2;transform:rotate(8deg)}
+
+    /* Scene 2: black mars */
+    .s2{background:radial-gradient(circle at 68% 36%,#3c2823 0 8%,transparent 19%),linear-gradient(#08090d 0 69%,#e54432 70% 100%)}.planet{position:absolute;right:20vw;top:14vh;width:min(430px,36vw);aspect-ratio:1;border-radius:50%;z-index:2;background:radial-gradient(circle at 35% 32%,#f5c08f 0 4%,#cc684f 14%,#8e382d 35%,#331818 66%,#09090a 76%);box-shadow:inset -42px -38px 80px rgba(0,0,0,.65),0 0 80px rgba(238,79,55,.18);animation:planetDrift 9s ease-in-out infinite alternate}.red-ground{position:absolute;left:-4vw;right:-4vw;bottom:0;height:30vh;background:linear-gradient(180deg,#f15b43,#ad2d26);clip-path:polygon(0 24%,100% 0,100% 100%,0% 100%);z-index:3}.people{position:absolute;z-index:7;left:51vw;bottom:23vh;width:92px;height:148px}.person{position:absolute;bottom:0;width:28px;height:96px;border-radius:15px 15px 7px 7px;background:#dbd0bf;box-shadow:0 0 0 6px rgba(0,0,0,.06)}.person::before{content:"";position:absolute;left:4px;top:-23px;width:20px;height:20px;border-radius:50%;background:#e4c2aa}.person.two{left:37px;height:112px;background:#3165a9}.person.two::before{background:#d6a078}.person::after{content:"";position:absolute;left:8px;bottom:-39px;width:4px;height:44px;background:#111;box-shadow:10px 0 #111}
+
+    /* Scene 3: pastel astronaut */
+    .s3{background:linear-gradient(180deg,#dfe6e3 0,#c7d6d4 35%,#f498a2 66%,#f3758c 100%)}.pink-mountains{position:absolute;inset:auto -5vw 0 -5vw;height:49vh;z-index:2;background:radial-gradient(ellipse at 18% 78%,#e44f73 0 9%,transparent 25%),radial-gradient(ellipse at 42% 66%,#f5a2ae 0 16%,transparent 35%),radial-gradient(ellipse at 69% 78%,#f16983 0 18%,transparent 38%),linear-gradient(180deg,transparent 0,#f68798 56%);clip-path:polygon(0 42%,14% 28%,24% 48%,41% 18%,52% 43%,66% 26%,82% 47%,100% 20%,100% 100%,0 100%)}.astro{position:absolute;z-index:7;right:24vw;top:25vh;width:170px;height:300px;animation:float 4.6s ease-in-out infinite}.astro .head{position:absolute;top:0;left:52px;width:70px;height:76px;border-radius:50%;background:linear-gradient(135deg,#f6f1eb,#d9d8d8);box-shadow:inset -12px -8px 0 rgba(0,0,0,.08)}.astro .head::after{content:"";position:absolute;inset:17px 12px 24px;border-radius:45%;background:linear-gradient(135deg,#312b2d,#73757c)}.astro .body{position:absolute;top:78px;left:42px;width:90px;height:126px;border-radius:42px 42px 24px 24px;background:linear-gradient(135deg,#f8f3ec,#cdd0d3);box-shadow:inset -17px -12px 0 rgba(0,0,0,.07)}.astro .body::after{content:"";position:absolute;left:20px;top:23px;width:50px;height:34px;border-radius:8px;background:#222b33;box-shadow:0 0 0 4px rgba(255,255,255,.45)}.astro .arm,.astro .leg{position:absolute;background:#e6e1dc;border-radius:999px;transform-origin:top}.astro .arm.a1{left:29px;top:96px;width:25px;height:96px;transform:rotate(20deg)}.astro .arm.a2{right:22px;top:95px;width:25px;height:104px;transform:rotate(-30deg)}.astro .leg.l1{left:57px;top:187px;width:28px;height:99px;transform:rotate(11deg)}.astro .leg.l2{left:95px;top:187px;width:28px;height:108px;transform:rotate(-18deg)}
+
+    /* Scene 4: UFO desert */
+    .s4{background:linear-gradient(180deg,#ecd3c9 0,#ead9ce 43%,#9a9a90 100%)}.ufo{position:absolute;z-index:7;top:15vh;left:50%;width:min(480px,42vw);height:160px;transform:translateX(-50%);filter:drop-shadow(0 34px 36px rgba(0,0,0,.23));animation:ufo 4.8s ease-in-out infinite alternate}.ufo::before{content:"";position:absolute;left:24%;right:24%;top:0;height:82px;border-radius:100% 100% 35% 35%;background:linear-gradient(180deg,#303535,#121414)}.ufo::after{content:"";position:absolute;left:0;right:0;top:58px;height:62px;border-radius:50%;background:linear-gradient(180deg,#404646 0,#151817 48%,#080909 100%)}.beam{position:absolute;z-index:3;left:50%;top:24vh;width:36vw;height:55vh;transform:translateX(-50%);background:linear-gradient(180deg,rgba(255,255,255,.48),rgba(255,255,255,.02));clip-path:polygon(45% 0,55% 0,100% 100%,0 100%);filter:blur(8px);opacity:.72}.tiny{position:absolute;z-index:8;left:50%;bottom:18vh;width:18px;height:60px;transform:translateX(-50%);background:#d73c35;border-radius:11px 11px 3px 3px;box-shadow:0 28px 32px rgba(0,0,0,.35)}.tiny::before{content:"";position:absolute;top:-15px;left:3px;width:12px;height:12px;border-radius:50%;background:#1b1b1b}.s4 .headline{color:#26211f;text-shadow:none}.s4 .copy,.s4 .kicker{color:rgba(34,30,28,.62)}.s4 .micro{color:rgba(34,30,28,.55)}.s4 .micro b{color:#25211f}
+
+    .centered{left:50%;transform:translate(-50%,-50%);text-align:center;max-width:900px}.centered .copy{margin-left:auto;margin-right:auto}.rightish{left:14vw}.s3 .scene-content{left:16vw;top:52%}.s2 .scene-content{left:15vw}.s4 .scene-content{top:57%}.scene .linework{position:absolute;inset:0;z-index:5;opacity:.13;background-image:linear-gradient(rgba(255,255,255,.45) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.45) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,transparent,black 20%,transparent 92%)}
+    .footer-panel{min-height:86vh;background:#090a0d;padding:120px 8vw 80px;display:grid;place-items:center}.footer-card{width:min(1060px,100%);border:1px solid rgba(255,255,255,.13);background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border-radius:34px;padding:52px;box-shadow:0 40px 140px rgba(0,0,0,.35)}.footer-card h2{font-size:clamp(42px,7vw,92px);line-height:.86;letter-spacing:-.08em;margin:0 0 22px}.footer-card p{color:var(--muted);max-width:660px;line-height:1.7}.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:999px;font-weight:800;background:#fff;color:#090a0d}.button.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.18)}
+
+    @keyframes breathe{to{transform:translate3d(18px,-12px,0) scale(1.05);filter:blur(3px)}}@keyframes planetDrift{to{transform:translate3d(20px,8px,0) rotate(7deg)}}@keyframes float{50%{transform:translate3d(0,-24px,0) rotate(-2deg)}}@keyframes ufo{to{transform:translateX(-50%) translateY(-20px) scale(1.03)}}
+    @media (max-width:760px){.site-nav{top:18px;left:18px;right:18px}.nav-links a:not(.pill){display:none}.hint{left:18px}.progress{right:18px}.scene-content{left:24px!important;right:24px;max-width:none}.headline{font-size:clamp(54px,18vw,82px);letter-spacing:-.085em}.headline.small{font-size:clamp(48px,16vw,74px)}.copy{font-size:13px;max-width:310px}.micro{display:none}.helmet{left:42vw;top:58vh;width:180px}.smoke{left:18vw;bottom:3vh;width:92vw;height:50vh}.planet{right:-10vw;top:17vh;width:290px}.people{left:60vw;bottom:23vh;transform:scale(.72)}.astro{right:5vw;top:55vh;transform:scale(.7)}.ufo{width:340px;top:19vh}.beam{width:78vw}.s4 .scene-content{top:61%}.footer-card{padding:32px 24px}.track{transition:transform .1s linear}}
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a class="brand" href="#top">wearebrand<span>.</span></a>
+    <div class="nav-links">
+      <a href="#work">work</a><a href="#studio">studio</a><a href="#contact" class="pill">start a project</a>
+    </div>
+  </nav>
+  <div class="hint">scroll the reel</div>
+  <div class="progress" aria-hidden="true"><i class="dot active"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+
+  <main id="top">
+    <section class="scroll-stage" aria-label="Cinematic scroll recreation">
+      <div class="pin">
+        <div class="track" id="track">
+          <article class="scene s1" data-title="need amazing content">
+            <div class="linework"></div><div class="smoke"></div><div class="helmet"></div>
+            <div class="scene-content">
+              <div class="kicker">content studio</div>
+              <h1 class="headline">need<br>amazing<br>content</h1>
+              <p class="copy">A surreal first screen with pink vapor, a drifting space helmet, oversized stacked type, and a soft cinematic landing-page fade.</p>
+            </div>
+            <p class="micro"><b>Frame 01</b>Recreated from the first Reel frame: rose atmosphere, floating astronaut object, minimal nav, big compressed headline.</p>
+          </article>
+
+          <article class="scene s2" data-title="exceptional by design">
+            <div class="linework"></div><div class="planet"></div><div class="red-ground"></div><div class="people"><i class="person"></i><i class="person two"></i></div>
+            <div class="scene-content">
+              <div class="kicker">strategy + web</div>
+              <h2 class="headline small">exceptional<br>by design</h2>
+              <p class="copy">Dark Mars composition, huge planet, red terrain and two small human figures — high contrast, editorial and cinematic.</p>
+            </div>
+            <p class="micro"><b>Frame 02</b>The exact feeling: black sky, orange planet, red horizon, white bold copy on the left.</p>
+          </article>
+
+          <article class="scene s3" data-title="powerful experiences">
+            <div class="pink-mountains"></div>
+            <div class="astro"><i class="head"></i><i class="body"></i><i class="arm a1"></i><i class="arm a2"></i><i class="leg l1"></i><i class="leg l2"></i></div>
+            <div class="scene-content rightish">
+              <div class="kicker">interactive brands</div>
+              <h2 class="headline small">powerful<br>experiences<br>for unique<br>brands</h2>
+              <p class="copy">Soft grey-pink desert scene with a floating astronaut and dense left-aligned white type.</p>
+            </div>
+            <p class="micro"><b>Frame 03</b>Pastel landscape, human object floating, subtle parallax and a calm luxury-tech mood.</p>
+          </article>
+
+          <article class="scene s4" data-title="make your brand memorable">
+            <div class="ufo"></div><div class="beam"></div><div class="tiny"></div>
+            <div class="scene-content centered">
+              <div class="kicker">brand memory</div>
+              <h2 class="headline small">make your brand<br>memorable</h2>
+              <p class="copy">Warm desert, oversized black headline, UFO silhouette and a single red figure under the beam.</p>
+            </div>
+            <p class="micro"><b>Frame 04</b>Minimal final scene with cinematic negative space and one surreal hero object.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-panel" id="contact">
+      <div class="footer-card">
+        <h2>Same reel energy.<br>Built as a real website.</h2>
+        <p>This mockup recreates the visible website style from the Facebook Reel: horizontal scroll-driven hero scenes, surreal space/desert art direction, massive stacked typography, tiny navigation, grain, parallax motion, and responsive behavior.</p>
+        <div class="cta-row"><a class="button" href="#top">Replay the scroll</a><a class="button ghost" href="mailto:hello@example.com">Start a project</a></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const stage = document.querySelector('.scroll-stage');
+    const track = document.getElementById('track');
+    const dots = [...document.querySelectorAll('.dot')];
+    function update(){
+      const rect = stage.getBoundingClientRect();
+      const max = stage.offsetHeight - innerHeight;
+      const raw = Math.min(1, Math.max(0, -rect.top / max));
+      track.style.setProperty('--p', raw.toFixed(4));
+      const idx = Math.min(3, Math.round(raw * 3));
+      dots.forEach((d,i)=>d.classList.toggle('active', i===idx));
+    }
+    addEventListener('scroll', update, {passive:true});
+    addEventListener('resize', update);
+    update();
+  </script>
+</body>
+</html>
