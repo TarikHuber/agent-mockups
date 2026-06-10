@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lexer Immobilien — Premium Redesign Mockup</title>
+  <meta name="description" content="Premium Mockup für Lexer Immobilien: Gewerbe, Privat, Standortsuche und Beratung in Wien und Österreich." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#171715;
+      --muted:#6f6a5f;
+      --paper:#f5f1e9;
+      --white:#fffdf8;
+      --line:rgba(27,25,20,.14);
+      --gold:#b99354;
+      --gold-2:#d8bd83;
+      --blue:#1c4f7a;
+      --forest:#203b34;
+      --deep:#0e1514;
+      --shadow:0 24px 80px rgba(19,26,24,.18);
+      --radius:0px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--paper)}
+    body{margin:0;font-family:'DM Sans',system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--paper);overflow-x:hidden}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .topbar{position:fixed;z-index:50;top:0;left:0;right:0;height:76px;display:flex;align-items:center;justify-content:center;background:rgba(12,18,17,.72);backdrop-filter:blur(22px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.12)}
+    .nav{width:min(1180px,calc(100% - 32px));display:flex;align-items:center;justify-content:space-between;gap:24px;color:#fff}
+    .brand{display:flex;align-items:center;gap:14px;min-width:190px}
+    .brand-name{display:grid;line-height:.9;letter-spacing:-.045em;color:#fff;font-size:30px;font-weight:300;text-transform:uppercase}.brand-name small{font-size:10px;letter-spacing:.22em;font-weight:900;margin-top:4px;color:rgba(255,255,255,.78)}
+    .brand-mark{width:40px;height:40px;border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;color:var(--gold-2);font-weight:900;letter-spacing:-.05em}
+    .navlinks{display:flex;gap:34px;align-items:center;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.84)}
+    .navlinks a{position:relative;padding:28px 0}.navlinks a:after{content:"";position:absolute;left:0;bottom:21px;width:0;height:1px;background:var(--gold-2);transition:.25s}.navlinks a:hover:after{width:100%}
+    .phone{padding:12px 16px;border:1px solid rgba(255,255,255,.38);font-size:13px;font-weight:700;color:#fff;background:rgba(255,255,255,.04)}
+    .hero{min-height:100vh;position:relative;background:var(--deep);color:white;display:grid;align-items:stretch;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,11,10,.92) 0%,rgba(6,11,10,.73) 42%,rgba(6,11,10,.26) 70%,rgba(6,11,10,.72) 100%),url('https://www.lexerimmo.at/wp-content/uploads/2016/03/immobilien_wien.jpg') center / cover no-repeat;transform:scale(1.08);animation:photoDrift 18s ease-in-out infinite alternate;filter:saturate(.95) contrast(1.08)}
+    .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 32%,rgba(216,189,131,.28),transparent 26%),linear-gradient(120deg,transparent 0 52%,rgba(185,147,84,.18) 52.2%,transparent 53%)}
+    .hero-grid{position:relative;z-index:2;width:min(1180px,calc(100% - 32px));margin:0 auto;padding:148px 0 72px;display:grid;grid-template-columns:minmax(0,1.04fr) minmax(340px,.76fr);gap:70px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;text-transform:uppercase;letter-spacing:.2em;font-weight:900;color:var(--gold-2);margin-bottom:22px}.eyebrow:before{content:"";width:52px;height:1px;background:var(--gold-2)}
+    h1{font-size:clamp(48px,8vw,106px);line-height:.92;letter-spacing:-.07em;margin:0 0 24px;font-weight:300;text-transform:uppercase;max-width:860px;text-wrap:balance}
+    .hero-copy{font-size:clamp(18px,2vw,25px);line-height:1.45;color:rgba(255,255,255,.82);max-width:660px;margin:0 0 34px;font-weight:300}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:15px 22px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;font-size:13px;border:1px solid transparent;transition:.25s}.btn.primary{background:var(--gold);color:#10100e}.btn.primary:hover{background:var(--gold-2);transform:translateY(-2px)}.btn.ghost{border-color:rgba(255,255,255,.42);color:#fff;background:rgba(255,255,255,.05)}.btn.ghost:hover{border-color:var(--gold-2);transform:translateY(-2px)}
+    .search-panel{position:relative;background:rgba(245,241,233,.92);color:var(--ink);padding:30px;border:1px solid rgba(255,255,255,.34);box-shadow:0 40px 120px rgba(0,0,0,.36);backdrop-filter:blur(18px);animation:panelFloat 7s ease-in-out infinite alternate}.panel-label{font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);font-weight:900;margin-bottom:16px}.panel-title{font-size:31px;line-height:1.05;letter-spacing:-.045em;font-weight:700;margin-bottom:22px}.search-row{display:grid;grid-template-columns:1fr auto;gap:10px;border-bottom:1px solid var(--line);padding:14px 0}.search-row span:first-child{color:var(--muted);font-size:13px}.search-row span:last-child{font-weight:900}.status{margin-top:22px;padding:18px;background:#fff;border-left:4px solid var(--gold);font-size:14px;color:#4d473c}.status strong{display:block;color:var(--ink);font-size:16px;margin-bottom:5px}
+    .ticker{position:absolute;left:0;right:0;bottom:0;z-index:3;border-top:1px solid rgba(255,255,255,.12);background:rgba(7,12,11,.54);backdrop-filter:blur(18px);overflow:hidden}.ticker-track{display:flex;gap:42px;white-space:nowrap;animation:ticker 34s linear infinite;padding:18px 0;color:rgba(255,255,255,.72);font-size:13px;text-transform:uppercase;letter-spacing:.14em;font-weight:800}.ticker-track span{display:inline-flex;gap:42px}.ticker b{color:var(--gold-2)}
+    .section{padding:112px 0}.wrap{width:min(1180px,calc(100% - 32px));margin:0 auto}.section-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:end;margin-bottom:54px}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);font-weight:900;margin-bottom:14px}.section h2{font-size:clamp(38px,5.5vw,72px);line-height:.98;letter-spacing:-.065em;margin:0;font-weight:400;text-wrap:balance}.lead{font-size:20px;line-height:1.55;color:var(--muted);margin:0}.services{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:var(--white);box-shadow:var(--shadow)}.service{padding:38px 34px;min-height:330px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.service:last-child{border-right:0}.service:before{content:attr(data-no);font-size:84px;line-height:1;font-weight:300;color:rgba(185,147,84,.16);position:absolute;right:20px;top:18px;letter-spacing:-.08em}.service h3{font-size:28px;line-height:1.05;letter-spacing:-.04em;margin:0 0 20px}.service p{color:var(--muted);line-height:1.55;margin:0;position:relative}.service a{margin-top:28px;font-weight:900;color:var(--blue);font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+    .dark{background:#111816;color:#fff;position:relative;overflow:hidden}.dark:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(185,147,84,.18),transparent 28%),radial-gradient(circle at 85% 50%,rgba(28,79,122,.24),transparent 30%)}.dark .wrap{position:relative}.dark .lead{color:rgba(255,255,255,.68)}.dark .kicker{color:var(--gold-2)}
+    .split{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}.photo-card{position:relative;min-height:560px;background:url('https://www.lexerimmo.at/wp-content/uploads/2016/03/immobilien_wien.jpg') center/cover no-repeat;box-shadow:0 40px 130px rgba(0,0,0,.36);overflow:hidden}.photo-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,13,12,.05),rgba(8,13,12,.86))}.float-note{position:absolute;z-index:2;left:28px;bottom:28px;right:28px;background:rgba(255,253,248,.92);color:var(--ink);padding:24px;border-left:4px solid var(--gold);backdrop-filter:blur(12px)}.float-note b{display:block;font-size:22px;letter-spacing:-.035em;margin-bottom:6px}.float-note span{color:var(--muted);line-height:1.45}.bullets{display:grid;gap:16px;margin-top:34px}.bullet{display:grid;grid-template-columns:46px 1fr;gap:18px;align-items:start;padding:20px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.045)}.bullet i{width:46px;height:46px;border:1px solid rgba(216,189,131,.45);display:grid;place-items:center;color:var(--gold-2);font-style:normal;font-weight:900}.bullet h3{margin:0 0 6px;font-size:20px;letter-spacing:-.025em}.bullet p{margin:0;color:rgba(255,255,255,.65);line-height:1.5}
+    .objects{display:grid;grid-template-columns:1.1fr .9fr;gap:0;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow)}.objects-copy{padding:52px}.objects-copy h2{font-size:56px}.object-list{border-left:1px solid var(--line);display:grid}.object-row{padding:28px 34px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}.object-row:last-child{border-bottom:0}.object-row strong{font-size:20px;letter-spacing:-.03em}.object-row span{color:var(--muted);font-size:14px;line-height:1.45}.pill{border:1px solid var(--line);padding:8px 12px;font-size:12px;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:var(--gold)}
+    .downloads{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.download{padding:24px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;transition:.25s}.download:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(19,26,24,.1)}.download b{font-size:17px;letter-spacing:-.02em}.download span{color:var(--gold);font-weight:900}
+    .contact{background:#0f1514;color:#fff}.contact-card{display:grid;grid-template-columns:.8fr 1.2fr;background:#fff;color:var(--ink);box-shadow:var(--shadow)}.person{background:#e8dfcf;padding:44px;display:grid;align-content:end;min-height:540px;background-image:linear-gradient(180deg,rgba(232,223,207,.32),rgba(232,223,207,.92)),url('https://www.lexerimmo.at/wp-content/uploads/2016/03/01_Reinhold_Lexer.jpg');background-size:cover;background-position:center top}.person h3{font-size:42px;letter-spacing:-.06em;margin:0 0 6px}.person p{margin:0;color:#514b41}.contact-info{padding:56px}.contact-info h2{font-size:58px;margin-bottom:24px}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:30px 0}.info-box{border:1px solid var(--line);padding:22px}.info-box small{display:block;color:var(--muted);text-transform:uppercase;font-weight:900;letter-spacing:.12em;margin-bottom:8px}.info-box strong{font-size:20px;line-height:1.25}.footer{padding:34px 0;background:#090d0c;color:rgba(255,255,255,.62);font-size:13px}.footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.footer a{color:#fff;margin-left:18px}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:none}
+    @keyframes photoDrift{from{transform:scale(1.08) translateX(-1.5%)}to{transform:scale(1.13) translateX(1.5%)}}
+    @keyframes panelFloat{from{transform:translateY(0)}to{transform:translateY(-14px)}}
+    @keyframes ticker{to{transform:translateX(-50%)}}
+    @media (max-width: 900px){.topbar{height:68px}.nav{width:calc(100% - 24px)}.brand img{width:116px}.navlinks{display:none}.phone{display:none}.hero-grid{grid-template-columns:1fr;padding:118px 0 100px;gap:34px}.search-panel{padding:22px}.section{padding:76px 0}.section-head,.split,.objects,.contact-card{grid-template-columns:1fr;gap:34px}.services{grid-template-columns:1fr}.service{border-right:0;border-bottom:1px solid var(--line);min-height:auto}.service:last-child{border-bottom:0}.photo-card{min-height:440px}.objects-copy,.contact-info{padding:34px}.objects-copy h2,.contact-info h2{font-size:42px}.object-list{border-left:0;border-top:1px solid var(--line)}.downloads{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.person{min-height:420px}.ticker{display:none}}
+    @media (max-width: 520px){.hero-copy{font-size:17px}.hero-actions{display:grid}.btn{width:100%}.panel-title{font-size:25px}.search-row{grid-template-columns:1fr}.section h2{font-size:40px}.lead{font-size:17px}.object-row{grid-template-columns:1fr}.footer a{margin-left:0;margin-right:14px}.brand-mark{display:none}}
+    @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a class="brand" href="#top"><span class="brand-mark">LX</span><span class="brand-name">Lexer<small>Immobilien</small></span></a>
+      <div class="navlinks"><a href="#leistungen">Leistungen</a><a href="#objekte">Objekte</a><a href="#wissen">Wissenswertes</a><a href="#kontakt">Kontakt</a></div>
+      <a class="phone" href="tel:+4317136700">+43 1 / 713 67 00</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Lexer Immobilien Hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Wien · Gewerbe · Privat</div>
+          <h1>Immobilien mit Riecher für den richtigen Standort.</h1>
+          <p class="hero-copy">Lexer Immobilien begleitet Verkauf, Vermietung, Projektentwicklung und Standortsuche — mit Netzwerk, Marktgefühl und mediativem Blick auf beide Vertragspartner.</p>
+          <div class="hero-actions"><a class="btn primary" href="#kontakt">Beratung anfragen</a><a class="btn ghost" href="#leistungen">Leistungsspektrum ansehen</a></div>
+        </div>
+        <aside class="search-panel" aria-label="Standortsuche Karte">
+          <div class="panel-label">Immobilien-Scout System</div>
+          <div class="panel-title">Von Betriebsstandort bis Anlegerwohnung: wir finden den passenden Raum.</div>
+          <div class="search-row"><span>Fokus</span><span>Wien · Kärnten · NÖ · Steiermark</span></div>
+          <div class="search-row"><span>Suchprofil</span><span>Gewerbe / Privat / Projekt</span></div>
+          <div class="search-row"><span>Prüfung</span><span>Grundbuch · Widmung · Bebaubarkeit</span></div>
+          <div class="status"><strong>Aktuelles Angebot</strong>„Wir haben die Lösung oder finden eine“ — kreative Zugänge und nachhaltiger Einsatz für Kundenthemen.</div>
+        </aside>
+      </div>
+      <div class="ticker" aria-hidden="true"><div class="ticker-track"><span><b>Analyse & Bewertung</b> Verkauf & Vermietung <b>Standortsuche</b> Projektentwicklung <b>Gewerbe und Wohnen</b> Marktgerechte Preise </span><span><b>Analyse & Bewertung</b> Verkauf & Vermietung <b>Standortsuche</b> Projektentwicklung <b>Gewerbe und Wohnen</b> Marktgerechte Preise </span></div></div>
+    </section>
+
+    <section class="section" id="leistungen">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="kicker">Unser Leistungsspektrum</div><h2>Die bestehende Website — neu übersetzt in eine klare Premium-Struktur.</h2></div><p class="lead">Die Inhalte bleiben nah am Original: Analyse und Bewertung, Verkauf/Vermietung sowie Immobiliensuche. Das Mockup macht daraus einen hochwertigeren, vertrauensstarken Auftritt für Kunden in Wien und Österreich.</p></div>
+        <div class="services reveal">
+          <article class="service" data-no="01"><div><h3>Analyse und Bewertung</h3><p>Markt, Lage, Potenzial und Verwertbarkeit werden sauber eingeordnet — als Basis für realistische Entscheidungen bei Kauf, Verkauf oder Entwicklung.</p></div><a href="#kontakt">Bewertung starten →</a></article>
+          <article class="service" data-no="02"><div><h3>Verkauf und Vermietung</h3><p>Aussagekräftige Unterlagen, marktkonforme Preise und mediative Begleitung bis zum Kaufprozess oder Mietvertragsabschluss.</p></div><a href="#kontakt">Objekt besprechen →</a></article>
+          <article class="service" data-no="03"><div><h3>Immobiliensuche</h3><p>Als Immobilienscouts begleitet Lexer von Betriebsstandorten bis zur privaten Wohnung — mit Netzwerk und gutem „Riecher“ für passende Objekte.</p></div><a href="#objekte">Suchprofil anlegen →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="wrap split">
+        <div class="photo-card reveal"><div class="float-note"><b>Standort Wien</b><span>Der Stephansdom-Visual aus der Originalseite wird zur cineastischen Immobilien-Bühne statt schmalem Banner.</span></div></div>
+        <div class="reveal"><div class="kicker">Beratung mit Tiefe</div><h2>Gewerbe, Privat, Standortsuche und Projektentwicklung.</h2><p class="lead">Das neue Erlebnis spricht Eigentümer, Mieter, Käufer und Projektpartner gleichermaßen an — nicht als austauschbare Maklerseite, sondern als Beratungshaus mit belastbarem Netzwerk.</p><div class="bullets"><div class="bullet"><i>✓</i><div><h3>Prüfung relevanter Gegebenheiten</h3><p>Grundbuch, Widmung, Bebaubarkeit und Rahmenbedingungen werden verständlich aufbereitet.</p></div></div><div class="bullet"><i>↗</i><div><h3>Ungewöhnliche Wege</h3><p>Wenn ein Wunsch nicht im Angebot liegt, wird im Netzwerk aktiv nach passenden Immobilien gesucht.</p></div></div><div class="bullet"><i>§</i><div><h3>Konzessioniertes Unternehmen</h3><p>Professionelle Vermittlung inklusive gesetzlicher Vermögensschadenhaftpflicht-Versicherung.</p></div></div></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="objekte">
+      <div class="wrap objects reveal">
+        <div class="objects-copy"><div class="kicker">Objekte</div><h2>Aktuelle Angebote klarer führen.</h2><p class="lead">Die Originalseite sagt: „Wir haben die Lösung oder finden eine!“ — hier wird daraus ein kompakter Objektbereich mit Suchprofil-CTA und regionalem Fokus.</p><div class="hero-actions" style="margin-top:30px"><a class="btn primary" href="#kontakt">Suchwunsch senden</a><a class="btn ghost" style="color:var(--ink);border-color:var(--line)" href="https://www.lexerimmo.at/objekte/">Original Objekte</a></div></div>
+        <div class="object-list">
+          <div class="object-row"><div><strong>Gewerbeimmobilien</strong><br><span>Betriebsstandorte, Geschäftslokale, Industrieliegenschaften</span></div><em class="pill">Scout</em></div>
+          <div class="object-row"><div><strong>Wohnimmobilien</strong><br><span>Wohnungen, Anlegerwohnungen und private Suchprofile</span></div><em class="pill">Wohnen</em></div>
+          <div class="object-row"><div><strong>Projektentwicklung</strong><br><span>Lagebewertung, Entwicklungspotenzial und Nutzungskonzepte</span></div><em class="pill">Projekt</em></div>
+          <div class="object-row"><div><strong>Regionen</strong><br><span>Österreichweit, speziell Wien, Kärnten, Niederösterreich und Steiermark</span></div><em class="pill">AT</em></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="wissen" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="kicker">Wissenswertes</div><h2>Downloads & rechtliche Orientierung sichtbar machen.</h2></div><p class="lead">Die bestehenden Dokumente bleiben erhalten, werden aber in eine klare Service-Fläche übersetzt — damit Kunden schnell die richtigen Unterlagen finden.</p></div>
+        <div class="downloads reveal">
+          <a class="download" href="https://www.lexerimmo.at/wissenswertes/"><b>Nebenkostenübersicht Kauf / Verkauf</b><span>PDF →</span></a>
+          <a class="download" href="https://www.lexerimmo.at/wissenswertes/"><b>Nebenkostenübersicht Miete / Pacht / Baurecht</b><span>PDF →</span></a>
+          <a class="download" href="https://www.lexerimmo.at/wissenswertes/"><b>Widerrufsbelehrung & Rücktrittsrechte</b><span>PDF →</span></a>
+          <a class="download" href="https://www.lexerimmo.at/wissenswertes/"><b>Widerrufsformular Lexer Immobilien</b><span>PDF →</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="kontakt">
+      <div class="wrap contact-card reveal">
+        <div class="person"><h3>Reinhold Lexer</h3><p>Geschäftsführender Gesellschafter</p></div>
+        <div class="contact-info"><div class="kicker">Kontakt</div><h2>Ein Gespräch, ein Suchprofil, ein nächster Schritt.</h2><p class="lead">Persönlicher Kontakt bleibt zentral — nur hochwertiger präsentiert, mit klarer Telefon-CTA und Büro Wien im sichtbaren Bereich.</p><div class="contact-grid"><div class="info-box"><small>Mobil</small><strong>+43 676 / 84 333 11 00</strong></div><div class="info-box"><small>Büro Wien</small><strong>Hahngasse 32/10<br>1090 Wien</strong></div><div class="info-box"><small>Telefon</small><strong>+43 1 / 713 67 00</strong></div><div class="info-box"><small>Fax</small><strong>+43 1 / 713 67 00 - 8</strong></div></div><div class="hero-actions"><a class="btn primary" href="tel:+43676843331100">Jetzt anrufen</a><a class="btn ghost" style="color:var(--ink);border-color:var(--line)" href="https://www.lexerimmo.at/kontakt/">Original Kontaktseite</a></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap"><span>© 2024 Lexer Immobilien · LEXERIMMO.AT GmbH · Hahngasse 32/10 · 1090 Wien</span><span><a href="https://www.lexerimmo.at/impressum">Impressum</a><a href="https://www.lexerimmo.at/datenschutz">Datenschutz</a><a href="https://www.lexerimmo.at/immobilien/wien/">Anlegerwohnungen Wien</a></span></div></footer>
+  <script>
+    const observer = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
